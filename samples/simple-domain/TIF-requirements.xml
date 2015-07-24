@@ -1,0 +1,329 @@
+<type name="Requirement Document" haveRevisions="true" presentation="doc-red">
+    <fields>
+        <field name="Summary">
+            <editability>(false)</editability>
+        </field>
+        <field name="State"/>
+        <field name="Assigned User"/>
+        <field name="Project"/>
+        <field name="Documents"/>
+        <field name="Attachments"/>
+        <field name="Revision Date">
+            <description>Date of last significant modification to this item. If this item is a node then the value is the date of the last significant edit that on either the node or the shared item, whichever is latest.</description>
+        </field>
+        <field name="Parameters">
+            <description>The substitution parameter definitions</description>
+        </field>
+        <field name="Document Phase">
+        </field>
+        <field name="Use Hierarchical Editability">
+            <editability>(false)</editability>
+            <description>Field exposed on document roots which, when true, enables change order and document-level authorization controls</description>
+        </field>
+        
+        <field name="Valid Change Order">
+            <editability>(false)</editability>
+            <description>Local computation which is true if the project does not require change orders, or the item is a disconnected node, or there is at least one change order attached to the item assigned to the current user and in the open phase.</description>
+        </field>
+
+        <field name="Allow Edits">
+            <description>Document computation which controls whether the main text of the content is editable</description>
+        </field>
+        <field name="Allow Links">
+        </field>
+        <field name="Allow Traces">
+        </field>
+
+        <field name="Parameter Values">
+            <description>The parameter values for substitution</description>
+        </field>
+        <field name="Shared Attachments">
+            <editability>(((field[&quot;Allow Edits&quot;] = &quot;true&quot;) and ((field[&quot;Valid Change Order&quot;] = &quot;true&quot;) or (field[&quot;Use Hierarchical Editability&quot;] = &quot;false&quot;))))</editability>
+            <description>Attachments used by shared items in the RM Solution</description>
+        </field>
+        <field name="Root Document">
+            <editability>((user is a member of &quot;Senior Project Team&quot;) or (field[&quot;Project&quot;] == &quot;&quot;))</editability>
+            <description>Document field which, when true, causes the document to show up as a top-level document in the project</description>
+            <default>true</default>
+        </field>
+        <field name="Shared Text">
+            <editability>(item is segment)</editability>
+            <description>The main payload for the document contents</description>
+        </field>
+        <field name="Document Short Title">
+            <!--editability>((false) or ((field[&quot;Allow Edits&quot;] = &quot;true&quot;) and ((field[&quot;Valid Change Order&quot;] = &quot;true&quot;) or (field[&quot;Use Hierarchical Editability&quot;] = &quot;false&quot;))) or (field[&quot;Allow Edits&quot;] = &quot;&quot;))</editability-->
+            <description>The short name of the document. The value is editable by the user and is used to construct the full name that is stored in the Summary and Shared Text fields. The Document Name trigger constructs the full name of the document.</description>
+        </field>
+        <field name="Category Int Value">
+            <editability>(false)</editability>
+            <relevance>(false)</relevance>
+            <description>Calculates the integer value associated with the Category/Shared Category field's pick value.  This is a hidden field used by the Document Traces Tree View report recipe to display content specifc images</description>
+        </field>
+    </fields>
+    <states>
+        <state name="In Review">
+            <next group="everyone" name="In Review"/>
+            <next group="everyone,Senior Project Team" name="Published"/>
+            <next group="everyone,Senior Project Team" name="Open"/>
+            <next group="everyone,Senior Project Team" name="Restricted"/>
+            <mandatory>
+                <field name="Document Short Title"/>
+            </mandatory>
+        </state>
+        <state name="Published">
+            <next group="everyone" name="Published"/>
+            <next group="everyone,Senior Project Team" name="Restricted"/>
+            <next group="everyone,Senior Project Team" name="Delivered"/>
+            <mandatory>
+                <field name="Document Short Title"/>
+            </mandatory>
+        </state>
+        <state name="Open">
+            <next group="everyone,Senior Project Team" name="In Review"/>
+            <next group="everyone" name="Open"/>
+            <next group="everyone,Senior Project Team" name="Restricted"/>
+            <next group="everyone" name="Inactive"/>
+            <mandatory>
+                <field name="Document Short Title"/>
+            </mandatory>
+        </state>
+        <state name="Restricted">
+            <next group="everyone,Senior Project Team" name="In Review"/>
+            <next group="everyone,Senior Project Team" name="Open"/>
+            <next group="everyone" name="Restricted"/>
+            <next group="everyone,Senior Project Team" name="Review Pending"/>
+            <mandatory>
+                <field name="Document Short Title"/>
+            </mandatory>
+        </state>
+        <state name="Review Pending">
+            <next group="everyone,Senior Project Team" name="In Review"/>
+            <next group="everyone,Senior Project Team" name="Restricted"/>
+            <next group="everyone" name="Review Pending"/>
+            <mandatory>
+                <field name="Document Short Title"/>
+            </mandatory>
+        </state>
+        <state name="Delivered">
+            <next group="everyone" name="Restricted"/>
+            <next group="everyone" name="Delivered"/>
+            <next group="everyone,Senior Project Team" name="Retired"/>
+            <mandatory>
+                <field name="Document Short Title"/>
+            </mandatory>
+        </state>
+        <state name="Retired">
+            <next group="everyone" name="Retired"/>
+            <mandatory>
+                <field name="Document Short Title"/>
+            </mandatory>
+        </state>
+        <state name="Inactive">
+            <next group="everyone" name="Open"/>
+            <next group="everyone" name="Inactive"/>
+        </state>
+        <state name="Unspecified">
+            <next group="everyone" name="Open"/>
+        </state>
+    </states>
+    <properties>
+        <property value="Requirement" name="MKS.RQ.Domain">
+            <description>(Configurable) The solution domain this document type is used with.  Change this value only if you are copying this type to create a new domain.</description>
+        </property>
+        <property value="Project,Shared Attachments,Shared Text,Shared Category,Contains,Summary" name="MKS.RQ.Editability.1">
+            <description>(Configurable) Fields that are editable only when the field referenced by property MKS.RQ.EditabilityField.1 has value true.</description>
+        </property>
+        <property value="Project,Shared Attachments,Shared Text,Shared Category,Contains,Summary,Changes Authorized By" name="MKS.RQ.Editability.Document.1">
+            <description>(Configurable) Fields that are editable only when the field referenced by property MKS.RQ.EditabilityField.Document.1 has value true.</description>
+        </property>
+        <property value="" name="MKS.RQ.Editability.Document.3">
+            <description>(Configurable) Fields that are editable only when the field referenced by property MKS.RQ.EditabilityField.Document.3 has value true.</description>
+        </property>
+        <property value="Properties for {Summary}" name="MKS.RQ.item.editissue.title">
+            <description>(Configurable) Edit item title override. The application substitutes field names in curly braces with the value.</description>
+        </property>
+    </properties>
+    <document-model associated-type="Requirement" role="segment">
+    </document-model>
+    <constraints>
+        <constraint type="fieldRelationship">
+            <source name="Type">
+                <value>Requirement Document</value>
+            </source>
+            <target name="Shared Category" mandatory="false">
+                <value>Document</value>
+            </target>
+        </constraint>
+    </constraints>
+</type>
+
+<type name="Requirement" presentation="segment-red" haveRevisions="true">
+    <fields>
+       <field name="State"/>
+       <field name="Project"/>
+       <field name="Attachments"/>
+        <field name="Trace Status">
+            <editability>(false)</editability>
+            <description>Summary of the trace relationships emanating from this node. upstream/downstream corresponds to backward/forward direction.
+upstream =&gt; at least one upstream trace exists.
+downstream =&gt; at least one downstream trace exists.
+related =&gt; at least one peer trace (Is Related To) exists.
+suspect =&gt; at least one of the traces is suspect in the indicated class of traces.</description>
+            <default>none</default>
+        </field>
+        <field name="Revision Date">
+            <description>Date of last significant modification to this item. If this item is a node then the value is the date of the last significant edit that on either the node or the shared item, whichever is latest.</description>
+        </field>
+        <field display-name="Input Shared Item Revision Date" type="fva" name="Input Shared Item Revision Date">
+            <description>The revision date of the shared item</description>
+            <editability>(false)</editability>
+            <relevance>(false)</relevance>
+            <backing-issue relationship="References" field="Input Revision Date"/>
+        </field>
+       
+       <field name="Parameter Values">
+           <description>The parameter values for substitution</description>
+       </field>
+       <field name="Priority">
+           <description>Priority of the issue.</description>
+       </field>
+       <field name="Category Int Value">
+           <editability>(false)</editability>
+           <relevance>(false)</relevance>
+           <description>Calculates the integer value associated with the Category/Shared Category field's pick value.  This is a hidden field used by the Document Traces Tree View report recipe to display content specifc images</description>
+       </field>
+       <field name="Changes Authorized By">
+           <description>Relationship between nodes and segment roots and the change orders that authorize changes to them.</description>
+       </field>
+       <field name="Text">
+           <editability>((field[&quot;Reference Mode&quot;] != &quot;Share&quot;))</editability>
+           <description>The primary contents of the artifact</description>
+       </field>
+       <field name="Text Attachments">
+           <editability>((field[&quot;Reference Mode&quot;] != &quot;Share&quot;))</editability>
+           <description>The attachments exposed on the shared item</description>
+       </field>
+       <field name="Valid Change Order">
+            <editability>(false)</editability>
+            <description>Local computation which is true if the project does not require change orders, or the item is a disconnected node, or there is at least one change order attached to the item assigned to the current user and in the open phase.</description>
+       </field>
+        <field name="Allow Links">
+        </field>
+        <field name="Allow Traces">
+        </field>
+
+        <!-- *** Traces *** -->
+        <field name="Decomposes To">
+            <traces backward="Decomposed From" description="A Requirement decomposes to a Specification.">
+              <trace target="Specification" />
+            </traces>
+        </field>
+        <field name="Is Related To">
+            <traces backward="Is Related To'" description="A Requirement can be traced to another requirement.">
+              <trace target="Requirement" />
+            </traces>
+        </field>
+        
+        
+    </fields>
+    <states>
+       <state name="Active">
+           <next group="everyone" name="Active"/>
+       </state>
+       <state name="Unspecified">
+           <next group="everyone" name="Active"/>
+       </state>
+    </states>
+    <properties>
+       <property value="Project,Contains,References,Contained By,Text,Category,Text Attachments" name="MKS.RQ.Editability.1">
+           <description>(Configurable) Fields that are editable only when the field referenced by property MKS.RQ.EditabilityField.1 has value true. Do not specify the reverse couplet relationships (Referenced By) in this list - it will be ignored.</description>
+       </property>
+       <property value="Project,Contains,References,Contained By,Text,Category,Text Attachments,Changes Authorized By" name="MKS.RQ.Editability.Document.1">
+           <description>(Configurable) Fields that are editable only when the field referenced by property MKS.RQ.EditabilityField.Document.1 has value true. Do not specify the reverse couplet relationships (Referenced By) in this list - it will be ignored.</description>
+       </property>
+       <property value="" name="MKS.RQ.Editability.Document.2">
+           <description>(Configurable) Fields that are editable only when the field referenced by property MKS.RQ.EditabilityField.Document.2 has value true.</description>
+       </property>
+       <property value="" name="MKS.RQ.Editability.Document.3">
+           <description>(Configurable) Fields that are editable only when the field referenced by property MKS.RQ.EditabilityField.Document.3 has value true.</description>
+       </property>
+    </properties>
+    <document-model associated-type="Shared Requirement" role="node">
+        <significant-edits>
+            <field name="Text" />
+            <field name="Category" />
+        </significant-edits>
+    </document-model>
+    <constraints>
+       <constraint type="fieldRelationship">
+           <source name="Referenced Item Type">
+           <value>Requirement Document</value>
+           </source>
+           <target name="Category" mandatory="false">
+           <value>Document</value>
+           </target>
+       </constraint>
+       <constraint type="fieldRelationship">
+           <source name="Referenced Item Type">
+               <value>Shared Requirement</value>
+           </source>
+           <target name="Category" mandatory="false">
+               <value>System Requirement</value>
+               <value>Technical Requirement</value>
+               <value>Component Requirement</value>
+               <value>Heading</value>
+               <value>Business Requirement</value>
+               <value>Comment</value>
+               <value>User Requirement</value>
+               <value>Functional Requirement</value>
+               <value>Non-Functional Requirement</value>
+           </target>
+       </constraint>
+    </constraints>
+</type>
+
+<type name="Shared Requirement">
+    <fields>
+       <field name="State"/>
+       <field name="Parameters">
+           <description>The substitution parameter definitions</description>
+       </field>
+       <field name="Parameter Values">
+           <description>The parameter values for substitution</description>
+       </field>
+       <field name="Shared Attachments">
+           <description>Attachments used by shared items in the RM Solution</description>
+       </field>
+       <field name="Shared Text">
+           <description>The main payload for the document contents</description>
+       </field>
+    </fields>
+    <states>
+       <state name="Available">
+           <next group="everyone" name="Available"/>
+       </state>
+       <state name="Unspecified">
+           <next group="everyone" name="Available"/>
+       </state>
+    </states>
+    <properties/>
+    <document-model role="shareditem"/>
+    <constraints>
+       <constraint type="fieldRelationship">
+           <source name="Type">
+           <value>Shared Requirement</value>
+           </source>
+           <target name="Shared Category" mandatory="false">
+           <value>System Requirement</value>
+           <value>Technical Requirement</value>
+           <value>Component Requirement</value>
+           <value>Heading</value>
+           <value>Business Requirement</value>
+           <value>Comment</value>
+           <value>User Requirement</value>
+           <value>Functional Requirement</value>
+           <value>Non-Functional Requirement</value>
+           </target>
+       </constraint>
+    </constraints>
+</type>

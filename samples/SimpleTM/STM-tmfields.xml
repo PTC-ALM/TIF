@@ -1,0 +1,101 @@
+<field max-length="15" type="shorttext" name="Build ID">
+    <description>A short text field used to track and identify the build being tested by a Test Session. This may be replaced by an IBPL referencing a Build item type for a stronger typed solution.</description>
+    <relevance>((field[&quot;State&quot;] &lt;&gt; &quot;Cancelled&quot;))</relevance>
+</field>
+
+<field display-rows="5" multivalued="true" type="relationship" name="Test Objectives">
+    <description>Relationship used to relate a Test Plan to one or more Test Objectives. This relationship field can also be used to nest a hierarchy of Test Objectives.</description>
+    <relates>Test Plan:Test Objective;Test Objective:Test Objective</relates>
+    <reverse name="Test Objective For">
+        <relates>Test Objective:Test Objective,Test Plan</relates>
+    </reverse>
+    <default-columns>
+        <column>ID</column>
+        <column> Type</column>
+        <column> State</column>
+        <column> Summary</column>
+        <column> Assigned User</column>
+        <column> Total Pass Count</column>
+        <column> Total Fail Count</column>
+        <column> Total Other Count</column>
+    </default-columns>
+</field>
+
+
+<field type="pick" name="Session Type">
+    <description>A pick list denoting the type of Test Session this is. A manual session is used for entering results with the test results editor. An automated session is used for capturing results with the automated test execution framework. An exploratory session is used for logging testing notes informally, exploratory sessions are sometimes used during the initial stages of testing to flush out obvious defects and can be used as a quality gate before formal testing is conducted.</description>
+    <values>
+        <value>Automated</value>
+        <value>Manual</value>
+        <value>Exploratory</value>
+    </values>
+</field>
+
+<field display-rows="15" max-length="32000" rich-content="true" type="longtext" name="Test Environment">
+    <description>Text field used to describe the testing environment for a Test Session.</description>
+</field>
+
+<field display-name="Test Objective" type="ibpl" name="Test Objective">
+    <description>The associated test objective.</description>
+    <backing-issue field="Summary" type="Test Objective" states="Assigned, In Development, In Testing, In Retesting"/>
+</field>
+
+<field display-rows="5" type="qbr" name="Completed Test Sessions">
+    <description>A query backed relationship which identifies all Test Sessions which are in a Completed phase. This query backed relationship is used throughout the solution to identify sessions which are complete and should be considered by metrics and computations. Contrary to this, active test sessions are considered work in progress, therefore session metrics are not rolled up to the Test Objective, Test Plan and Project.</description>
+    <editability>(false)</editability>
+    <query>Completed Test Sessions</query>
+    <correlation>ID:Test Objective</correlation>
+</field>
+
+<field display-rows="5" type="qbr" name="Active Test Sessions">
+    <description>Active test sessions belonging to this test objective.</description>
+    <query>Active Test Sessions</query>
+    <correlation>ID:Test Objective</correlation>
+</field>
+
+<field display-rows="5" max-length="200000" rich-content="true" type="longtext" name="Description">
+    <description>Detailed description of the issue.</description>
+</field>
+
+<field display-rows="15" max-length="200000" rich-content="true" type="longtext" name="Shared Expected Results" defaultAttachmentField="Shared Attachments">
+    <description>Shared Item version of Expected Results</description>
+</field>
+
+<field type="fva" name="Expected Results" >
+    <description>The expected results of executing a Test Case.</description>
+    <editability>(field[&quot;Reference Mode&quot;] != &quot;Share&quot;)</editability>
+    <backing-issue relationship="References" field="Shared Expected Results" type="longtext" />
+</field>
+
+<field display-rows="5" trace="true" multivalued="true" type="relationship" name="Is Validated By">
+    <description>A requirement is validated by a Test Case</description>
+    <relates>Requirement:Test Case</relates>
+    <reverse name="Validates" trace="true">
+        <relates>Test Case:Requirement</relates>
+    </reverse>
+    <default-columns>
+        <column>ID</column>
+        <column> Document ID</column>
+        <column> Relationship Flags</column>
+        <column> Category</column>
+        <column> Type</column>
+        <column> Project</column>
+        <column> Revision Date</column>
+        <column> Text</column>
+    </default-columns>
+</field>
+
+<edit-field type="relationship" name="Tests" multivalued="true">
+    <description>Relates test objectives and test sessions</description>
+    <relates>Test Objective:Test Suite,Test Case;Test Session:Test Suite,Test Case</relates>
+    <reverse name="Tests For" display="relationship" multivalued="true">
+        <relates>Test Suite:Test Objective,Test Session;Test Case:Test Objective,Test Session</relates>
+    </reverse>
+</edit-field>
+
+<field type="logical" name="Record Results As Shared">
+    <description>Share results for a shared test case with the test case it is sharing from.  If false, the results of the sharing test case will not appear as results on the shared test case, all other values will share results.  This field is only relevent for test cases with reference mode of share.  </description>
+    <editability>(field[&quot;Reference Mode&quot;] = &quot;Share&quot;)</editability>
+    <relevance>(field[&quot;Reference Mode&quot;] = &quot;Share&quot;)</relevance>
+    <default>true</default>
+</field>

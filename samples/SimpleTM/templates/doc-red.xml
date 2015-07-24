@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IssuePresentationTemplate backgroundColor="White" version="2.0">
+    <Styles>
+        <TextStyle fontColor="Black" fontSize="0" fontStyle="bold"
+                   id="Field Label Style" name="Field Label Style"/>
+        <TextStyle fontColor="#B54A4A" fontSize="0" fontStyle="bold"
+                   id="Mandatory Field Label Style"
+                   name="Mandatory Field Label Style"/>
+        <TextStyle fontColor="Maroon" fontName="Calibri" fontSize="18"
+                   fontStyle="bold" id="Title" name="Title"/>
+        <DefaultStyles fieldLabel="Field Label Style"
+                       mandatoryFieldLabel="Mandatory Field Label Style"/>
+    </Styles>
+    <Grids>
+        <DefaultGridProperties border="0" cellpadding="0" cellspacing="5"
+                               fill="True" pack="True"/>
+        <DefaultCellProperties align="Left" valign="Top" wrap="True"/>
+    </Grids>
+    <Tabs>
+        <Tab hasIconDecorator="False" name="Properties" position="1">
+            <Grids>
+                <DefaultGridProperties border="0" cellpadding="0"
+                                       cellspacing="0" fill="True" pack="True"/>
+                <DefaultCellProperties align="Left" valign="Middle" wrap="True"/>
+                <Grid>
+                    <Cell height="1" width="1" x="0" y="0">
+                        <Label text="General" textStyle="Title"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="1" y="0"/>
+                    <Cell height="1" width="1" x="2" y="0"/>
+                    <Cell height="1" width="1" x="3" y="0"/>
+                    <Cell height="1" width="1" x="4" y="0"/>
+                    <Cell height="1" width="1" x="5" y="0"/>
+                    <Cell align="Right" height="1" width="1" x="0" y="1">
+                        <FieldLabel fieldID="Document Short Title" text="Short Title"/>
+                    </Cell>
+                    <Cell height="1" width="5" x="1" y="1">
+                        <FieldValue fieldID="Document Short Title"/>
+                    </Cell>
+                    <Cell align="Right" height="1" width="1" x="0" y="2">
+                        <FieldLabel fieldID="Shared Text" text="Text (Description)"/>
+                    </Cell>
+                    <Cell height="1" width="5" x="1" y="2">
+                        <FieldValue fieldID="Shared Text"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="0" y="3">
+                        <Label text="Details" textStyle="Title"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="1" y="3"/>
+                    <Cell height="1" width="1" x="2" y="3"/>
+                    <Cell height="1" width="1" x="3" y="3"/>
+                    <Cell height="1" width="1" x="4" y="3"/>
+                    <Cell height="1" width="1" x="5" y="3"/>
+                    <Cell align="Right" height="1" width="1" x="0" y="4">
+                        <FieldLabel fieldID="State"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="1" y="4">
+                        <FieldValue fieldID="State"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="2" y="4"/>
+                    <Cell align="Right" height="1" width="1" x="3" y="4">
+                        <FieldLabel fieldID="Assigned User"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="4" y="4">
+                        <FieldValue fieldID="Assigned User"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="5" y="4"/>
+                    <Cell align="Right" height="1" width="1" x="0" y="5">
+                        <FieldLabel fieldID="Project"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="1" y="5">
+                        <FieldValue fieldID="Project"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="2" y="5"/>
+                    <Cell height="1" width="1" x="3" y="5">
+                        <FieldLabel fieldID="Revision Date"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="4" y="5">
+                        <FieldValue fieldID="Revision Date"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="5" y="5"/>
+                    <Cell align="Right" height="1" width="1" x="0" y="6">
+                        <FieldLabel fieldID="Significant Edit Date"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="1" y="6">
+                        <FieldValue fieldID="Significant Edit Date"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="2" y="6"/>
+                    <Cell height="1" width="1" x="3" y="6"/>
+                    <Cell height="1" width="1" x="4" y="6"/>
+                    <Cell height="1" width="1" x="5" y="6"/>
+                </Grid>
+            </Grids>
+        </Tab>
+        <Tab hasIconDecorator="True" name="Relationships" position="2">
+            <Grids>
+                <DefaultGridProperties border="0" cellpadding="0"
+                                       cellspacing="0" fill="True" pack="True"/>
+                <DefaultCellProperties align="Left" valign="Middle" wrap="True"/>
+                <Grid>
+                    <Cell height="1" width="2" x="0" y="0">
+                        <Label text="Data Model" textStyle="Title"/>
+                    </Cell>
+                    <Cell height="1" width="2" x="0" y="1">
+                        <FieldLabel fieldID="Documents"/>
+                    </Cell>
+                    <Cell height="1" width="2" x="0" y="2">
+                        <FieldValue fieldID="Documents"/>
+                    </Cell>
+                    <Cell height="1" width="2" x="0" y="3">
+                        <FieldLabel fieldID="Contains"/>
+                    </Cell>
+                    <Cell height="1" width="2" x="0" y="4">
+                        <FieldValue fieldID="Contains"/>
+                    </Cell>
+                </Grid>
+                <Grid>
+                    <Cell height="1" width="1" x="0" y="0">
+                        <Label text="Change Control" textStyle="Title"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="0" y="1">
+                        <FieldLabel fieldID="Changes Authorized By"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="0" y="2">
+                        <FieldValue fieldID="Changes Authorized By"/>
+                    </Cell>
+                </Grid>
+            </Grids>
+        </Tab>
+        <Tab hasIconDecorator="True" name="Attachments" position="3">
+            <Grids>
+                <DefaultGridProperties border="0" cellpadding="0"
+                                       cellspacing="0" fill="True" pack="True"/>
+                <DefaultCellProperties align="Left" valign="Middle" wrap="True"/>
+                <Grid>
+                    <Cell height="1" width="1" x="0" y="0">
+                        <FieldLabel fieldID="Attachments"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="0" y="1">
+                        <FieldValue fieldID="Attachments"/>
+                    </Cell>
+                </Grid>
+            </Grids>
+        </Tab>
+    </Tabs>
+</IssuePresentationTemplate>

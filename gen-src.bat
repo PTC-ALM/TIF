@@ -1,0 +1,1 @@
+ant -f projectBuilder.xml generate-sources

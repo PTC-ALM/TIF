@@ -1,0 +1,131 @@
+<type name="Project">
+    <fields>
+       <field name="Summary"/>
+       <field name="State"/>
+       <field name="Assigned User"/>
+       <field name="Project"/>
+       <field name="Attachments"/>
+       <field name="Parameters">
+           <description>The substitution parameter definitions</description>
+       </field>
+       <field name="Parameter Values">
+           <description>The parameter values for substitution</description>
+       </field>
+       <field name="Change Order Authorizations In Effect">
+           <description>Name of the project field which when true enables change order authorizations for all documents in the project. When false, change orders are
+    ignored and changes made to documents are not logged on change order items. Note that change orders are ignored when the document is in
+    the Open phase, regardless of the value of this field. The field Use Hierarchical Editability is false when the document is in the Open phase.</description>
+           <default>false</default>
+       </field>
+       <field name="Show In Finder">
+           <description>Project field which, when true, causes the project to show up in the finder dialog</description>
+           <default>true</default>
+       </field>
+       <field name="Documented By">
+           <description>Segment roots corresponding to the top-level documents in the project.</description>
+       </field>
+       <field name="Description">
+           <description>Detailed description of the issue.</description>
+       </field>
+       <field name="Project Phase">
+           <editability>(false)</editability>
+       </field>
+    </fields>
+    <states>
+       <state name="Cancelled">
+           <next group="everyone" name="Cancelled"/>
+           <mandatory>
+           <field name="Summary"/>
+           </mandatory>
+       </state>
+       <state name="Active">
+           <next group="everyone,Senior Project Team" name="Cancelled"/>
+           <next group="everyone" name="Active"/>
+           <next group="everyone,Senior Project Team" name="Suspended"/>
+           <next group="everyone,Senior Project Team" name="Defined"/>
+           <mandatory>
+               <field name="Summary"/>
+               <field name="Project"/>
+               <field name="Description"/>
+           </mandatory>
+       </state>
+       <state name="Suspended">
+           <next group="everyone,Senior Project Team" name="Cancelled"/>
+           <next group="everyone,Senior Project Team" name="Active"/>
+           <next group="everyone" name="Suspended"/>
+           <next group="everyone,Senior Project Team" name="Defined"/>
+           <mandatory>
+               <field name="Summary"/>
+               <field name="Project"/>
+               <field name="Description"/>
+           </mandatory>
+       </state>
+       <state name="Completed">
+           <next group="everyone" name="Completed"/>
+           <next group="everyone" name="Defined"/>
+           <mandatory>
+               <field name="Summary"/>
+               <field name="Project"/>
+               <field name="Description"/>
+           </mandatory>
+       </state>
+       <state name="Accepted">
+           <next group="everyone,Senior Project Team" name="Active"/>
+           <next group="everyone" name="Accepted"/>
+           <mandatory>
+               <field name="Summary"/>
+               <field name="Project"/>
+               <field name="Description"/>
+           </mandatory>
+       </state>
+       <state name="Proposed">
+           <next group="everyone,Senior Project Team" name="Cancelled"/>
+           <next group="everyone" name="Proposed"/>
+           <next group="everyone,Senior Project Team" name="Started"/>
+           <mandatory>
+               <field name="Summary"/>
+               <field name="Project"/>
+           </mandatory>
+       </state>
+       <state name="Defined">
+           <next group="everyone,Senior Project Team" name="Cancelled"/>
+           <next group="everyone,Senior Project Team" name="Suspended"/>
+           <next group="everyone,Senior Project Team" name="Completed"/>
+           <next group="everyone" name="Defined"/>
+           <mandatory>
+               <field name="Description"/>
+           </mandatory>
+       </state>
+       <state name="Started">
+           <next group="everyone,Senior Project Team" name="Cancelled"/>
+           <next group="everyone,Senior Project Team" name="Accepted"/>
+           <next group="everyone" name="Started"/>
+           <mandatory>
+               <field name="Summary"/>
+               <field name="Project"/>
+               <field name="Description"/>
+           </mandatory>
+       </state>
+       <state name="Unspecified">
+           <next group="everyone,Senior Project Team" name="Proposed"/>
+       </state>
+    </states>
+    <properties>
+       <property value="Documented By" name="MKS.RQ.DocumentedByFieldName">
+           <description>(Configurable) The name of the relationship field containing references to all the top-level documents in this project.</description>
+       </property>
+       <property value="Project" name="MKS.RQ.PortfolioClassification">
+           <description>This property is used to identify the type of Portfolio this item can be related to and is enforced by PortfolioStructure.js</description>
+       </property>
+    </properties>
+    <constraints>
+       <!--constraint type="fieldRelationship">
+           <source name="Type">
+           <value>Project</value>
+           </source>
+           <target name="Assigned User" mandatory="false">
+           <value>hasProjectPermission</value>
+           </target>
+       </constraint-->
+    </constraints>
+</type>

@@ -1,0 +1,927 @@
+<type name="MKS Solution">
+    <fields>
+    </fields>
+    <states>
+       <state name="Active">
+           <next group="everyone" name="Active"/>
+       </state>
+       <state name="Unspecified">
+           <next group="everyone" name="Active"/>
+           <next group="everyone" name="Unspecified"/>
+       </state>
+    </states>
+    <properties>
+       <property value="" name="MKS.isRQ">
+           
+       </property>
+       <property value="Accept Change Requests" name="MKS.RQ.AcceptChangeRequestsFieldName">
+           
+       </property>
+       <property value="Authorized Change Count" name="MKS.RQ.AuthorizedChangeCountFieldName">
+           
+       </property>
+       <property value="Authorizing Change Order" name="MKS.RQ.AuthorizingChangeOrderFieldName">
+           
+       </property>
+       <property value="Authorizes Changes To" name="MKS.RQ.BackwardChangeOrderRelationshipFieldName">
+           
+       </property>
+       <property value="In Review:In Review,Published:Published,Delivered:Delivered,Retired:Retired" name="MKS.RQ.BaselineLabelStates">
+           
+       </property>
+       <property value="Baseline:" name="MKS.RQ.BaselinePrefix">
+           
+       </property>
+       <property value="Category" name="MKS.RQ.CategoryFieldName">
+           
+       </property>
+       <property value="Change+Order+Detail" name="MKS.RQ.ChangeOrderClosedReport">
+           
+       </property>
+       <property value="Open" name="MKS.RQ.ChangeOrderPhaseFieldActivePhase">
+           
+       </property>
+       <property value="Task Phase" name="MKS.RQ.ChangeOrderPhaseFieldName">
+           
+       </property>
+       <property value="Changes Authorized By" name="MKS.RQ.ChangeOrderRelationshipFieldName">
+           
+       </property>
+       <property value="Reopened" name="MKS.RQ.ChangeOrderReopenedStateName">
+           
+       </property>
+       <property value="Restricted" name="MKS.RQ.ChangeOrderRestrictedStateName">
+           
+       </property>
+       <property value="Allocated" name="MKS.RQ.ChangeRequestAllocatedStateName">
+           
+       </property>
+       <property value="Unallocated" name="MKS.RQ.ChangeRequestUnallocatedStateName">
+           
+       </property>
+       <property value="Changes Authorized" name="MKS.RQ.ChangesAuthorizedFieldName">
+           
+       </property>
+       <property value="References" name="MKS.RQ.CoupletRelationshipFieldName">
+           
+       </property>
+       <property value="Decomposes To" name="MKS.RQ.DecomposesToFieldName">
+           
+       </property>
+       <property value="Document+Content" name="MKS.RQ.DocInReviewReport">
+           
+       </property>
+       <property value="Document+Content" name="MKS.RQ.DocNeedsChangesReport">
+           
+       </property>
+       <property value="Document Churn from Initial Baseline" name="MKS.RQ.DocumentChurnFieldName">
+           
+       </property>
+       <property value="Yesterday Document Churn" name="MKS.RQ.DocumentDeltaChurnFieldName">
+           
+       </property>
+       <property value="Documented By" name="MKS.RQ.DocumentedByFieldName">
+           
+       </property>
+       <property value="Document ID" name="MKS.RQ.DocumentIDFieldName">
+           
+       </property>
+       <property value="In Review" name="MKS.RQ.DocumentInReviewStateName">
+           
+       </property>
+       <property value="Review Pending" name="MKS.RQ.DocumentReviewPendingStateName">
+           
+       </property>
+       <property value="Documents" name="MKS.RQ.DocumentsFieldName">
+           
+       </property>
+       <property value="Document Short Title" name="MKS.RQ.DocumentShortTitleFieldName">
+           
+       </property>
+       <property value="{Document Short Title}" name="MKS.RQ.DocumentTitleFormat">
+           
+       </property>
+       <property value="Valid Change Order" name="MKS.RQ.EditabilityField.1">
+           
+       </property>
+       <property value="Allow Edits" name="MKS.RQ.EditabilityField.Document.1">
+           
+       </property>
+       <property value="Allow Traces" name="MKS.RQ.EditabilityField.Document.2">
+           
+       </property>
+       <property value="Allow Links" name="MKS.RQ.EditabilityField.Document.3">
+           
+       </property>
+       <property value="" name="MKS.RQ.EditabilityField.Document.4">
+           
+       </property>
+       <property value="Contains,References,Documented By,Tests" name="MKS.RQ.Finder.Relationship">
+           
+       </property>
+       <property value="ID" name="MKS.RQ.IDFieldName">
+           
+       </property>
+       <property value="IncludeReference" name="MKS.RQ.IncludeReferenceFieldName">
+           
+       </property>
+       <property value="Include Subsegment in Metrics" name="MKS.RQ.IncludeSubsegmentInMetricsFieldName">
+           
+       </property>
+       <property value="Change Request For" name="MKS.RQ.InformsFieldName">
+           
+       </property>
+       <property value="Initial Baseline" name="MKS.RQ.InitialBaselineFieldName">
+           
+       </property>
+       <property value="&quot;title=Select tests to run&quot;,&quot;query=Finder Projects and Test Objectives&quot;,&quot;additionalFilter=((subquery[Finder Projects]) or (field[ID] = {{ID}}))&quot;,&quot;focusIssueID={{ID}}&quot;,&quot;fields=Structure&quot;,&quot;nodeDisplayFields={ID} {Category}- {Text}{Summary}&quot;,&quot;showFieldNodes=false&quot;" name="MKS.RQ.item.addrelatedtests.findersettings">
+           
+       </property>
+       <property value="Last Verdict Type" name="MKS.RQ.LastVerdictType">
+           
+       </property>
+       <property value="&quot;--title=Upstream Traces&quot;,&quot;--tabTitle=Upstream Traces&quot;,&quot;--fields=Structure,Type,State,Relationship Flags&quot;,&quot;--traverseFields=Decomposed From,Satisfies,Validates,Verifies,Models&quot;,&quot;--structureFieldDisplayFormat={Category} {Text}{Summary}&quot;,&quot;--structureFieldIconDisplayField=Category&quot;,&quot;--nodisplayForwardFields&quot;,&quot;--nodisplayBackwardFields&quot;,&quot;--expandLevel=3&quot;,&quot;--tvigui&quot;,&quot;--gui&quot;" name="MKS.RQ.model.mathworks.traceviewsettings">
+           
+       </property>
+       <property value="Needs New Changes" name="MKS.RQ.NeedsNewChangesFieldName">
+           
+       </property>
+       <property value="Open Change Order Count" name="MKS.RQ.OpenUnassignedCOCountFieldName">
+           
+       </property>
+       <property value="Post Branch Edit" name="MKS.RQ.postbranch.edit.field">
+           
+       </property>
+       <property value="Record Results As Shared" name="MKS.RQ.recordSharedTestCaseIDFieldName">
+           
+       </property>
+       <property value="Is Related To" name="MKS.RQ.RelationshipTraceFieldName">
+           
+       </property>
+       <property value="Change Order Authorizations In Effect" name="MKS.RQ.RequireChangeOrdersFieldName">
+           
+       </property>
+       <property value="Inactive" name="MKS.RQ.RetiredStateInactivePhase">
+           
+       </property>
+       <property value="Retired States" name="MKS.RQ.RetiredStatePhaseFieldName">
+           
+       </property>
+       <property value="Author" name="MKS.RQ.ReuseFieldAuthorValue">
+           
+       </property>
+       <property value="Revision Date" name="MKS.RQ.RevisionDateFieldName">
+           
+       </property>
+       <property value="&quot;title=Find item(s) to trace to&quot;,&quot;query=Finder Projects&quot;,&quot;fields=Structure&quot;,&quot;nodeDisplayFields={ID} {Category}- {Text}{Summary}&quot;,&quot;showFieldNodes=false&quot;" name="MKS.RQ.rm.content.createtrace.finderSettings">
+           
+       </property>
+       <property value="&quot;title=Find a document to include&quot;,&quot;query=Finder Projects&quot;,&quot;fields=Structure&quot;,&quot;nodeDisplayFields={ID} {Category}- {Text}{Summary}&quot;,&quot;showFieldNodes=false&quot;" name="MKS.RQ.rm.content.includecontent.finderSettings">
+           
+       </property>
+       <property value="&quot;title=Find a location to include the current document into&quot;,&quot;query=Finder Projects&quot;,&quot;fields=Structure&quot;,&quot;nodeDisplayFields={ID} {Category}- {Text}{Summary}&quot;,&quot;showFieldNodes=false&quot;" name="MKS.RQ.rm.content.includedocument.finderSettings">
+           
+       </property>
+       <property value="&quot;title=Find content to insert&quot;,&quot;query=Finder Projects&quot;,&quot;fields=Structure&quot;,&quot;nodeDisplayFields={ID} {Category}- {Text}{Summary}&quot;,&quot;showFieldNodes=false&quot;" name="MKS.RQ.rm.content.insert.content.finderSettings">
+           
+       </property>
+       <property value="&quot;title=Find a document to insert&quot;,&quot;query=Finder Projects&quot;,&quot;fields=Structure&quot;,&quot;nodeDisplayFields={ID} {Category}- {Text}{Summary}&quot;,&quot;showFieldNodes=false&quot;" name="MKS.RQ.rm.content.insertcontent.finderSettings">
+           
+       </property>
+       <property value="&quot;title=Find a location to insert the current document into&quot;,&quot;query=Finder Projects&quot;,&quot;fields=Structure&quot;,&quot;nodeDisplayFields={ID} {Category}- {Text}{Summary}&quot;,&quot;showFieldNodes=false&quot;" name="MKS.RQ.rm.content.insertdocument.finderSettings">
+           
+       </property>
+       <property value="separator" name="MKS.RQ.rm.content.trace.item0.type">
+           
+       </property>
+       <property value="ci.Relationships" name="MKS.RQ.rm.content.trace.item1.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.rm.content.trace.item1.handlerClass">
+           
+       </property>
+       <property value="Downstream Traces" name="MKS.RQ.rm.content.trace.item1.name">
+           
+       </property>
+       <property value="SelectedItem" name="MKS.RQ.rm.content.trace.item1.SelectionType">
+           
+       </property>
+       <property value="1+" name="MKS.RQ.rm.content.trace.item1.SimpleRequirementsChecker.Cardinality">
+           
+       </property>
+       <property value="item" name="MKS.RQ.rm.content.trace.item1.type">
+           
+       </property>
+       <property value="rm.view8" name="MKS.RQ.rm.content.trace.item1.ViewRef">
+           
+       </property>
+       <property value="&quot;title=Downstream Traces&quot;,&quot;tabTitle=Downstream Traces&quot;,&quot;traverseFields=Contains,Decomposes To,Satisfied By,Validated By,Verified By,Modelled By&quot;,&quot;structureFieldDisplayFormat={Category} {ID} - {Text}{Summary}&quot;,&quot;structureFieldIconDisplayField=Category&quot;,&quot;displayForwardFields=false&quot;,&quot;displayBackwardFields=false&quot;,&quot;expandLevel=3&quot;,&quot;saveSettings=false&quot;" name="MKS.RQ.rm.content.trace.item1.viewSettings">
+           
+       </property>
+       <property value="ci.Relationships" name="MKS.RQ.rm.content.trace.item2.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.rm.content.trace.item2.handlerClass">
+           
+       </property>
+       <property value="Upstream Traces" name="MKS.RQ.rm.content.trace.item2.name">
+           
+       </property>
+       <property value="SelectedItem" name="MKS.RQ.rm.content.trace.item2.SelectionType">
+           
+       </property>
+       <property value="1+" name="MKS.RQ.rm.content.trace.item2.SimpleRequirementsChecker.Cardinality">
+           
+       </property>
+       <property value="item" name="MKS.RQ.rm.content.trace.item2.type">
+           
+       </property>
+       <property value="rm.view9" name="MKS.RQ.rm.content.trace.item2.ViewRef">
+           
+       </property>
+       <property value="&quot;title=Upstream Traces&quot;,&quot;tabTitle=Upstream Traces&quot;,&quot;traverseFields=Contains,Decomposed From,Satisfies,Validates,Verifies,Models&quot;,&quot;structureFieldDisplayFormat={Category} {ID} - {Text}{Summary}&quot;,&quot;structureFieldIconDisplayField=Category&quot;,&quot;displayForwardFields=false&quot;,&quot;displayBackwardFields=false&quot;,&quot;expandLevel=3&quot;,&quot;saveSettings=false&quot;" name="MKS.RQ.rm.content.trace.item2.viewSettings">
+           
+       </property>
+       <property value="ci.Relationships" name="MKS.RQ.rm.content.trace.item3.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.rm.content.trace.item3.handlerClass">
+           
+       </property>
+       <property value="Peer Traces" name="MKS.RQ.rm.content.trace.item3.name">
+           
+       </property>
+       <property value="SelectedItem" name="MKS.RQ.rm.content.trace.item3.SelectionType">
+           
+       </property>
+       <property value="1+" name="MKS.RQ.rm.content.trace.item3.SimpleRequirementsChecker.Cardinality">
+           
+       </property>
+       <property value="item" name="MKS.RQ.rm.content.trace.item3.type">
+           
+       </property>
+       <property value="rm.view10" name="MKS.RQ.rm.content.trace.item3.ViewRef">
+           
+       </property>
+       <property value="&quot;title=Peer Traces&quot;,&quot;tabTitle=Peer Traces&quot;,&quot;traverseFields=Contains,Is Related To,Is Related To'&quot;,&quot;structureFieldDisplayFormat={Category} {ID} - {Text}{Summary}&quot;,&quot;displayForwardFields=false&quot;,&quot;displayBackwardFields=false&quot;,&quot;expandLevel=3&quot;,&quot;saveSettings=false&quot;" name="MKS.RQ.rm.content.trace.item3.viewSettings">
+           
+       </property>
+       <property value="separator" name="MKS.RQ.rm.content.trace.item4.type">
+           
+       </property>
+       <property value="ci.Relationships" name="MKS.RQ.rm.content.trace.item5.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.rm.content.trace.item5.handlerClass">
+           
+       </property>
+       <property value="Authorizations" name="MKS.RQ.rm.content.trace.item5.name">
+           
+       </property>
+       <property value="SelectedItem" name="MKS.RQ.rm.content.trace.item5.SelectionType">
+           
+       </property>
+       <property value="1+" name="MKS.RQ.rm.content.trace.item5.SimpleRequirementsChecker.Cardinality">
+           
+       </property>
+       <property value="item" name="MKS.RQ.rm.content.trace.item5.type">
+           
+       </property>
+       <property value="rm.view11" name="MKS.RQ.rm.content.trace.item5.ViewRef">
+           
+       </property>
+       <property value="&quot;title=Authorizations&quot;,&quot;tabTitle=Authorizations&quot;,&quot;traverseFields=Contained By,Changes Authorized By,Change Order For,Defect For&quot;,&quot;structureFieldDisplayFormat={Category} {ID} - {Text}{Summary}&quot;,&quot;displayForwardFields=false&quot;,&quot;displayBackwardFields=false&quot;,&quot;expandLevel=3&quot;,&quot;saveSettings=false&quot;" name="MKS.RQ.rm.content.trace.item5.viewSettings">
+           
+       </property>
+       <property value="ci.Relationships" name="MKS.RQ.rm.content.trace.item6.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.rm.content.trace.item6.handlerClass">
+           
+       </property>
+       <property value="Spawned Tasks" name="MKS.RQ.rm.content.trace.item6.name">
+           
+       </property>
+       <property value="SelectedItem" name="MKS.RQ.rm.content.trace.item6.SelectionType">
+           
+       </property>
+       <property value="1+" name="MKS.RQ.rm.content.trace.item6.SimpleRequirementsChecker.Cardinality">
+           
+       </property>
+       <property value="item" name="MKS.RQ.rm.content.trace.item6.type">
+           
+       </property>
+       <property value="rm.view12" name="MKS.RQ.rm.content.trace.item6.ViewRef">
+           
+       </property>
+       <property value="&quot;title=Spawned Tasks&quot;,&quot;tabTitle=Spawned Tasks&quot;,&quot;traverseFields=Contains,Spawns&quot;,&quot;structureFieldDisplayFormat={Category} {ID} - {Summary}{Text}&quot;,&quot;displayForwardFields=false&quot;,&quot;displayBackwardFields=false&quot;,&quot;expandLevel=3&quot;,&quot;saveSettings=false&quot;" name="MKS.RQ.rm.content.trace.item6.viewSettings">
+           
+       </property>
+       <property value="ci.Relationships" name="MKS.RQ.rm.content.trace.item7.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.rm.content.trace.item7.handlerClass">
+           
+       </property>
+       <property value="References" name="MKS.RQ.rm.content.trace.item7.name">
+           
+       </property>
+       <property value="SelectedItem" name="MKS.RQ.rm.content.trace.item7.SelectionType">
+           
+       </property>
+       <property value="1+" name="MKS.RQ.rm.content.trace.item7.SimpleRequirementsChecker.Cardinality">
+           
+       </property>
+       <property value="item" name="MKS.RQ.rm.content.trace.item7.type">
+           
+       </property>
+       <property value="rm.view13" name="MKS.RQ.rm.content.trace.item7.ViewRef">
+           
+       </property>
+       <property value="&quot;title=References&quot;,&quot;tabTitle=References&quot;,&quot;traverseFields=References,Referenced By&quot;,&quot;structureFieldDisplayFormat={Category} {ID} - {Text}{Shared Text}&quot;,&quot;displayForwardFields=false&quot;,&quot;displayBackwardFields=false&quot;,&quot;expandLevel=3&quot;,&quot;saveSettings=false&quot;" name="MKS.RQ.rm.content.trace.item7.viewSettings">
+           
+       </property>
+       <property value="ci.Relationships" name="MKS.RQ.rm.content.trace.item8.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.rm.content.trace.item8.handlerClass">
+           
+       </property>
+       <property value="Shares" name="MKS.RQ.rm.content.trace.item8.name">
+           
+       </property>
+       <property value="SelectedItem" name="MKS.RQ.rm.content.trace.item8.SelectionType">
+           
+       </property>
+       <property value="1+" name="MKS.RQ.rm.content.trace.item8.SimpleRequirementsChecker.Cardinality">
+           
+       </property>
+       <property value="item" name="MKS.RQ.rm.content.trace.item8.type">
+           
+       </property>
+       <property value="rm.view18" name="MKS.RQ.rm.content.trace.item8.ViewRef">
+           
+       </property>
+       <property value="&quot;title=Shares&quot;,&quot;tabTitle=Shares&quot;,&quot;traverseFields=Shares,Shared By&quot;,&quot;structureFieldDisplayFormat={Category} {ID} - {Text}&quot;,&quot;displayForwardFields=false&quot;,&quot;displayBackwardFields=false&quot;,&quot;expandLevel=3&quot;,&quot;saveSettings=false&quot;" name="MKS.RQ.rm.content.trace.item8.viewSettings">
+           
+       </property>
+       <property value="&quot;title=Find a template document&quot;,&quot;query=Finder Template Projects&quot;,&quot;fields=Structure&quot;,&quot;nodeDisplayFields={ID} {Category}- {Text}{Summary}&quot;,&quot;showFieldNodes=false&quot;" name="MKS.RQ.rm.document.createfromtemplate.finderSettings">
+           
+       </property>
+       <property value="&quot;title=Find a location to include the current document into&quot;,&quot;query=Finder Projects&quot;,&quot;fields=Structure&quot;,&quot;nodeDisplayFields={ID} {Category}- {Text}{Summary}&quot;,&quot;showFieldNodes=false&quot;" name="MKS.RQ.rm.document.includedocument.finderSettings">
+           
+       </property>
+       <property value="&quot;title=Find a location to insert the current document into&quot;,&quot;query=Finder Projects&quot;,&quot;fields=Structure&quot;,&quot;nodeDisplayFields={ID} {Category}- {Text}{Summary}&quot;,&quot;showFieldNodes=false&quot;" name="MKS.RQ.rm.document.insertdocument.finderSettings">
+           
+       </property>
+       <property value="&quot;title=Find a document to open&quot;,&quot;query=Finder Projects&quot;,&quot;fields=Structure&quot;,&quot;nodeDisplayFields={ID} {Category}- {Text} {Summary}&quot;,&quot;showFieldNodes=false&quot;" name="MKS.RQ.rm.document.open.finderSettings">
+           
+       </property>
+       <property value="&quot;structureFieldIconDisplayField=Category&quot;,&quot;outlineColumns=Structure&quot;,&quot;availableContexts=Authoring,Sharing,Tracing&quot;" name="MKS.RQ.rm.document.open.viewSettings">
+           
+       </property>
+       <property value="&quot;structureFieldIconDisplayField=Category&quot;,&quot;outlineColumns=Structure&quot;,&quot;availableContexts=Authoring,Sharing,Tracing&quot;" name="MKS.RQ.rm.document.viewdocument.viewSettings">
+           
+       </property>
+       <property value="ci.Issues" name="MKS.RQ.rm.document.views.item0.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.rm.document.views.item0.handlerClass">
+           
+       </property>
+       <property value="My Active Tasks" name="MKS.RQ.rm.document.views.item0.name">
+           
+       </property>
+       <property value="None" name="MKS.RQ.rm.document.views.item0.SelectionType">
+           
+       </property>
+       <property value="0+" name="MKS.RQ.rm.document.views.item0.SimpleRequirementsChecker.Cardinality">
+           
+       </property>
+       <property value="item" name="MKS.RQ.rm.document.views.item0.type">
+           
+       </property>
+       <property value="rm.view1" name="MKS.RQ.rm.document.views.item0.ViewRef">
+           
+       </property>
+       <property value="&quot;title=Active Tasks&quot;,&quot;tabTitle=Active Tasks&quot;,&quot;appendQueryToTitle=false&quot;,&quot;query=My Active Tasks&quot;" name="MKS.RQ.rm.document.views.item0.viewSettings">
+           
+       </property>
+       <property value="ci.Issues" name="MKS.RQ.rm.document.views.item1.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.rm.document.views.item1.handlerClass">
+           
+       </property>
+       <property value="My Current Work Items" name="MKS.RQ.rm.document.views.item1.name">
+           
+       </property>
+       <property value="None" name="MKS.RQ.rm.document.views.item1.SelectionType">
+           
+       </property>
+       <property value="0+" name="MKS.RQ.rm.document.views.item1.SimpleRequirementsChecker.Cardinality">
+           
+       </property>
+       <property value="item" name="MKS.RQ.rm.document.views.item1.type">
+           
+       </property>
+       <property value="rm.view2" name="MKS.RQ.rm.document.views.item1.ViewRef">
+           
+       </property>
+       <property value="&quot;title=Current Work Items&quot;,&quot;tabTitle=Current Work Items&quot;,&quot;appendQueryToTitle=false&quot;,&quot;query=My Current Work Items&quot;" name="MKS.RQ.rm.document.views.item1.viewSettings">
+           
+       </property>
+       <property value="ci.Issues" name="MKS.RQ.rm.document.views.item2.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.rm.document.views.item2.handlerClass">
+           
+       </property>
+       <property value="Change Requests" name="MKS.RQ.rm.document.views.item2.name">
+           
+       </property>
+       <property value="None" name="MKS.RQ.rm.document.views.item2.SelectionType">
+           
+       </property>
+       <property value="0+" name="MKS.RQ.rm.document.views.item2.SimpleRequirementsChecker.Cardinality">
+           
+       </property>
+       <property value="item" name="MKS.RQ.rm.document.views.item2.type">
+           
+       </property>
+       <property value="rm.view3" name="MKS.RQ.rm.document.views.item2.ViewRef">
+           
+       </property>
+       <property value="&quot;title=Change Requests&quot;,&quot;tabTitle=Change Requests&quot;,&quot;appendQueryToTitle=false&quot;,&quot;query=Change Requests&quot;" name="MKS.RQ.rm.document.views.item2.viewSettings">
+           
+       </property>
+       <property value="ci.Issues" name="MKS.RQ.rm.document.views.item3.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.rm.document.views.item3.handlerClass">
+           
+       </property>
+       <property value="Project Documents" name="MKS.RQ.rm.document.views.item3.name">
+           
+       </property>
+       <property value="None" name="MKS.RQ.rm.document.views.item3.SelectionType">
+           
+       </property>
+       <property value="0+" name="MKS.RQ.rm.document.views.item3.SimpleRequirementsChecker.Cardinality">
+           
+       </property>
+       <property value="item" name="MKS.RQ.rm.document.views.item3.type">
+           
+       </property>
+       <property value="rm.view4" name="MKS.RQ.rm.document.views.item3.ViewRef">
+           
+       </property>
+       <property value="&quot;title=Project Documents&quot;,&quot;tabTitle=Project Documents&quot;,&quot;query=Finder Project Documents&quot;,&quot;appendQueryToTitle=false&quot;" name="MKS.RQ.rm.document.views.item3.viewSettings">
+           
+       </property>
+       <property value="ci.Issues" name="MKS.RQ.rm.document.views.item4.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.rm.document.views.item4.handlerClass">
+           
+       </property>
+       <property value="Libraries" name="MKS.RQ.rm.document.views.item4.name">
+           
+       </property>
+       <property value="None" name="MKS.RQ.rm.document.views.item4.SelectionType">
+           
+       </property>
+       <property value="0+" name="MKS.RQ.rm.document.views.item4.SimpleRequirementsChecker.Cardinality">
+           
+       </property>
+       <property value="item" name="MKS.RQ.rm.document.views.item4.type">
+           
+       </property>
+       <property value="rm.view5" name="MKS.RQ.rm.document.views.item4.ViewRef">
+           
+       </property>
+       <property value="&quot;title=Library Documents&quot;,&quot;tabTitle=Library Documents&quot;,&quot;query=Finder Library Documents&quot;,&quot;appendQueryToTitle=false&quot;" name="MKS.RQ.rm.document.views.item4.viewSettings">
+           
+       </property>
+       <property value="ci.Issues" name="MKS.RQ.rm.document.views.item5.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.rm.document.views.item5.handlerClass">
+           
+       </property>
+       <property value="Templates" name="MKS.RQ.rm.document.views.item5.name">
+           
+       </property>
+       <property value="None" name="MKS.RQ.rm.document.views.item5.SelectionType">
+           
+       </property>
+       <property value="0+" name="MKS.RQ.rm.document.views.item5.SimpleRequirementsChecker.Cardinality">
+           
+       </property>
+       <property value="item" name="MKS.RQ.rm.document.views.item5.type">
+           
+       </property>
+       <property value="rm.view6" name="MKS.RQ.rm.document.views.item5.ViewRef">
+           
+       </property>
+       <property value="&quot;title=Templates&quot;,&quot;tabTitle=Template Documents&quot;,&quot;query=Finder Template Documents&quot;,&quot;appendQueryToTitle=false&quot;" name="MKS.RQ.rm.document.views.item5.viewSettings">
+           
+       </property>
+       <property value="ci.Issues" name="MKS.RQ.rm.document.views.item6.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.rm.document.views.item6.handlerClass">
+           
+       </property>
+       <property value="All Documents" name="MKS.RQ.rm.document.views.item6.name">
+           
+       </property>
+       <property value="None" name="MKS.RQ.rm.document.views.item6.SelectionType">
+           
+       </property>
+       <property value="0+" name="MKS.RQ.rm.document.views.item6.SimpleRequirementsChecker.Cardinality">
+           
+       </property>
+       <property value="item" name="MKS.RQ.rm.document.views.item6.type">
+           
+       </property>
+       <property value="rm.view7" name="MKS.RQ.rm.document.views.item6.ViewRef">
+           
+       </property>
+       <property value="&quot;title=All Documents&quot;,&quot;tabTitle=All Documents&quot;,&quot;query=All Finder Project Documents&quot;,&quot;appendQueryToTitle=false&quot;" name="MKS.RQ.rm.document.views.item6.viewSettings">
+           
+       </property>
+       <property value="Active Tasks" name="MKS.RQ.rm.view1.Name">
+           
+       </property>
+       <property value="Issues16.gif" name="MKS.RQ.rm.view1.TabIcon">
+           
+       </property>
+       <property value="Loading Active Tasks..." name="MKS.RQ.rm.view1.ViewLoaderMessage">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.RelationshipsWindow" name="MKS.RQ.rm.view10.DynamicViewClass">
+           
+       </property>
+       <property value="Peer Traces" name="MKS.RQ.rm.view10.Name">
+           
+       </property>
+       <property value="RelationshipTree16.gif" name="MKS.RQ.rm.view10.TabIcon">
+           
+       </property>
+       <property value="Loading Peer Traces..." name="MKS.RQ.rm.view10.ViewLoaderMessage">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.RelationshipsWindow" name="MKS.RQ.rm.view11.DynamicViewClass">
+           
+       </property>
+       <property value="Authorizations" name="MKS.RQ.rm.view11.Name">
+           
+       </property>
+       <property value="RelationshipTree16.gif" name="MKS.RQ.rm.view11.TabIcon">
+           
+       </property>
+       <property value="Loading Authorizations..." name="MKS.RQ.rm.view11.ViewLoaderMessage">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.RelationshipsWindow" name="MKS.RQ.rm.view12.DynamicViewClass">
+           
+       </property>
+       <property value="Spawned Tasks" name="MKS.RQ.rm.view12.Name">
+           
+       </property>
+       <property value="MoveCPEntry.gif" name="MKS.RQ.rm.view12.TabIcon">
+           
+       </property>
+       <property value="Loading Spawned Tasks..." name="MKS.RQ.rm.view12.ViewLoaderMessage">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.RelationshipsWindow" name="MKS.RQ.rm.view13.DynamicViewClass">
+           
+       </property>
+       <property value="References" name="MKS.RQ.rm.view13.Name">
+           
+       </property>
+       <property value="RelationshipTree16.gif" name="MKS.RQ.rm.view13.TabIcon">
+           
+       </property>
+       <property value="Loading References..." name="MKS.RQ.rm.view13.ViewLoaderMessage">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.RelationshipsWindow" name="MKS.RQ.rm.view14.DynamicViewClass">
+           
+       </property>
+       <property value="Test Status" name="MKS.RQ.rm.view14.Name">
+           
+       </property>
+       <property value="RelationshipTree16.gif" name="MKS.RQ.rm.view14.TabIcon">
+           
+       </property>
+       <property value="Loading Test Status..." name="MKS.RQ.rm.view14.ViewLoaderMessage">
+           
+       </property>
+       <property value="Test Objectives" name="MKS.RQ.rm.view15.Name">
+           
+       </property>
+       <property value="Issues16.gif" name="MKS.RQ.rm.view15.TabIcon">
+           
+       </property>
+       <property value="Loading Test Objectives..." name="MKS.RQ.rm.view15.ViewLoaderMessage">
+           
+       </property>
+       <property value="Test Sessions" name="MKS.RQ.rm.view16.Name">
+           
+       </property>
+       <property value="Issues16.gif" name="MKS.RQ.rm.view16.TabIcon">
+           
+       </property>
+       <property value="Loading Test Sessions..." name="MKS.RQ.rm.view16.ViewLoaderMessage">
+           
+       </property>
+       <property value="Open Defects" name="MKS.RQ.rm.view17.Name">
+           
+       </property>
+       <property value="Issues16.gif" name="MKS.RQ.rm.view17.TabIcon">
+           
+       </property>
+       <property value="Loading Open Defects..." name="MKS.RQ.rm.view17.ViewLoaderMessage">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.RelationshipsWindow" name="MKS.RQ.rm.view18.DynamicViewClass">
+           
+       </property>
+       <property value="Shares" name="MKS.RQ.rm.view18.Name">
+           
+       </property>
+       <property value="Issues16.gif" name="MKS.RQ.rm.view18.TabIcon">
+           
+       </property>
+       <property value="Loading Shares view..." name="MKS.RQ.rm.view18.ViewLoaderMessage">
+           
+       </property>
+       <property value="Work Items" name="MKS.RQ.rm.view2.Name">
+           
+       </property>
+       <property value="Issues16.gif" name="MKS.RQ.rm.view2.TabIcon">
+           
+       </property>
+       <property value="Loading Work Items..." name="MKS.RQ.rm.view2.ViewLoaderMessage">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.RelationshipsWindow" name="MKS.RQ.rm.view3.DynamicViewClass">
+           
+       </property>
+       <property value="Change Requests" name="MKS.RQ.rm.view3.Name">
+           
+       </property>
+       <property value="RelationshipTree16.gif" name="MKS.RQ.rm.view3.TabIcon">
+           
+       </property>
+       <property value="Loading Change Requests..." name="MKS.RQ.rm.view3.ViewLoaderMessage">
+           
+       </property>
+       <property value="Project Documents" name="MKS.RQ.rm.view4.Name">
+           
+       </property>
+       <property value="Issues16.gif" name="MKS.RQ.rm.view4.TabIcon">
+           
+       </property>
+       <property value="Loading Product Documents..." name="MKS.RQ.rm.view4.ViewLoaderMessage">
+           
+       </property>
+       <property value="Libraries" name="MKS.RQ.rm.view5.Name">
+           
+       </property>
+       <property value="Issues16.gif" name="MKS.RQ.rm.view5.TabIcon">
+           
+       </property>
+       <property value="Loading Libraries..." name="MKS.RQ.rm.view5.ViewLoaderMessage">
+           
+       </property>
+       <property value="Templates" name="MKS.RQ.rm.view6.Name">
+           
+       </property>
+       <property value="Issues16.gif" name="MKS.RQ.rm.view6.TabIcon">
+           
+       </property>
+       <property value="Loading Templates..." name="MKS.RQ.rm.view6.ViewLoaderMessage">
+           
+       </property>
+       <property value="All Documents" name="MKS.RQ.rm.view7.Name">
+           
+       </property>
+       <property value="Issues16.gif" name="MKS.RQ.rm.view7.TabIcon">
+           
+       </property>
+       <property value="Loading All Documents..." name="MKS.RQ.rm.view7.ViewLoaderMessage">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.RelationshipsWindow" name="MKS.RQ.rm.view8.DynamicViewClass">
+           
+       </property>
+       <property value="Downstream Traces" name="MKS.RQ.rm.view8.Name">
+           
+       </property>
+       <property value="RelationshipTree16.gif" name="MKS.RQ.rm.view8.TabIcon">
+           
+       </property>
+       <property value="Loading Downstream Traces..." name="MKS.RQ.rm.view8.ViewLoaderMessage">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.RelationshipsWindow" name="MKS.RQ.rm.view9.DynamicViewClass">
+           
+       </property>
+       <property value="Upstream Traces" name="MKS.RQ.rm.view9.Name">
+           
+       </property>
+       <property value="RelationshipTree16.gif" name="MKS.RQ.rm.view9.TabIcon">
+           
+       </property>
+       <property value="Loading Upstream Traces..." name="MKS.RQ.rm.view9.ViewLoaderMessage">
+           
+       </property>
+       <property value="Root Document" name="MKS.RQ.RootDocumentFieldName">
+           
+       </property>
+       <property value="Root ID" name="MKS.RQ.RootIDFieldName">
+           
+       </property>
+       <property value="Satisfied By" name="MKS.RQ.SatisfiedByFieldName">
+           
+       </property>
+       <property value="Section" name="MKS.RQ.SectionFieldName">
+           
+       </property>
+       <property value="Constrained" name="MKS.RQ.SegmentConstrainedPhaseName">
+           
+       </property>
+       <property value="Open" name="MKS.RQ.SegmentOpenPhaseName">
+           
+       </property>
+       <property value="Closed" name="MKS.RQ.SegmentRestrictedPhaseName">
+           
+       </property>
+       <property value="&lt;Requirement&gt;:Is Related To;&lt;Change Order&gt;:Is Related To;&lt;Change Request&gt;:Is Related To;" name="MKS.RQ.selftrace">
+           
+       </property>
+       <property value="Senior Project Team" name="MKS.RQ.SeniorProjectTeamGroupName">
+           
+       </property>
+       <property value="Shared Text" name="MKS.RQ.SharedTextFieldName">
+           
+       </property>
+       <property value="Spawned By" name="MKS.RQ.SpawnedByFieldName">
+           
+       </property>
+       <property value="Spawns" name="MKS.RQ.SpawnsFieldName">
+           
+       </property>
+       <property value="Stakeholders" name="MKS.RQ.StakeholderFieldName">
+           
+       </property>
+       <property value="Summary" name="MKS.RQ.SummaryFieldName">
+           
+       </property>
+       <property value="suspect" name="MKS.RQ.SuspectString">
+           
+       </property>
+       <property value="Closed" name="MKS.RQ.TaskClosedPhaseName">
+           
+       </property>
+       <property value="Cancelled, Closed, Completed, Rejected, Review Complete" name="MKS.RQ.TaskClosedPhaseStates">
+           
+       </property>
+       <property value="Open" name="MKS.RQ.TaskOpenPhaseName">
+           
+       </property>
+       <property value="In Development, In Restesting,In Review, In Testing, Reopened" name="MKS.RQ.TaskOpenPhaseStates">
+           
+       </property>
+       <property value="Pending" name="MKS.RQ.TaskPendingPhaseName">
+           
+       </property>
+       <property value="Assigned, Proposed, Ready for Automated Testing, Submit, Unassigned" name="MKS.RQ.TaskPendingPhaseStates">
+           
+       </property>
+       <property value="Rejected" name="MKS.RQ.TaskRejectedStateName">
+           
+       </property>
+       <property value="Test Objective" name="MKS.RQ.TestObjectiveFieldName">
+           
+       </property>
+       <property value="Tests As Of Date Set" name="MKS.RQ.TestsAsOfDateSetFieldName">
+           
+       </property>
+       <property value="Text" name="MKS.RQ.TextFieldName">
+           
+       </property>
+       <property value="ci.Relationships" name="MKS.RQ.tm.test.views.item0.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.tm.test.views.item0.handlerClass">
+           
+       </property>
+       <property value="Test Status" name="MKS.RQ.tm.test.views.item0.name">
+           
+       </property>
+       <property value="SelectedItem" name="MKS.RQ.tm.test.views.item0.SelectionType">
+           
+       </property>
+       <property value="1+" name="MKS.RQ.tm.test.views.item0.SimpleRequirementsChecker.Cardinality">
+           
+       </property>
+       <property value="item" name="MKS.RQ.tm.test.views.item0.type">
+           
+       </property>
+       <property value="rm.view14" name="MKS.RQ.tm.test.views.item0.ViewRef">
+           
+       </property>
+       <property value="&quot;title=Test Status&quot;,&quot;tabTitle=Test Status&quot;,&quot;traverseFields=Test Plans,Test Objectives,Completed Test Sessions&quot;,&quot;structureFieldDisplayFormat={Summary}{Text} - {Type}&quot;,&quot;displayForwardFields=False&quot;,&quot;displayBackwardFields=False&quot;,&quot;showFieldNodes=false&quot;,&quot;saveSettings=false&quot;" name="MKS.RQ.tm.test.views.item0.viewSettings">
+           
+       </property>
+       <property value="ci.Issues" name="MKS.RQ.tm.test.views.item1.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.tm.test.views.item1.handlerClass">
+           
+       </property>
+       <property value="All Test Objectives" name="MKS.RQ.tm.test.views.item1.name">
+           
+       </property>
+       <property value="None" name="MKS.RQ.tm.test.views.item1.SelectionType">
+           
+       </property>
+       <property value="item" name="MKS.RQ.tm.test.views.item1.type">
+           
+       </property>
+       <property value="rm.view15" name="MKS.RQ.tm.test.views.item1.ViewRef">
+           
+       </property>
+       <property value="&quot;query=All Test Objectives&quot;" name="MKS.RQ.tm.test.views.item1.viewSettings">
+           
+       </property>
+       <property value="ci.Issues" name="MKS.RQ.tm.test.views.item2.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.tm.test.views.item2.handlerClass">
+           
+       </property>
+       <property value="All Test Sessions" name="MKS.RQ.tm.test.views.item2.name">
+           
+       </property>
+       <property value="None" name="MKS.RQ.tm.test.views.item2.SelectionType">
+           
+       </property>
+       <property value="item" name="MKS.RQ.tm.test.views.item2.type">
+           
+       </property>
+       <property value="rm.view16" name="MKS.RQ.tm.test.views.item2.ViewRef">
+           
+       </property>
+       <property value="&quot;query=All Test Sessions&quot;" name="MKS.RQ.tm.test.views.item2.viewSettings">
+           
+       </property>
+       <property value="ci.Issues" name="MKS.RQ.tm.test.views.item3.CommandToken">
+           
+       </property>
+       <property value="mks.ic.ci.ui.swing.requirements.SegmentInteractor" name="MKS.RQ.tm.test.views.item3.handlerClass">
+           
+       </property>
+       <property value="Open Defects" name="MKS.RQ.tm.test.views.item3.name">
+           
+       </property>
+       <property value="None" name="MKS.RQ.tm.test.views.item3.SelectionType">
+           
+       </property>
+       <property value="item" name="MKS.RQ.tm.test.views.item3.type">
+           
+       </property>
+       <property value="rm.view17" name="MKS.RQ.tm.test.views.item3.ViewRef">
+           
+       </property>
+       <property value="&quot;query=Open Defects&quot;" name="MKS.RQ.tm.test.views.item3.viewSettings">
+           
+       </property>
+       <property  name="MKS.RQ.trace.&lt;Change Order&gt;" value="Authorizes Changes To:&lt;Requirement&gt;;Authorizes Changes To:&lt;Requirement Document&gt;">
+           
+       </property>
+       <property value="" name="MKS.RQ.trace.&lt;Requirement&gt;">
+           
+       </property>
+       <property value="Trace Status" name="MKS.RQ.TraceStatusFieldName">
+           
+       </property>
+       <property value="Type" name="MKS.RQ.TypeFieldName">
+           
+       </property>
+       <property value="Use Hierarchical Editability" name="MKS.RQ.UseHierarchicalEditabilityField">
+           
+       </property>
+       <property value="Validated By" name="MKS.RQ.ValidatedByFieldName">
+           
+       </property>
+       <property value="2009.9049.01" name="MKS.SolutionDefinition.Version">
+           
+       </property>
+    </properties>
+</type>

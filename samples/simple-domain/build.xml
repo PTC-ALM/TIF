@@ -1,0 +1,492 @@
+<?xml version="1.0"?>
+<!-- ******************************************************************************* -->
+<!-- * Main Targets                                                                * -->
+<!-- * clean:             clean target                                             * -->
+<!-- * scripts:           build the ksh script                                     * -->
+<!-- * deploy:            deploy resources, properties and run ksh script          * -->
+<!-- * delivery:          package solution into a zip file                         * -->
+<!-- ******************************************************************************* -->
+
+<!-- ******************************************************************************* -->
+<!-- * All Targets                                                                 * -->
+<!-- * is-setup:                                                                   * -->
+<!-- * init:                                                                       * -->
+<!-- * deploy-init:                                                                * -->
+<!-- * clean:                                                                      * -->
+<!-- * delete-log:                                                                 * -->
+<!-- * all:                            builds everything                           * -->
+<!-- * scripts:                        build the ksh scripts                       * -->
+<!-- * notification-script:                                                        * -->
+<!-- * docs-html:                                                                  * -->
+<!-- * deploy:                                                                     * -->
+<!-- * run-script:                                                                 * -->
+<!-- * deploy-triggers:                                                            * -->
+<!-- * deploy-html:                                                                * -->
+<!-- * deploy-reports:                                                             * -->
+<!-- * deploy-client:                                                              * -->
+<!-- * compile:                                                                    * -->
+<!-- * jar:                                                                        * -->
+<!-- * copy-custom-jars:                                                           * -->
+<!-- * delivery:                                                                   * -->
+<!-- * delete-zip:                                                                 * -->
+<!-- * ant-doc:                                                                    * -->
+<!-- * manifest:                                                                   * -->
+<!-- * get-templates:                                                              * -->
+<!-- * put-templates:                                                              * -->
+<!-- ******************************************************************************* -->
+
+<project name="${project.name}" default="all" basedir=".">
+  
+  <property environment="env"/>
+  <property file="build.properties"/>
+  <property file="${user.home}/build.properties"/>
+  <property name="delivery.zip" value="${project.title}-${project.version}.zip"/>
+
+  <!-- Derived properties. -->  
+  <property name="is.server.bin"    value="${is.server.install}/bin"/>
+  <property name="is.server.conf"   value="${is.server.install}/config/mksservice.conf"/>
+  <property name="is.server.log"    value="${is.server.install}/log/server.log"/>
+   
+  <property name="safe-is.server"       value="${safe-is.server.install}/"/><!-- Escape the : so we can pass the path in as a parameter to the XSL. -->
+  <property name="is.dir.boot"          value="${is.server.install}/classes/boot/"/>
+  <property name="is.dir.custom.jars"   value="${is.server.install}/data/java/jars/"/>
+  <property name="dir.scripts"          value="${dir.im.solution.path}/scripts"/>
+  <property name="dir.scripts.external" value="${dir.im.solution.path}/externalScripts"/> <!-- scripts we don't blat when we clean -->
+  <property name="dir.client.scripts"   value="${dir.im.solution.path}/client-scripts"/>
+  <property name="dir.images"           value="${dir.im.solution.path}/images"/>
+  <property name="dir.mappings"         value="${dir.im.solution.path}/gateway/mappings"/>
+  <property name="dir.triggers"         value="${dir.im.solution.path}/triggers"/>
+  <property name="dir.templates"        value="${dir.im.solution.path}/templates"/>
+  <property name="dir.reports"          value="${dir.im.solution.path}/reports"/>
+  <property name="dir.tools"            value="${dir.im.solution.path}/tools"/>
+  <property name="dir.xsl"              value="${dir.im.solution.path}/xsl"/>
+  <property name="dir.stylesheets"      value="${dir.im.solution.path}/stylesheets"/>
+  <property name="dir.properties"       value="${dir.im.solution.path}/properties"/>
+  <property name="dir.classes"          value="${dir.im.solution.path}/classes"/>
+  <property name="dir.docs.out"         value="${dir.im.solution.path}/docs"/>
+  <property name="dir.templates.images" value="${dir.im.solution.path}/templates/images"/>
+  
+  <!-- Deployment directories. -->
+  <property name="dir.deploy.resources"           value="${is.server.install}/${project.title}-resources"/>
+  <property name="dir.deploy.triggers"            value="${is.server.install}/data/triggers/scripts/${project.title}"/>
+  <property name="dir.deploy.tmp"                 value="${is.server.install}/data/tmp"/>
+  <property name="dir.deploy.templates"           value="${is.server.install}/data/im/issue/templates"/>
+  <property name="dir.deploy.mappings"            value="${is.server.install}/data/gateway/mappings"/>
+  <property name="dir.deploy.public"              value="${is.server.install}/data/public_html"/>
+  <property name="dir.deploy.template.images"     value="${dir.deploy.public}/images/logos"/>
+  <property name="dir.deploy.presentation.images" value="${dir.deploy.public}/images/${project.title}"/>
+  <property name="dir.deploy.docs"                value="${is.server.install}/data/public_html/documentation/"/>
+  <property name="dir.deploy.images"              value="${dir.deploy.docs}/images"/>
+  <property name="dir.dsd"                        value="${dir.im.solution.path}/dsd"/>
+  <property name="dir.zips"                       value="${dir.im.solution.path}/zips"/>
+  
+  <property name="test.class.name" value="com.mks.aec.AllTests"/>
+
+
+  <target name="init" description="Initialise the build. Creates a scripts directory.">
+    <mkdir dir="${dir.scripts}"/>
+    <mkdir dir="${dir.deploy.triggers}"/>
+  </target>
+
+  <target name="deploy-init" description="Make a resources directory.">
+    <mkdir dir="${dir.deploy.resources}"/>
+  </target>
+
+  <target name="clean" description="Clean the build: delete the scripts, images and docs directories.">
+      <delete dir="${dir.scripts}"/>
+      <delete dir="${dir.deploy.images}"/>
+      <delete dir="${dir.deploy.docs}"/>
+  </target>
+
+  <target name="delete-log" description="Delete the deployment log file">
+      <delete file="${dir.im.solution.path}/deploy.log"/>
+  </target>
+
+  <!-- Default target...creates the scripts and documentation bundle. -->
+  <target name="all" depends="init, scripts" description="Create the deployment script."/>
+
+  <!-- ******************************* -->  
+  <!-- * Create the various scripts. * -->
+  <!-- ******************************* -->  
+
+  <!-- Make the scripts for the project -->
+  <target name="scripts" depends="init,mks-domain-scripts,data-scripts,presentation-template-scripts,source-script" description="Build the default deployment script.">
+      <xslt in="${project.title}-solution.xml" out="${dir.scripts}/${project.title}.ksh"  style="${dir.xsl}/script-gen.xsl">
+          <outputproperty name="method" value="text"/>
+          <param name="is-server" expression="${is.server}"/>
+          <param name="is-port" expression="${is.port}"/>
+          <param name="is-user" expression="${is.user}"/>
+          <param name="is-password" expression="${is.password}"/>
+          <param name="is-root" expression="${is.server.install}"/>
+          <param name="is-version" expression="${is.version}"/>
+          <param name="env-root" expression="${dir.im.solution.path}"/>
+      </xslt>
+  </target>
+
+  <!-- Make the scripts for the presentation templates -->
+  <target name="presentation-template-scripts" depends="init" description="Build the script that sets the presentation templates.">
+      <xslt in="${project.title}-solution.xml" out="${dir.scripts}/${project.title}_presentation_templates.ksh"  style="${dir.xsl}/pt-gen.xsl">
+          <outputproperty name="method" value="text"/>
+          <param name="is-server" expression="${is.server}"/>
+          <param name="is-port" expression="${is.port}"/>
+          <param name="is-user" expression="${is.user}"/>
+          <param name="is-password" expression="${is.password}"/>
+          <param name="is-root" expression="${is.server.install}"/>
+          <param name="safe-is-root" expression="${safe-is.server.install}"/>
+          <param name="is-version" expression="${is.version}"/>
+          <param name="soln-path" expression="${dir.im.solution.path}"/>
+      </xslt>
+  </target>
+
+  <!-- Make the scripts that creates the sample data. Note the XML name is taken from build .properties so you can swap the sample data. -->
+  <target name="data-scripts" depends="init" description="Build the script that creates the sample data.">
+      <xslt in="${sample.data.xml}" out="${dir.scripts}/${project.title}-data.ksh"  style="${dir.xsl}/data-gen.xsl">
+          <outputproperty name="method" value="text"/>
+          <param name="is-server" expression="${is.server}"/>
+          <param name="is-port" expression="${is.port}"/>
+          <param name="is-user" expression="${is.user}"/>
+          <param name="is-password" expression="${is.password}"/>
+          <param name="is-root" expression="${is.server.install}"/>
+          <param name="safe-is-root" expression="${safe-is.server.install}"/>
+          <param name="is-version" expression="${is.version}"/>
+      </xslt>
+  </target>
+
+  <!-- Make the scripts to update the MKS Domain. Controlled by the mks.domain property in build.properties. -->
+  <target name="mks-domain-scripts" depends="init" if="mks.domain" description="Build the script to create the MKS Domain groups and users. Usually only used during development.">
+      <xslt in="${project.title}-solution.xml" out="${dir.scripts}/${project.title}_mks_domain.ksh"  style="${dir.xsl}/mks-domain-gen.xsl">
+          <outputproperty name="method" value="text"/>
+          <param name="is-server" expression="${is.server}"/>
+          <param name="is-port" expression="${is.port}"/>
+          <param name="is-user" expression="${is.user}"/>
+          <param name="is-password" expression="${is.password}"/>
+          <param name="is-root" expression="${is.server.install}"/>
+          <param name="safe-is-root" expression="${safe-is.server.install}"/>
+          <param name="is-version" expression="${is.version}"/>
+      </xslt>
+  </target>
+ 
+  <!-- Make the TIF manifest file, tif-manifest.properties. -->
+  <target name="tif-manifest" depends="init" description="Build the TIF manifest file that can be used to decompose an extracted solution.">
+      <xslt in="${project.title}-solution.xml" out="manifest-tif.xml"  style="${dir.xsl}/manifest.xsl">
+          <outputproperty name="method" value="text"/>
+          <param name="is-server"   expression="${is.server}"/>
+          <param name="is-port"     expression="${is.port}"/>
+          <param name="is-user"     expression="${is.user}"/>
+          <param name="is-password" expression="${is.password}"/>
+          <param name="is-root"     expression="${is.server.install}"/>
+          <param name="is-version"  expression="${is.version}"/>
+          <param name="env-root"    expression="${dir.im.solution.path}"/>
+      </xslt>
+  </target>
+
+  <!-- Make the scripts to update the MKS Domain. Controlled by the mks.domain property in build.properties. -->
+  <target name="source-script" depends="init" description="Build the script to create any Source projects and sandboxes..">
+      <xslt in="${project.title}-solution.xml" out="${dir.scripts}/${project.title}_source.ksh"  style="${dir.xsl}/source-script-gen.xsl">
+          <outputproperty name="method" value="text"/>
+          <param name="is-server"    expression="${is.server}"/>
+          <param name="is-port"      expression="${is.port}"/>
+          <param name="is-user"      expression="${is.user}"/>
+          <param name="is-password"  expression="${is.password}"/>
+          <param name="is-root"      expression="${is.server.install}"/>
+          <param name="safe-is-root" expression="${safe-is.server.install}"/>
+          <param name="is-version"   expression="${is.version}"/>
+          <param name="impl-path"    expression="${dir.im.solution.path}"/>
+      </xslt>
+  </target>
+
+
+  <!-- Create the java wrapper classes from the solution definition. -->
+  <target name="java-wrapper" depends="init" description="Create a java wrapper class from the solution.">
+      <xslt in="${project.title}-solution.xml" out="${dir.scripts}/${project.title}.java"  style="${dir.xsl}/java-wrapper.xsl">
+          <outputproperty name="method" value="text"/>
+          <param name="prefix"    expression="${project.title}"/>
+      </xslt>
+  </target>
+
+
+  <target name="docs-html" depends="init" description="Build the main HTML dcumentation">
+      <!--copy file="${dir.stylesheets}/main.css" todir="${dir.docs.out}"/-->
+      <xslt in="${project.title}-solution.xml" out="${dir.docs.out}/solution.html"  style="${dir.xsl}/doc-index.xsl"/>
+  </target>
+
+
+
+  <!-- ****************************** -->  
+  <!-- * Run the scripts against IM * -->
+  <!-- ****************************** -->  
+  <target name="deploy" 
+          depends="init, scripts, deploy-triggers, deploy-reports, delete-log, deploy-html, deploy-mappings,
+                   run-mks-domain-script, run-script, put-templates,
+                   run-data-script,run-source-script, grep-log" 
+          description="Deploy the entire native solution to Integrity Manager.">
+  </target>
+
+  <target name="run-script" depends="scripts" description="Run the main deployment script.">
+      <exec dir="${dir.im.solution.path}" executable="sh" os="${exec.current.os}">
+          <env key="Path" path="${is.client.install};${env.Path}"/>
+          <env key="CLASSPATH" value="${dir.scripts}/mkslib1_0_4.jar;${is.client.install}lib/mksapi.jar;${is.client.install}jre/lib/*.jar"/>
+          <arg line="'${dir.scripts}/${project.title}.ksh'"/>
+      </exec>
+  </target>
+
+  <target name="run-source-script" depends="scripts" description="Run the Source deployment script.">
+      <exec dir="${dir.im.solution.path}" executable="sh" os="${exec.current.os}">
+          <arg line="'${dir.scripts}/${project.title}_source.ksh'"/>
+      </exec>
+  </target>
+
+  <target name="run-data-script" depends="scripts" description="Run the data creation script.">
+      <exec dir="${dir.im.solution.path}" executable="sh" os="${exec.current.os}">
+          <arg line="'${dir.scripts}/${project.title}-data.ksh'"/>
+      </exec>
+  </target>
+
+  <target name="run-mks-domain-script" depends="mks-domain-scripts" if="mks.domain" description="Run the script to create MKS Domain users and groups.">
+      <exec dir="${dir.im.solution.path}" executable="sh" os="${exec.current.os}">
+          <arg line="'${dir.scripts}/${project.title}_mks_domain.ksh'"/>
+      </exec>
+  </target>
+
+  <!-- Copy all the resources to the IS deployment directory. -->
+  <!--target name="deploy-images" depends="deploy-init" description="Deploy the icons to IM.">
+    <copy todir="${dir.deploy.resources}">
+      <fileset dir="${dir.images}">
+      </fileset>
+    </copy>
+    <copy todir="${dir.deploy.presentation.images}">
+      <fileset dir="${dir.templates.images}">
+          <include name="*.png"/>
+          <include name="*.gif"/>
+          <include name="*.jpg"/>
+      </fileset>
+    </copy>
+  </target-->
+
+  <target name="deploy-triggers" depends="" description="Deploy the triggers to Integrity Manager.">
+    <copy todir="${dir.deploy.triggers}">
+      <fileset dir="${dir.triggers}" includes="*.js"/>
+    </copy>
+    <copy todir="${is.server.install}/data/triggers">
+      <fileset dir="${dir.triggers}" includes="*.properties" />
+    </copy>
+  </target>
+
+
+  <target name="deploy-html" depends="" description="Deploy static HTML pages to public_html.">
+    <copy todir="${dir.deploy.docs}">
+      <fileset file="${dir.reports}/index.htm"/>
+      <fileset file="${dir.images}/header.gif"/>
+      <fileset file="${dir.images}/footer.gif"/>
+    </copy>
+  </target>
+
+
+  <target name="deploy-mappings" depends="" description="Deploy Gateway mappings.">
+    <copy todir="${dir.deploy.mappings}">
+      <fileset file="${dir.mappings}/*.xml"/>
+    </copy>
+  </target>
+
+
+  <!-- Copy all the resources to the IS deployment directory. -->
+  <target name="deploy-reports" depends="" description="Deploy the report templates to Integrity Manager.">
+    <copy todir="${dir.deploy.resources}">
+      <fileset dir="${dir.reports}"/>
+    </copy>
+  </target>
+
+  <!-- Copy any client resporces. -->
+  <target name="deploy-client" depends="" description="Deploy client resporces.">
+    <copy todir="${is.client.install}/bin">
+      <fileset dir="${dir.client.scripts}"/>
+    </copy>
+  </target>
+
+  <target name="teardown" depends="scripts,get-templates" description="Tear down the current deployment, ready for redeploy.">
+      <exec dir="${dir.im.solution.path}" executable="sh" os="${exec.current.os}">
+          <arg line="'${dir.scripts}/${project.title}_source.ksh' drop"/>
+      </exec>
+  </target>
+    
+  <target name="get-templates" depends="scripts" 
+          description="Copy the presentation templates FROM the server dir, replacing field IDs with field names.">
+      <exec dir="${dir.im.solution.path}" executable="sh.exe" os="${exec.current.os}">
+          <arg value="scripts/${project.title}_presentation_templates.ksh"/>
+          <arg value="get"/>
+      </exec>
+  </target>
+
+  <target name="put-templates" depends="scripts" 
+          description="Copy the presentation templates TO the server dir, replacing names with field IDs.">
+      <exec dir="${dir.im.solution.path}" executable="sh.exe" os="${exec.current.os}">
+          <arg value="scripts/${project.title}_presentation_templates.ksh"/>
+          <arg value="put"/>
+      </exec>
+  </target>
+
+  <target name="get-triggers" description="Get the triggers from the server to the development directory." depends="">
+    <copy todir="${dir.triggers}">
+      <fileset dir="${dir.deploy.triggers}" includes="*.js"/>
+    </copy>
+  </target>
+
+  <target name="grep-log" depends="" 
+          description="Grep deploy.log for any Error or Cannot strings.">
+      <exec dir="${dir.im.solution.path}" executable="egrep.exe" os="${exec.current.os}">
+          <arg value="-i"/>
+          <arg value="&quot;error|cannot|\*\*\* MKS|Invalid value&quot;"/>
+          <arg value="deploy.log"/>
+      </exec>
+  </target>
+
+
+
+  <!-- ************************************** -->
+  <!-- * Run the JUinit tests.              * -->
+  <!-- ************************************** -->
+
+  <path id="test.classpath">
+    <pathelement location="${junit.tests}" />
+    <pathelement location="${dir.mkslib}/bin" />
+    <pathelement path="${is.client.install}lib/mksapi.jar" />
+    <pathelement path="${junit.home}/junit.jar" />
+</path>
+
+  <target name="junit">
+    <junit fork="yes" haltonfailure="yes">
+      <jvmarg value="-Dproperties=${dir.im.solution.path}/build.properties"/>
+      <test name="${test.class.name}" />
+      <formatter type="plain" usefile="false" />
+      <classpath refid="test.classpath" />
+    </junit>
+  </target>
+
+
+  
+  <!-- ************************************** -->
+  <!-- Make a zip of the solution components. -->
+  <!-- ************************************** -->
+  <target name="delivery" depends="delete-zip" description="Bundle up the solution components">
+      <zip zipfile="${delivery.zip}">
+          <zipfileset dir="."                          includes="${project.title}-solution.xml,build.xml,build.properties,pickvalues.jar,im-solution.dtd"/>
+          <zipfileset dir="xsl"      prefix="xsl"      includes="*.xsl"/>
+          <zipfileset dir="reports"  prefix="reports"  includes="*.html,*.xml"/>
+          <zipfileset dir="images"   prefix="images"   includes="*.gif"/>
+          <zipfileset dir="triggers" prefix="triggers" includes="*.js"/>
+      </zip>      
+  </target>
+
+  <target name="delete-zip" description="Delete the delivery zip file">
+      <delete file="${dir.im.solution.path}/${delivery.zip}"/>
+  </target>
+
+
+  <!-- Make the ant documentation page. -->
+  <target name="ant-doc" depends="" description="Make the ant documentation page.">
+      <xslt in="build.xml" out="build.html"  style="${dir.xsl}/ant-doc.xsl">
+          <outputproperty name="method" value="html"/>
+      </xslt>
+  </target>
+
+
+
+  <!-- ************************************** -->
+  <!-- RULESETS.                              -->
+  <!-- ************************************** -->
+
+  <target name="init-rulesets" description="">
+      <delete file="${dir.zips}/${mks.ruleset.req.name}.zip"/>
+      <delete file="${dir.zips}/${mks.ruleset.design.name}.zip"/>
+  </target>
+
+  <target name="zip-rulesets" depends="init-rulesets" description="Zip up all the domain ruleset components.">
+      <zip zipfile="${dir.zips}/${mks.ruleset.req.name}.zip">
+          <zipfileset dir="${dir.dsd}/${mks.ruleset.req.dir}" includes="*.*"/>
+          <zipfileset dir="${dir.dsd}/${mks.ruleset.req.dir}" includes="content/*.*" />
+      </zip>      
+      <zip zipfile="${dir.zips}/${mks.ruleset.design.name}.zip">
+          <zipfileset dir="${dir.dsd}/${mks.ruleset.design.dir}" includes="*.*"/>
+          <zipfileset dir="${dir.dsd}/${mks.ruleset.design.dir}" includes="content/*.*" />
+      </zip>      
+  </target>
+
+  <target name="rulesets" depends="zip-rulesets" description="Copy ruleset zips to the ruleset directory.">
+    <copy file="${dir.zips}/${mks.ruleset.req.name}.zip" 
+          tofile="${dir.zips}/${mks.ruleset.req.name}.mcfg" />
+    <copy file="${dir.zips}/${mks.ruleset.design.name}.zip" 
+          tofile="${dir.zips}/${mks.ruleset.design.name}.mcfg" />
+  </target>
+
+
+  <!-- ************************************** -->
+  <!-- * Create IMT                         * -->
+  <!-- ************************************** -->
+  <target name="imt" depends="" description="Create an IMT from the currently deployed solution.">
+      <buildnumber file="imt/build.num"/>
+      <exec dir="${dir.im.solution.path}" executable="im.exe" os="${exec.current.os}" >
+          <arg line="createsolution --build=${build.number} --major=1 --minor=0 --defaultPrefix=RR_ --includeIssues --solutionFile=imt/aec.imt --description='Rolls-Royce Solution' --hostname=${is.server} --port=${is.port} --user=${is.user} --password=${is.password} "/>
+      </exec>
+  </target>
+
+
+  <!-- ************************************** -->
+  <!-- * Server and database support        * -->
+  <!-- ************************************** -->
+  <target name="is-start" depends="echo-is" description="Start the Intergrity Server.">
+      <exec dir="${is.server.bin}" executable="${is.server.bin}/mksservice.exe" os="${exec.current.os}">
+          <arg line="-t '${is.server.conf}'"/>
+      </exec>
+      <exec executable="tail.exe" os="${exec.current.os}">
+          <arg line="-f '${is.server.log}'"/>
+      </exec>
+  </target>
+  
+  <target name="is-stop" depends="echo-is" description="Stop the Intergrity Server.">
+      <exec dir="${is.server.bin}" executable="${is.server.bin}/mksservice.exe" os="${exec.current.os}">
+          <arg line="-p '${is.server.conf}'"/>
+      </exec>
+  </target>
+
+  <target name="echo-is" depends="" description="Echo information about the server.">
+      <echo message="Integrity Server install = ${is.server.bin}" />
+  </target>
+  
+  <target name="db-restore" depends="" description="Restore the database to the empty configuration, ready to deploy the system.">
+      <exec dir="${dir.im.solution.path}" executable="sh.exe" os="${exec.current.os}" >
+         <arg line="${dir.im.solution.path}/externalscripts/restoredb.ksh"/>
+         <arg value="${sql.db.server}"/>
+         <arg value="${sql.db.name}"/>
+         <arg value="${sql.db.restore.point}"/>
+         <arg value="${sql.user}"/>
+         <arg value="${sql.password}"/>
+      </exec>
+  </target>
+
+    <target name="reset" depends="echo-is,is-stop,db-restore,is-start" description="stop the server, Restore the database to the empty configuration, start the db again">
+      <exec dir="${dir.im.solution.path}" executable="sh.exe" os="${exec.current.os}" >
+          <arg line="echo resetted ;-)"/>
+      </exec>
+  </target>
+
+  <target name="db-loadview" depends="" description="Load the SQL Database view and Stored Procs on the Engine Database.">
+          <exec dir="${dir.im.solution.path}" executable="isqlw.exe" os="${exec.current.os}" >
+              <arg line="-S localhost -d master -U mks -P mks -i scripts\MKS_SQL_Procedures.sql -o restore.log"/>
+          </exec>
+          <loadfile property="restore-file" srcFile="restore.log" failonerror="false"/>
+          <echo message="Restore: ${restore-file}"/>
+  </target>
+
+
+
+  <target name="test-script" depends="" description="Run a script with environment settings.">
+      <exec dir="${dir.im.solution.path}" executable="sh" os="${exec.current.os}">
+          <env key="Path" path="${is.client.install};${env.Path}"/>
+          <env key="CLASSPATH" value="t:/Projects/MKSLib/deploy/mkslib1_0_0.jar;${is.client.install}lib/mksapi.jar;${is.client.install}jre/lib/*.jar"/>
+          <arg line="${dir.scripts.external}/UpdateProperties.ksh 'MKS Solution' 'MKS.RQ.trace&lt;SRS&gt;' 'Decomposes To:&lt;SA&gt;' 'Property description' '${is.user}' '${is.password}' '${is.server}' '${is.port}'"/>
+      </exec>
+  </target>
+
+
+
+</project>

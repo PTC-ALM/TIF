@@ -1,0 +1,204 @@
+        <field display-rows="5" display-name="Shared Attachments" type="attachment" name="Shared Attachments">
+            <description>Attachments used by shared items in the RM Solution</description>
+        </field>
+        <field display-rows="10" max-length="200000" rich-content="true" type="longtext" name="Shared Text" defaultAttachmentField="Shared Attachments">
+            <description>The main payload for the document contents</description>
+        </field>
+        
+        <field display-name="Text" type="fva" name="Text">
+            <description>The primary contents of the artifact</description>
+            <editability>((field[&quot;Reference Mode&quot;] != &quot;Share&quot;))</editability>
+            <backing-issue relationship="References" field="Shared Text" type="longtext" />
+        </field>
+    
+        <field display-name="Text Attachments" type="fva" name="Text Attachments">
+            <description>The attachments exposed on the shared item</description>
+            <editability>((field[&quot;Reference Mode&quot;] != &quot;Share&quot;))</editability>
+            <backing-issue relationship="References" field="Shared Attachments"  type="attachment" />
+        </field>
+
+        <field display-name="Priority" type="pick" name="Priority">
+            <description>Priority of the issue.</description>
+            <values>
+                <value>Low</value>
+                <value>Medium</value>
+                <value>High</value>
+                <value>Critical</value>
+            </values>
+        </field>
+        <field display-name="Category Int Value" type="integer" name="Category Int Value">
+            <description>Calculates the integer value associated with the Category/Shared Category field's pick value.  This is a hidden field used by the Document Traces Tree View report recipe to display content specifc images</description>
+            <relevance>(false)</relevance>
+            <computation mode="static" store="delta">IsEmpty(Category, 0)/1 + IsEmpty("Shared Category", 0)/1</computation>
+        </field>
+        <field display-name="Root Document" type="logical" name="Root Document">
+            <description>Document field which, when true, causes the document to show up as a top-level document in the project</description>
+            <editability>((user is a member of &quot;Senior Project Team&quot;) or (field[&quot;Project&quot;] == &quot;&quot;))</editability>
+            <default>true</default>
+        </field>
+        <field max-length="100" display-name="Document Short Title" type="shorttext" name="Document Short Title">
+            <description>The short name of the document. The value is editable by the user and is used to construct the full name that is stored in the Summary and Shared Text fields. The Document Name trigger constructs the full name of the document.</description>
+        </field>
+        
+        <field display-rows="5" multivalued="true" type="relationship" name="Authorizes Changes To">
+            <description></description>
+            <!-- *** Disable for now to make testing easier. *** -->
+            <!--editability>((user is a member of &quot;Senior Project Team&quot;) or (field[&quot;State&quot;] = &quot;In Development&quot;))</editability-->
+            <relates>Change Order:Requirement</relates>
+            <reverse name="Changes Authorized By">
+                <relates>Requirement:Change Order</relates>
+            </reverse>
+            <default-columns>
+                <column>ID</column>
+                <column>Document ID</column>
+                <column>Category</column>
+                <column>Type</column>
+                <column>Text</column>
+                <column>Revision Date</column>
+            </default-columns>
+            <query>All Documents</query>
+        </field>
+        
+        <field display-name="Valid Change Order" type="logical" name="Valid Change Order">
+            <description>Local computation which is true if the project does not require change orders, or the item is a disconnected node, or there is at least one change order attached to the item assigned to the current user and in the open phase.</description>
+            <!--editability>(false)</editability>
+            <computation mode="dynamic" store="daily">IsEmpty(Query(&quot;administrator:All Projects and Libraries&quot;, Project, sum(&quot;Change Order Authorizations In Effect&quot; ? 1 : 0)), 0) = 0 OR aggregate(&quot;Changes Authorized By&quot;, sum((&quot;Task Phase&quot; = &quot;Open&quot; AND &quot;Assigned User&quot; = me) ? 1 : 0)) &gt; 0 OR (isNode()  AND  aggregate(&quot;Contained By&quot;, count()) = 0) OR (&quot;Document Phase&quot;=&quot;Open&quot; AND isModel)</computation-->
+        </field>
+        <field display-name="Change Order Authorizations In Effect" type="logical" name="Change Order Authorizations In Effect">
+            <description>Name of the project field which when true enables change order authorizations for all documents in the project. When false, change orders are
+ignored and changes made to documents are not logged on change order items. Note that change orders are ignored when the document is in
+the Open phase, regardless of the value of this field. The field Use Hierarchical Editability is false when the document is in the Open phase.</description>
+            <default>false</default>
+        </field>
+        <field display-name="Show In Finder" type="logical" name="Show In Finder">
+            <description>Project field which, when true, causes the project to show up in the finder dialog</description>
+            <default>true</default>
+        </field>
+        <field display-rows="8" display-name="Documented By" multivalued="true" type="relationship" name="Documented By">
+            <description>Segment roots corresponding to the top-level documents in the project.</description>
+            <relates>Project:Requirement Document</relates>
+            <reverse name="Documents">
+                <relates>Requirement Document:Project</relates>
+            </reverse>
+            <default-columns>
+                <column>ID</column>
+                <column> Type</column>
+                <column> Shared Category</column>
+                <column> Summary</column>
+                <column> State</column>
+                <column> Order</column>
+            </default-columns>
+            <!--query>Documents In Active Projects</query -->
+        </field>
+        <field display-name="Allow Edits" type="logical" name="Allow Edits">
+            <description>Document computation which controls whether the main text of the content is editable</description>
+            <!--editability>(false)</editability-->
+            <computation mode="dynamic" store="never">(State != &quot;In Review&quot; and State != &quot;Published&quot; and State != &quot;Delivered&quot; and State != &quot;Retired&quot;) or (State == Unspecified)</computation>
+        </field>
+        <field display-name="Use Hierarchical Editability" type="logical" name="Use Hierarchical Editability">
+            <description>Field exposed on document roots which, when true, enables change order and document-level authorization controls</description>
+            <computation mode="dynamic" store="never">&quot;Document Phase&quot; != &quot;Open&quot;</computation>
+        </field>
+        <field type="phase" name="Document Phase">
+            <description>Phase values for Document items.</description>
+            <phases>
+                <phase name="Open" states="Open"/>
+                <phase name="In Review" states="Review Pending,In Review"/>
+                <phase name="Restricted" states="Restricted"/>
+                <phase name="Delivered" states="Delivered,Published"/>
+            </phases>
+        </field>
+        
+        <field display-name="Allow Links" type="logical" name="Allow Links">
+            <description>Document computation which controls whether external relationships can be added to the document contents</description>
+            <computation mode="dynamic" store="never">State != &quot;Retired&quot;</computation>
+        </field>
+        <field display-name="Allow Traces" type="logical" name="Allow Traces">
+            <description>Document computation which controls whether traces can be added to the document contents</description>
+            <computation mode="dynamic" store="never">State != &quot;Delivered&quot; and State != &quot;Retired&quot;</computation>
+        </field>
+        <field display-name="Trace Status" type="pick" name="Trace Status">
+            <description>Summary of the trace relationships emanating from this node. upstream/downstream corresponds to backward/forward direction.
+upstream =&gt; at least one upstream trace exists.
+downstream =&gt; at least one downstream trace exists.
+related =&gt; at least one peer trace (Is Related To) exists.
+suspect =&gt; at least one of the traces is suspect in the indicated class of traces.</description>
+            <values>
+                <value icon="Trace-None.png">none</value>
+                <value icon="Trace-D.png">downstream</value>
+                <value icon="Trace-R.png">related</value>
+                <value icon="Trace-DR.png">downstream related</value>
+                <value icon="Trace-DRS.png">downstream related suspect</value>
+                <value icon="Trace-DS.png">downstream suspect</value>
+                <value icon="Trace-DSR.png">downstream suspect related</value>
+                <value icon="Trace-DSRS.png">downstream suspect related suspect</value>
+                <value icon="Trace-RS.png">related suspect</value>
+                <value icon="Trace-U.png">upstream</value>
+                <value icon="Trace-UD.png">upstream downstream</value>
+                <value icon="Trace-UDR.png">upstream downstream related</value>
+                <value icon="Trace-UDRS.png">upstream downstream related suspect</value>
+                <value icon="Trace-UDS.png">upstream downstream suspect</value>
+                <value icon="Trace-UDSR.png">upstream downstream suspect related</value>
+                <value icon="Trace-UDSRS.png">upstream downstream suspect related suspect</value>
+                <value icon="Trace-UR.png">upstream related</value>
+                <value icon="Trace-URS.png">upstream related suspect</value>
+                <value icon="Trace-US.png">upstream suspect</value>
+                <value icon="Trace-USD.png">upstream suspect downstream</value>
+                <value icon="Trace-USDR.png">upstream suspect downstream related</value>
+                <value icon="Trace-USDRS.png">upstream suspect downstream related suspect</value>
+                <value icon="Trace-USDS.png">upstream suspect downstream suspect</value>
+                <value icon="Trace-USDSR.png">upstream suspect downstream suspect related</value>
+                <value icon="Trace-USDSRS.png">upstream suspect downstream suspect related suspect</value>
+                <value icon="Trace-USR.png">upstream suspect related</value>
+                <value icon="Trace-USRS.png">upstream suspect related suspect</value>
+            </values>
+            <editability>(false)</editability>
+            <default>none</default>
+        </field>
+        <field type="date" showDateTime="true" name="Revision Date">
+            <description>Date of last significant modification to this item. If this item is a node then the value is the date of the last significant edit that on either the node or the shared item, whichever is latest.</description>
+            <computation mode="dynamic" store="daily">(isNode() ? ((DateDiff(&quot;Input Revision Date&quot;, &quot;Input Shared Item Revision Date&quot;) &gt; 0) ? &quot;Input Revision Date&quot; : &quot;Input Shared Item Revision Date&quot;) : &quot;Input Revision Date&quot;)</computation>
+        </field>
+        <field type="fva" name="Input Shared Item Revision Date">
+            <description>The revision date of the shared item</description>
+            <editability>(false)</editability>
+            <relevance>(false)</relevance>
+            <backing-issue relationship="References" field="Input Revision Date"  type="date" />
+        </field>
+        
+        <!-- *** TRACE RELATIONSHIPS *** -->
+        <field display-rows="5" multivalued="true" type="relationship" name="Decomposes To" trace="true">
+            <description>Trace relationship between a higher level artifact and a lower level artifact.</description>
+            <relates>Requirement:Specification</relates>
+            <reverse name="Decomposed From" trace="true">
+                <relates>Specification:Requirement</relates>
+            </reverse>
+            <default-columns>
+                <column>ID</column>
+                <column> Document ID</column>
+                <column> Relationship Flags</column>
+                <column> Category</column>
+                <column> Type</column>
+                <column> Project</column>
+                <column> Revision Date</column>
+                <column> Text</column>
+            </default-columns>
+        </field>
+        
+        <field display-rows="5" trace="true" multivalued="true" type="relationship" name="Is Related To">
+            <description>Generic trace relationship between two nodes</description>
+            <relates>Requirement:Requirement</relates>
+            <reverse name="Is Related To'" trace="true">
+                <relates>Requirement:Requirement</relates>
+            </reverse>
+            <default-columns>
+                <column>ID</column>
+                <column> Document ID</column>
+                <column> Relationship Flags</column>
+                <column> Category</column>
+                <column> Type</column>
+                <column> Project</column>
+                <column> Revision Date</column>
+                <column> Text</column>
+            </default-columns>
+        </field>

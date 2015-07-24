@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE im-solution   [
+    <!ENTITY requirements    SYSTEM "TIF-requirements.xml">
+    <!ENTITY specifications  SYSTEM "TIF-specifications.xml">
+    <!ENTITY docfields       SYSTEM "TIF-docfields.xml">
+    <!ENTITY mkssolution     SYSTEM "TIF-mkssolution.xml">
+    <!ENTITY simpleproject   SYSTEM "TIF-simpleproject.xml">
+]>
+
+
+<im-solution xmlns="http://www.ptc.com/integrity-solution">
+    <users>
+        <user full-name="Business Analyst" name="business_analyst"/>
+        <user description="MdeUser=MDE\Ccbsecretary" full-name="CCB Secretary" name="ccbsecretary"/>
+        <user name="developer"/>
+        <user name="development_manager"/>
+        <user description="MdeUser=MDE\Engineer" email="" full-name="Engineer" name="engineer"/>
+        <user name="executive"/>
+        <user name="product_manager"/>
+        <user name="project_manager"/>
+        <user name="qa_analyst"/>
+        <user name="qa_manager"/>
+        <user name="requirement_analyst"/>
+        <user name="requirement_manager"/>
+        <user name="senior_business_analyst"/>
+        <user name="senior_developer"/>
+        <user name="senior_qa_analyst"/>
+        <user name="senior_requirement_analyst"/>
+        <user description="MdeUser=MDE\Teamleader" full-name="Team Leader" name="teamleader"/>
+    </users>
+    
+    <groups>
+        <group name="Developers">
+            <member name="developer"/>
+            <member name="development_manager"/>
+        </group>    
+        <group name="Managers">
+            <member name="product_manager"/>
+            <member name="project_manager"/>
+        </group>    
+        <group name="Administrator">
+            <member name="administrator"/>
+        </group>    
+    </groups>
+
+    <dynamic-groups>
+        <dynamic-group name="Project Team" description="Project team for use by documents.">
+        </dynamic-group>
+
+        <dynamic-group name="Senior Project Team" description="Senior project team for use by documents.">
+        </dynamic-group>
+    </dynamic-groups>
+
+    <projects>
+        <project name="TIF" permittedGroups="everyone" description="Description for TIF project" />
+            <project name="Test" permittedGroups="everyone" parent="/TIF" description="Description for Test child project" />
+                <project name="Unit Tests" permittedGroups="everyone" parent="/TIF/Test" description="Description for Unit Tests child project" />
+    
+    </projects>
+    
+    <states>
+        <state name="Active">
+            <description>In progress</description>
+        </state>
+        <state name="Restricted">
+            <description>Document modifications allowed only if a change order is attached to the document or one of its contents, the change order is assigned to a user, and it is in the Open state</description>
+        </state>
+        <state name="Review Pending">
+            <description>Last change order to be closed will result in document being placed In Review</description>
+        </state>
+        <state name="Delivered">
+            <description>Trace relationships not allowed, but external relationships allowed. Transition to Change Orders Required allowed only for members of the RM Executive team.</description>
+        </state>
+        <state name="Retired">
+            <description>Only editable field is the Notes field on the document root.</description>
+        </state>
+        <state name="Inactive">
+            <description>Not currently in progress</description>
+        </state>
+        <state name="Available">
+            <description>Available for use in the application</description>
+        </state>
+
+        <state name="In Review">
+            <description>New change orders not allowed, though existing change orders can be put back into the Reopened state.</description>
+        </state>
+        <state name="Cancelled">
+            <description>Cancelled.</description>
+        </state>
+        <state name="Published">
+            <description>Published - will not change.</description>
+        </state>
+        <state name="Unassigned">
+            <description>Not assigned to anybody by the review team</description>
+        </state>
+        <state name="Assigned">
+            <description>Assigned to a user by the review team</description>
+        </state>
+        <state name="Rejected">
+            <description>Will never be considered</description>
+        </state>
+        <state name="Open">
+            <description>Analyst has been assigned and at least one document linked, or analyst is allowed to allocate his own documents</description>
+        </state>
+        <state name="Closed">
+            <description>Analyst has marked the change order as complete</description>
+        </state>
+        <state name="Completed">
+            <description>Analyst has marked the change order as complete</description>
+        </state>
+        <state name="Suspended">
+            <description>Temporarily suspended</description>
+        </state>
+        <state name="Started">
+            <description>Work has started but bulk of activities are still pending review and acceptance.</description>
+        </state>
+        <state name="Proposed">
+            <description>A unit of work that has been proposed but not yet scheduled</description>
+        </state>
+        <state name="Defined">
+            <description>Projects transition to this state when the work breakdown structure is completed and all specifications are approved</description>
+        </state>
+        <state name="Accepted">
+            <description>Represents the acceptance of work or milestones.</description>
+        </state>
+        <state name="In Development">
+            <description>Development in progress.</description>
+            <capabilities>
+                <capability capability="OpenChangePackages"/>
+                <capability capability="ChangePackagesUnderReview"/>
+                <capability capability="TimeTracking"/>
+            </capabilities>
+        </state>
+        
+    </states>
+
+    <fields>
+        
+        &docfields;
+
+<!-- **************************************************************************************************** -->        
+        <field max-length="255" type="shorttext" name="Short Text Field">
+            <description>Test field for short text.</description>
+            <editability></editability>
+            <relevance></relevance>
+        </field>
+        <field type="integer" name="Integer Field">
+            <description>Test field for integer. Sets a default value.</description>
+            <editability></editability>
+            <default>1234</default>
+        </field>
+        <field type="date" name="Date Field">
+            <description>Test field for dates.</description>
+            <editability></editability>
+        </field>
+        <field display-rows="7" max-length="32000" display-name="Long Text Field" rich-content="false" type="longtext" name="Long Text Field">
+            <description>Long text, not logged, not rich</description>
+        </field>
+        <field display-rows="7" max-length="32000" rich-content="true" type="longtext" defaultAttachmentField="Attachments" name="Description">
+            <description>Long text, not logged, rich</description>
+        </field>
+        <field logging="mostRecentFirst" display-rows="5" max-length="32000" rich-content="false" type="longtext" name="Logged Long Text">
+            <description>Long, logged text field. Not rich.</description>
+        </field>
+        
+        <field type="pick" name="Pick Field">
+            <description>Test field for simple pick.</description>
+            <values>
+                <value>Low</value>
+                <value>Medium</value>
+                <value>High</value>
+                <value>Critical</value>
+            </values>
+        </field>
+        
+        <field type="logical" name="Logical Field">
+            <description>Test field for logical.</description>
+            <editability></editability>
+            <relevance></relevance>
+        </field>
+        <field displayPattern="#%" type="float" name="Float Field">
+            <description>Test float field with a display pattern.</description>
+            <editability></editability>
+        </field>
+        <field type="user" name="User Field">
+            <description>Test field for a user</description>
+        </field>
+        <field type="group" name="Group Field">
+            <description>Test field for a group</description>
+        </field>
+        <field type="siproject" name="Source Project Field">
+            <description>Test field for Source Projects</description>
+        </field>
+        
+        
+        <field type="relationship" name="Spawns" multivalued="true" variableHeightRows="true" >
+            <description>Relates Change Requests to Change Orders. Tests default comumns. Test default quesy.</description>
+            <default-columns>
+                <column>ID</column>
+                <column>Summary</column>
+                <column>State</column>
+            </default-columns>
+            <query>Open Change Requests</query>
+            <relates>Change Request:Change Order</relates>
+            <reverse name="Spawned By" display="relationship" multivalued="true" variableHeightRows="true" >
+                <relates>Change Order:Change Request</relates>
+                <default-columns>
+                    <column>ID</column>
+                    <column>Summary</column>
+                    <column>Type</column>
+                </default-columns>
+                <query>Open Change Orders</query>
+            </reverse>
+        </field>
+        
+        <field type="phase" name="Project Phase">
+            <description>Phase of development of the current project</description>
+            <phases>
+                <phase states="Accepted,Proposed,Started" name="Proposed"/>
+                <phase states="Active,Available,Defined" name="Active"/>
+                <phase states="Suspended" name="Inactive"/>
+                <phase states="Cancelled,Completed" name="Completed"/>
+            </phases>
+        </field>
+        
+    </fields>
+    
+    <types>
+    
+        &mkssolution;
+        &simpleproject;
+        
+        <type name="Change Order" haveRevisions="true" >
+            <description>Description for the type.</description>
+            <fields>
+                <field name="Summary"/>
+                <field name="State"/>
+                <field name="Project"/>
+                <field name="Attachments"/>
+                <field name="Spawned By"/>
+                <field name="Authorizes Changes To"/>
+                <field name="Description">
+                    <description>Detailed description of the issue. This is overridden in the type.</description>
+                    <editability>(user is a member of Project Team)</editability>
+                    <relevance>((field[Type]=Change Order))</relevance>
+                </field>
+            </fields>
+            <states>
+                <state name="Unspecified">
+                    <next group="everyone" name="Open"/>
+                </state>
+                <state name="Open">
+                    <next group="everyone" name="Open"/>
+                    <next group="everyone" name="Completed"/>
+                    <mandatory>
+                        <field name="Summary"/>
+                        <field name="State"/>
+                    </mandatory>
+                </state>
+                <state name="Completed">
+                    <next group="everyone" name="Completed"/>
+                </state>
+            </states>
+        </type>
+    
+        <type name="Change Request" canLabel="true" 
+              allowCP="true" cp-policy="userField=Assigned User"
+              show-history="true" canDelete="true" haveRevisions="false" time-tracking="true"  show-workflow="true" >
+            <fields>
+                <field name="Summary"/>
+                <field name="State"/>
+                <field name="Project"/>
+                <field name="Attachments"/>
+                <field name="Spawns"/>
+                <field name="Description">
+                    <description>Detailed description of the issue.</description>
+                </field>
+            </fields>
+            <states>
+                <state name="Unspecified">
+                    <next group="everyone" name="In Review"/>
+                </state>
+                <state name="In Review">
+                    <next group="everyone" name="In Review"/>
+                    <next group="everyone" name="Open"/>
+                    <next group="everyone" name="Rejected"/>
+                    <mandatory>
+                        <field name="Summary"/>
+                        <field name="State"/>
+                    </mandatory>
+                </state>
+                <state name="Open">
+                    <next group="everyone" name="Open"/>
+                    <next group="everyone" name="Completed"/>
+                </state>
+                <state name="Rejected">
+                    <next group="everyone" name="Rejected"/>
+                </state>
+                <state name="Completed">
+                    <next group="everyone" name="Completed"/>
+                </state>
+            </states>
+        </type>
+    
+        &requirements;
+        &specifications;
+
+    
+    </types>
+    
+    <triggers>
+        <trigger type="rule" name="MKS.ALM: Trace Status">
+            <description>Sets the Trace Status picklist value each time a trace field is updated on a node.</description>
+            <script>TIF/TraceStatus.js</script>
+            <rule>(item is node)</rule>
+            <frequency>manual</frequency>
+            <script-timing>pre</script-timing>
+        </trigger>
+    </triggers> 
+    
+    <queries>
+        <query share-groups="everyone" name="All Change Orders" admin="yes">
+            <definition>(field[Type]=Change Order)</definition>
+            <description>All Change Order items.</description>
+        </query>
+        <query share-groups="everyone" name="All Change Requests" admin="yes">
+            <definition>(field[Type]=Change Request)</definition>
+            <description>All change requests.</description>
+        </query>
+        <query share-groups="everyone" name="All Requirement Documents" admin="yes">
+            <definition>(field[Type]=Requirement Document)</definition>
+            <description>All change requests.</description>
+        </query>
+        <query share-groups="everyone" name="All Specification Documents" admin="yes">
+            <definition>(field[Type]=Specification Document)</definition>
+            <description>All change requests.</description>
+            <default-columns>
+                <column>ID</column>
+                <column>State</column>
+                <column>Category</column>
+                <column>Summary</column>
+                <column>Project</column>
+                <column>Document Short Title</column>
+            </default-columns>
+            
+        </query>
+        <query share-groups="everyone" name="All Documents" admin="yes">
+            <definition>((field[Type]=Specification Document) or (field[Type]=Requirement Document))</definition>
+            <description>All change requests.</description>
+        </query>
+        <query share-groups="everyone" name="All Projects and Libraries" admin="yes">
+            <definition>(field[Type]=Project)</definition>
+            <description>All Library and Project items. This query is used by the Valid Change Order computation to determine Change Order applicability.</description>
+        </query>
+        <query share-groups="everyone" name="Finder Projects" admin="yes">
+            <definition>(field[Show In Finder]=true)</definition>
+            <description>Projects that are displayed on the left side of the Finder dialog on Document | Open.
+This includes all project documents, all libraries, and all templates.</description>
+        </query>
+
+
+        <query share-groups="everyone" name="Open Change Requests" admin="yes">
+            <definition>(field[Type]=Change Request)</definition>
+            <description>Test the releationship default query.</description>
+        </query>
+        <query share-groups="everyone" name="Open Change Orders" admin="yes">
+            <definition>(field[Type]=Change Order)</definition>
+            <description>Test the releationship default query.</description>
+        </query>
+    
+    </queries>
+</im-solution>

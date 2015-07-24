@@ -1,0 +1,3813 @@
+<html xmlns:tif="http://www.ptc.com/integrity-solution">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="main.css">
+<title></title>
+</head>
+<body>
+<table border="0" width="100%" cellpadding="0" cellspacing="5">
+<tr>
+<td width="15%" valign="top" class="sidenav">
+<li>
+<a href="#MKS Solution">MKS Solution</a>
+</li>
+<li>
+<a href="#Project">Project</a>
+</li>
+<li>
+<a href="#Change Order">Change Order</a>
+</li>
+<li>
+<a href="#Change Request">Change Request</a>
+</li>
+<li>
+<a href="#Requirement Document">Requirement Document</a>
+</li>
+<li>
+<a href="#Requirement">Requirement</a>
+</li>
+<li>
+<a href="#Shared Requirement">Shared Requirement</a>
+</li>
+<li>
+<a href="#Specification Document">Specification Document</a>
+</li>
+<li>
+<a href="#Specification">Specification</a>
+</li>
+<li>
+<a href="#Shared Specification">Shared Specification</a>
+</li>
+<li>
+<a href="#fields">Fields</a>
+</li>
+<ul>
+<li>
+<a href="#shorttext">Short text</a>
+</li>
+<li>
+<a href="#longtext">Long text</a>
+</li>
+<li>
+<a href="#integer">Integer / computed</a>
+</li>
+<li>
+<a href="#float">Float / computed</a>
+</li>
+<li>
+<a href="#pick">Pick</a>
+</li>
+<li>
+<a href="#ibpl">IBPL</a>
+</li>
+<li>
+<a href="#qbr">QBR</a>
+</li>
+<li>
+<a href="#fva">FVA</a>
+</li>
+<li>
+<a href="#relationship">Relationship</a>
+</li>
+<li>
+<a href="#user">User</a>
+</li>
+<li>
+<a href="#date">Date</a>
+</li>
+<li>
+<a href="#relationships">Relationships</a>
+</li>
+</ul>
+<li>
+<a href="#states">States</a>
+</li>
+<li>
+<a href="#queries">Queries</a>
+</li>
+<li>
+<a href="#triggers">Triggers</a>
+</li>
+</td><td valign="top">
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td class="titlebar">
+<h1>
+<a name="top"></a>
+</h1>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<h1>
+<a name="types">Types</a>
+</h1>
+<hr>
+<h2>
+<a name="MKS Solution">MKS Solution</a>
+</h2>
+<h3>State transitions</h3>
+<table border="1" width="100%">
+<tr>
+<th>State</th><th>Next</th><th>Mandatory fields</th>
+</tr>
+<tr>
+<td valign="top">Active</td><td valign="top">
+<ul>
+<li>Active:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Unspecified</td><td valign="top">
+<ul>
+<li>Active:everyone</li>
+<li>Unspecified:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Visible fields</h3>
+<table border="1" width="100%">
+<tr>
+<th>Field</th><th>Override Editability</th><th>Override Relevance</th>
+</tr>
+    
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h3>Properties</h3>
+<table border="1" width="100%">
+<tr>
+<th>Property</th><th>Value</th><th>Description</th>
+</tr>
+<tr>
+<td>MKS.isRQ</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.AcceptChangeRequestsFieldName</td><td>Accept Change Requests&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.AuthorizedChangeCountFieldName</td><td>Authorized Change Count&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.AuthorizingChangeOrderFieldName</td><td>Authorizing Change Order&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.BackwardChangeOrderRelationshipFieldName</td><td>Authorizes Changes To&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.BaselineLabelStates</td><td>In Review:In Review,Published:Published,Delivered:Delivered,Retired:Retired&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.BaselinePrefix</td><td>Baseline:&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.CategoryFieldName</td><td>Category&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.ChangeOrderClosedReport</td><td>Change+Order+Detail&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.ChangeOrderPhaseFieldActivePhase</td><td>Open&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.ChangeOrderPhaseFieldName</td><td>Task Phase&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.ChangeOrderRelationshipFieldName</td><td>Changes Authorized By&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.ChangeOrderReopenedStateName</td><td>Reopened&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.ChangeOrderRestrictedStateName</td><td>Restricted&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.ChangeRequestAllocatedStateName</td><td>Allocated&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.ChangeRequestUnallocatedStateName</td><td>Unallocated&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.ChangesAuthorizedFieldName</td><td>Changes Authorized&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.CoupletRelationshipFieldName</td><td>References&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.DecomposesToFieldName</td><td>Decomposes To&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.DocInReviewReport</td><td>Document+Content&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.DocNeedsChangesReport</td><td>Document+Content&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.DocumentChurnFieldName</td><td>Document Churn from Initial Baseline&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.DocumentDeltaChurnFieldName</td><td>Yesterday Document Churn&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.DocumentedByFieldName</td><td>Documented By&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.DocumentIDFieldName</td><td>Document ID&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.DocumentInReviewStateName</td><td>In Review&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.DocumentReviewPendingStateName</td><td>Review Pending&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.DocumentsFieldName</td><td>Documents&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.DocumentShortTitleFieldName</td><td>Document Short Title&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.DocumentTitleFormat</td><td>{Document Short Title}&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.EditabilityField.1</td><td>Valid Change Order&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.EditabilityField.Document.1</td><td>Allow Edits&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.EditabilityField.Document.2</td><td>Allow Traces&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.EditabilityField.Document.3</td><td>Allow Links&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.EditabilityField.Document.4</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.Finder.Relationship</td><td>Contains,References,Documented By,Tests&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.IDFieldName</td><td>ID&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.IncludeReferenceFieldName</td><td>IncludeReference&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.IncludeSubsegmentInMetricsFieldName</td><td>Include Subsegment in Metrics&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.InformsFieldName</td><td>Change Request For&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.InitialBaselineFieldName</td><td>Initial Baseline&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.item.addrelatedtests.findersettings</td><td>"title=Select tests to run","query=Finder Projects and Test Objectives","additionalFilter=((subquery[Finder Projects]) or (field[ID] = {{ID}}))","focusIssueID={{ID}}","fields=Structure","nodeDisplayFields={ID} {Category}- {Text}{Summary}","showFieldNodes=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.LastVerdictType</td><td>Last Verdict Type&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.model.mathworks.traceviewsettings</td><td>"--title=Upstream Traces","--tabTitle=Upstream Traces","--fields=Structure,Type,State,Relationship Flags","--traverseFields=Decomposed From,Satisfies,Validates,Verifies,Models","--structureFieldDisplayFormat={Category} {Text}{Summary}","--structureFieldIconDisplayField=Category","--nodisplayForwardFields","--nodisplayBackwardFields","--expandLevel=3","--tvigui","--gui"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.NeedsNewChangesFieldName</td><td>Needs New Changes&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.OpenUnassignedCOCountFieldName</td><td>Open Change Order Count&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.postbranch.edit.field</td><td>Post Branch Edit&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.recordSharedTestCaseIDFieldName</td><td>Record Results As Shared&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.RelationshipTraceFieldName</td><td>Is Related To&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.RequireChangeOrdersFieldName</td><td>Change Order Authorizations In Effect&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.RetiredStateInactivePhase</td><td>Inactive&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.RetiredStatePhaseFieldName</td><td>Retired States&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.ReuseFieldAuthorValue</td><td>Author&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.RevisionDateFieldName</td><td>Revision Date&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.createtrace.finderSettings</td><td>"title=Find item(s) to trace to","query=Finder Projects","fields=Structure","nodeDisplayFields={ID} {Category}- {Text}{Summary}","showFieldNodes=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.includecontent.finderSettings</td><td>"title=Find a document to include","query=Finder Projects","fields=Structure","nodeDisplayFields={ID} {Category}- {Text}{Summary}","showFieldNodes=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.includedocument.finderSettings</td><td>"title=Find a location to include the current document into","query=Finder Projects","fields=Structure","nodeDisplayFields={ID} {Category}- {Text}{Summary}","showFieldNodes=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.insert.content.finderSettings</td><td>"title=Find content to insert","query=Finder Projects","fields=Structure","nodeDisplayFields={ID} {Category}- {Text}{Summary}","showFieldNodes=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.insertcontent.finderSettings</td><td>"title=Find a document to insert","query=Finder Projects","fields=Structure","nodeDisplayFields={ID} {Category}- {Text}{Summary}","showFieldNodes=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.insertdocument.finderSettings</td><td>"title=Find a location to insert the current document into","query=Finder Projects","fields=Structure","nodeDisplayFields={ID} {Category}- {Text}{Summary}","showFieldNodes=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item0.type</td><td>separator&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item1.CommandToken</td><td>ci.Relationships&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item1.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item1.name</td><td>Downstream Traces&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item1.SelectionType</td><td>SelectedItem&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item1.SimpleRequirementsChecker.Cardinality</td><td>1+&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item1.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item1.ViewRef</td><td>rm.view8&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item1.viewSettings</td><td>"title=Downstream Traces","tabTitle=Downstream Traces","traverseFields=Contains,Decomposes To,Satisfied By,Validated By,Verified By,Modelled By","structureFieldDisplayFormat={Category} {ID} - {Text}{Summary}","structureFieldIconDisplayField=Category","displayForwardFields=false","displayBackwardFields=false","expandLevel=3","saveSettings=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item2.CommandToken</td><td>ci.Relationships&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item2.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item2.name</td><td>Upstream Traces&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item2.SelectionType</td><td>SelectedItem&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item2.SimpleRequirementsChecker.Cardinality</td><td>1+&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item2.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item2.ViewRef</td><td>rm.view9&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item2.viewSettings</td><td>"title=Upstream Traces","tabTitle=Upstream Traces","traverseFields=Contains,Decomposed From,Satisfies,Validates,Verifies,Models","structureFieldDisplayFormat={Category} {ID} - {Text}{Summary}","structureFieldIconDisplayField=Category","displayForwardFields=false","displayBackwardFields=false","expandLevel=3","saveSettings=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item3.CommandToken</td><td>ci.Relationships&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item3.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item3.name</td><td>Peer Traces&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item3.SelectionType</td><td>SelectedItem&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item3.SimpleRequirementsChecker.Cardinality</td><td>1+&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item3.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item3.ViewRef</td><td>rm.view10&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item3.viewSettings</td><td>"title=Peer Traces","tabTitle=Peer Traces","traverseFields=Contains,Is Related To,Is Related To'","structureFieldDisplayFormat={Category} {ID} - {Text}{Summary}","displayForwardFields=false","displayBackwardFields=false","expandLevel=3","saveSettings=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item4.type</td><td>separator&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item5.CommandToken</td><td>ci.Relationships&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item5.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item5.name</td><td>Authorizations&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item5.SelectionType</td><td>SelectedItem&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item5.SimpleRequirementsChecker.Cardinality</td><td>1+&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item5.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item5.ViewRef</td><td>rm.view11&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item5.viewSettings</td><td>"title=Authorizations","tabTitle=Authorizations","traverseFields=Contained By,Changes Authorized By,Change Order For,Defect For","structureFieldDisplayFormat={Category} {ID} - {Text}{Summary}","displayForwardFields=false","displayBackwardFields=false","expandLevel=3","saveSettings=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item6.CommandToken</td><td>ci.Relationships&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item6.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item6.name</td><td>Spawned Tasks&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item6.SelectionType</td><td>SelectedItem&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item6.SimpleRequirementsChecker.Cardinality</td><td>1+&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item6.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item6.ViewRef</td><td>rm.view12&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item6.viewSettings</td><td>"title=Spawned Tasks","tabTitle=Spawned Tasks","traverseFields=Contains,Spawns","structureFieldDisplayFormat={Category} {ID} - {Summary}{Text}","displayForwardFields=false","displayBackwardFields=false","expandLevel=3","saveSettings=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item7.CommandToken</td><td>ci.Relationships&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item7.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item7.name</td><td>References&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item7.SelectionType</td><td>SelectedItem&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item7.SimpleRequirementsChecker.Cardinality</td><td>1+&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item7.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item7.ViewRef</td><td>rm.view13&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item7.viewSettings</td><td>"title=References","tabTitle=References","traverseFields=References,Referenced By","structureFieldDisplayFormat={Category} {ID} - {Text}{Shared Text}","displayForwardFields=false","displayBackwardFields=false","expandLevel=3","saveSettings=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item8.CommandToken</td><td>ci.Relationships&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item8.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item8.name</td><td>Shares&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item8.SelectionType</td><td>SelectedItem&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item8.SimpleRequirementsChecker.Cardinality</td><td>1+&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item8.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item8.ViewRef</td><td>rm.view18&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.content.trace.item8.viewSettings</td><td>"title=Shares","tabTitle=Shares","traverseFields=Shares,Shared By","structureFieldDisplayFormat={Category} {ID} - {Text}","displayForwardFields=false","displayBackwardFields=false","expandLevel=3","saveSettings=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.createfromtemplate.finderSettings</td><td>"title=Find a template document","query=Finder Template Projects","fields=Structure","nodeDisplayFields={ID} {Category}- {Text}{Summary}","showFieldNodes=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.includedocument.finderSettings</td><td>"title=Find a location to include the current document into","query=Finder Projects","fields=Structure","nodeDisplayFields={ID} {Category}- {Text}{Summary}","showFieldNodes=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.insertdocument.finderSettings</td><td>"title=Find a location to insert the current document into","query=Finder Projects","fields=Structure","nodeDisplayFields={ID} {Category}- {Text}{Summary}","showFieldNodes=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.open.finderSettings</td><td>"title=Find a document to open","query=Finder Projects","fields=Structure","nodeDisplayFields={ID} {Category}- {Text} {Summary}","showFieldNodes=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.open.viewSettings</td><td>"structureFieldIconDisplayField=Category","outlineColumns=Structure","availableContexts=Authoring,Sharing,Tracing"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.viewdocument.viewSettings</td><td>"structureFieldIconDisplayField=Category","outlineColumns=Structure","availableContexts=Authoring,Sharing,Tracing"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item0.CommandToken</td><td>ci.Issues&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item0.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item0.name</td><td>My Active Tasks&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item0.SelectionType</td><td>None&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item0.SimpleRequirementsChecker.Cardinality</td><td>0+&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item0.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item0.ViewRef</td><td>rm.view1&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item0.viewSettings</td><td>"title=Active Tasks","tabTitle=Active Tasks","appendQueryToTitle=false","query=My Active Tasks"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item1.CommandToken</td><td>ci.Issues&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item1.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item1.name</td><td>My Current Work Items&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item1.SelectionType</td><td>None&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item1.SimpleRequirementsChecker.Cardinality</td><td>0+&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item1.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item1.ViewRef</td><td>rm.view2&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item1.viewSettings</td><td>"title=Current Work Items","tabTitle=Current Work Items","appendQueryToTitle=false","query=My Current Work Items"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item2.CommandToken</td><td>ci.Issues&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item2.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item2.name</td><td>Change Requests&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item2.SelectionType</td><td>None&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item2.SimpleRequirementsChecker.Cardinality</td><td>0+&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item2.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item2.ViewRef</td><td>rm.view3&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item2.viewSettings</td><td>"title=Change Requests","tabTitle=Change Requests","appendQueryToTitle=false","query=Change Requests"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item3.CommandToken</td><td>ci.Issues&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item3.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item3.name</td><td>Project Documents&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item3.SelectionType</td><td>None&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item3.SimpleRequirementsChecker.Cardinality</td><td>0+&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item3.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item3.ViewRef</td><td>rm.view4&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item3.viewSettings</td><td>"title=Project Documents","tabTitle=Project Documents","query=Finder Project Documents","appendQueryToTitle=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item4.CommandToken</td><td>ci.Issues&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item4.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item4.name</td><td>Libraries&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item4.SelectionType</td><td>None&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item4.SimpleRequirementsChecker.Cardinality</td><td>0+&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item4.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item4.ViewRef</td><td>rm.view5&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item4.viewSettings</td><td>"title=Library Documents","tabTitle=Library Documents","query=Finder Library Documents","appendQueryToTitle=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item5.CommandToken</td><td>ci.Issues&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item5.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item5.name</td><td>Templates&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item5.SelectionType</td><td>None&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item5.SimpleRequirementsChecker.Cardinality</td><td>0+&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item5.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item5.ViewRef</td><td>rm.view6&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item5.viewSettings</td><td>"title=Templates","tabTitle=Template Documents","query=Finder Template Documents","appendQueryToTitle=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item6.CommandToken</td><td>ci.Issues&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item6.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item6.name</td><td>All Documents&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item6.SelectionType</td><td>None&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item6.SimpleRequirementsChecker.Cardinality</td><td>0+&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item6.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item6.ViewRef</td><td>rm.view7&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.document.views.item6.viewSettings</td><td>"title=All Documents","tabTitle=All Documents","query=All Finder Project Documents","appendQueryToTitle=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view1.Name</td><td>Active Tasks&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view1.TabIcon</td><td>Issues16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view1.ViewLoaderMessage</td><td>Loading Active Tasks...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view10.DynamicViewClass</td><td>mks.ic.ci.ui.swing.RelationshipsWindow&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view10.Name</td><td>Peer Traces&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view10.TabIcon</td><td>RelationshipTree16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view10.ViewLoaderMessage</td><td>Loading Peer Traces...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view11.DynamicViewClass</td><td>mks.ic.ci.ui.swing.RelationshipsWindow&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view11.Name</td><td>Authorizations&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view11.TabIcon</td><td>RelationshipTree16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view11.ViewLoaderMessage</td><td>Loading Authorizations...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view12.DynamicViewClass</td><td>mks.ic.ci.ui.swing.RelationshipsWindow&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view12.Name</td><td>Spawned Tasks&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view12.TabIcon</td><td>MoveCPEntry.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view12.ViewLoaderMessage</td><td>Loading Spawned Tasks...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view13.DynamicViewClass</td><td>mks.ic.ci.ui.swing.RelationshipsWindow&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view13.Name</td><td>References&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view13.TabIcon</td><td>RelationshipTree16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view13.ViewLoaderMessage</td><td>Loading References...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view14.DynamicViewClass</td><td>mks.ic.ci.ui.swing.RelationshipsWindow&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view14.Name</td><td>Test Status&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view14.TabIcon</td><td>RelationshipTree16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view14.ViewLoaderMessage</td><td>Loading Test Status...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view15.Name</td><td>Test Objectives&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view15.TabIcon</td><td>Issues16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view15.ViewLoaderMessage</td><td>Loading Test Objectives...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view16.Name</td><td>Test Sessions&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view16.TabIcon</td><td>Issues16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view16.ViewLoaderMessage</td><td>Loading Test Sessions...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view17.Name</td><td>Open Defects&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view17.TabIcon</td><td>Issues16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view17.ViewLoaderMessage</td><td>Loading Open Defects...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view18.DynamicViewClass</td><td>mks.ic.ci.ui.swing.RelationshipsWindow&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view18.Name</td><td>Shares&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view18.TabIcon</td><td>Issues16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view18.ViewLoaderMessage</td><td>Loading Shares view...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view2.Name</td><td>Work Items&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view2.TabIcon</td><td>Issues16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view2.ViewLoaderMessage</td><td>Loading Work Items...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view3.DynamicViewClass</td><td>mks.ic.ci.ui.swing.RelationshipsWindow&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view3.Name</td><td>Change Requests&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view3.TabIcon</td><td>RelationshipTree16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view3.ViewLoaderMessage</td><td>Loading Change Requests...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view4.Name</td><td>Project Documents&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view4.TabIcon</td><td>Issues16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view4.ViewLoaderMessage</td><td>Loading Product Documents...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view5.Name</td><td>Libraries&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view5.TabIcon</td><td>Issues16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view5.ViewLoaderMessage</td><td>Loading Libraries...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view6.Name</td><td>Templates&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view6.TabIcon</td><td>Issues16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view6.ViewLoaderMessage</td><td>Loading Templates...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view7.Name</td><td>All Documents&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view7.TabIcon</td><td>Issues16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view7.ViewLoaderMessage</td><td>Loading All Documents...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view8.DynamicViewClass</td><td>mks.ic.ci.ui.swing.RelationshipsWindow&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view8.Name</td><td>Downstream Traces&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view8.TabIcon</td><td>RelationshipTree16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view8.ViewLoaderMessage</td><td>Loading Downstream Traces...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view9.DynamicViewClass</td><td>mks.ic.ci.ui.swing.RelationshipsWindow&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view9.Name</td><td>Upstream Traces&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view9.TabIcon</td><td>RelationshipTree16.gif&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.rm.view9.ViewLoaderMessage</td><td>Loading Upstream Traces...&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.RootDocumentFieldName</td><td>Root Document&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.RootIDFieldName</td><td>Root ID&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.SatisfiedByFieldName</td><td>Satisfied By&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.SectionFieldName</td><td>Section&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.SegmentConstrainedPhaseName</td><td>Constrained&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.SegmentOpenPhaseName</td><td>Open&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.SegmentRestrictedPhaseName</td><td>Closed&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.selftrace</td><td>&lt;Requirement&gt;:Is Related To;&lt;Change Order&gt;:Is Related To;&lt;Change Request&gt;:Is Related To;&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.SeniorProjectTeamGroupName</td><td>Senior Project Team&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.SharedTextFieldName</td><td>Shared Text&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.SpawnedByFieldName</td><td>Spawned By&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.SpawnsFieldName</td><td>Spawns&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.StakeholderFieldName</td><td>Stakeholders&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.SummaryFieldName</td><td>Summary&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.SuspectString</td><td>suspect&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.TaskClosedPhaseName</td><td>Closed&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.TaskClosedPhaseStates</td><td>Cancelled, Closed, Completed, Rejected, Review Complete&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.TaskOpenPhaseName</td><td>Open&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.TaskOpenPhaseStates</td><td>In Development, In Restesting,In Review, In Testing, Reopened&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.TaskPendingPhaseName</td><td>Pending&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.TaskPendingPhaseStates</td><td>Assigned, Proposed, Ready for Automated Testing, Submit, Unassigned&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.TaskRejectedStateName</td><td>Rejected&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.TestObjectiveFieldName</td><td>Test Objective&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.TestsAsOfDateSetFieldName</td><td>Tests As Of Date Set&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.TextFieldName</td><td>Text&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item0.CommandToken</td><td>ci.Relationships&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item0.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item0.name</td><td>Test Status&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item0.SelectionType</td><td>SelectedItem&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item0.SimpleRequirementsChecker.Cardinality</td><td>1+&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item0.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item0.ViewRef</td><td>rm.view14&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item0.viewSettings</td><td>"title=Test Status","tabTitle=Test Status","traverseFields=Test Plans,Test Objectives,Completed Test Sessions","structureFieldDisplayFormat={Summary}{Text} - {Type}","displayForwardFields=False","displayBackwardFields=False","showFieldNodes=false","saveSettings=false"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item1.CommandToken</td><td>ci.Issues&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item1.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item1.name</td><td>All Test Objectives&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item1.SelectionType</td><td>None&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item1.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item1.ViewRef</td><td>rm.view15&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item1.viewSettings</td><td>"query=All Test Objectives"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item2.CommandToken</td><td>ci.Issues&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item2.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item2.name</td><td>All Test Sessions&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item2.SelectionType</td><td>None&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item2.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item2.ViewRef</td><td>rm.view16&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item2.viewSettings</td><td>"query=All Test Sessions"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item3.CommandToken</td><td>ci.Issues&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item3.handlerClass</td><td>mks.ic.ci.ui.swing.requirements.SegmentInteractor&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item3.name</td><td>Open Defects&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item3.SelectionType</td><td>None&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item3.type</td><td>item&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item3.ViewRef</td><td>rm.view17&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.tm.test.views.item3.viewSettings</td><td>"query=Open Defects"&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.trace.&lt;Change Order&gt;</td><td>Authorizes Changes To:&lt;Requirement&gt;;Authorizes Changes To:&lt;Requirement Document&gt;&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.trace.&lt;Requirement&gt;</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.TraceStatusFieldName</td><td>Trace Status&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.TypeFieldName</td><td>Type&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.UseHierarchicalEditabilityField</td><td>Use Hierarchical Editability&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.ValidatedByFieldName</td><td>Validated By&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.SolutionDefinition.Version</td><td>2009.9049.01&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<hr>
+<hr>
+<h2>
+<a name="Project">Project</a>
+</h2>
+<h3>State transitions</h3>
+<table border="1" width="100%">
+<tr>
+<th>State</th><th>Next</th><th>Mandatory fields</th>
+</tr>
+<tr>
+<td valign="top">Cancelled</td><td valign="top">
+<ul>
+<li>Cancelled:everyone</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Summary</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Active</td><td valign="top">
+<ul>
+<li>Cancelled:everyone,Senior Project Team</li>
+<li>Active:everyone</li>
+<li>Suspended:everyone,Senior Project Team</li>
+<li>Defined:everyone,Senior Project Team</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Summary</li>
+<li>Project</li>
+<li>Description</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Suspended</td><td valign="top">
+<ul>
+<li>Cancelled:everyone,Senior Project Team</li>
+<li>Active:everyone,Senior Project Team</li>
+<li>Suspended:everyone</li>
+<li>Defined:everyone,Senior Project Team</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Summary</li>
+<li>Project</li>
+<li>Description</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Completed</td><td valign="top">
+<ul>
+<li>Completed:everyone</li>
+<li>Defined:everyone</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Summary</li>
+<li>Project</li>
+<li>Description</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Accepted</td><td valign="top">
+<ul>
+<li>Active:everyone,Senior Project Team</li>
+<li>Accepted:everyone</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Summary</li>
+<li>Project</li>
+<li>Description</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Proposed</td><td valign="top">
+<ul>
+<li>Cancelled:everyone,Senior Project Team</li>
+<li>Proposed:everyone</li>
+<li>Started:everyone,Senior Project Team</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Summary</li>
+<li>Project</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Defined</td><td valign="top">
+<ul>
+<li>Cancelled:everyone,Senior Project Team</li>
+<li>Suspended:everyone,Senior Project Team</li>
+<li>Completed:everyone,Senior Project Team</li>
+<li>Defined:everyone</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Description</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Started</td><td valign="top">
+<ul>
+<li>Cancelled:everyone,Senior Project Team</li>
+<li>Accepted:everyone,Senior Project Team</li>
+<li>Started:everyone</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Summary</li>
+<li>Project</li>
+<li>Description</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Unspecified</td><td valign="top">
+<ul>
+<li>Proposed:everyone,Senior Project Team</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Visible fields</h3>
+<table border="1" width="100%">
+<tr>
+<th>Field</th><th>Override Editability</th><th>Override Relevance</th>
+</tr>
+       
+<tr>
+<td>Summary</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>State</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Assigned User</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Project</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Project Phase</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Attachments</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Parameters</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Parameter Values</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Change Order Authorizations In Effect</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Show In Finder</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Documented By</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Description</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Project Phase</td><td>(false)&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+    
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h3>Properties</h3>
+<table border="1" width="100%">
+<tr>
+<th>Property</th><th>Value</th><th>Description</th>
+</tr>
+<tr>
+<td>MKS.RQ.DocumentedByFieldName</td><td>Documented By&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.PortfolioClassification</td><td>Project&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<hr>
+<hr>
+<h2>
+<a name="Change Order">Change Order</a>
+</h2>
+<h3>State transitions</h3>
+<table border="1" width="100%">
+<tr>
+<th>State</th><th>Next</th><th>Mandatory fields</th>
+</tr>
+<tr>
+<td valign="top">Unspecified</td><td valign="top">
+<ul>
+<li>Open:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Open</td><td valign="top">
+<ul>
+<li>Open:everyone</li>
+<li>Completed:everyone</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Summary</li>
+<li>State</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Completed</td><td valign="top">
+<ul>
+<li>Completed:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Visible fields</h3>
+<table border="1" width="100%">
+<tr>
+<th>Field</th><th>Override Editability</th><th>Override Relevance</th>
+</tr>
+                
+<tr>
+<td>Summary</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+                
+<tr>
+<td>State</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+                
+<tr>
+<td>Project</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+                
+<tr>
+<td>Attachments</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+                
+<tr>
+<td>Spawned By</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+                
+<tr>
+<td>Authorizes Changes To</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+                
+<tr>
+<td>Description</td><td>(user is a member of Project Team)&nbsp;
+        </td><td>((field[Type]=Change Order))&nbsp;
+        </td>
+</tr>
+            
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<hr>
+<hr>
+<h2>
+<a name="Change Request">Change Request</a>
+</h2>
+<h3>State transitions</h3>
+<table border="1" width="100%">
+<tr>
+<th>State</th><th>Next</th><th>Mandatory fields</th>
+</tr>
+<tr>
+<td valign="top">Unspecified</td><td valign="top">
+<ul>
+<li>In Review:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+<tr>
+<td valign="top">In Review</td><td valign="top">
+<ul>
+<li>In Review:everyone</li>
+<li>Open:everyone</li>
+<li>Rejected:everyone</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Summary</li>
+<li>State</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Open</td><td valign="top">
+<ul>
+<li>Open:everyone</li>
+<li>Completed:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Rejected</td><td valign="top">
+<ul>
+<li>Rejected:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Completed</td><td valign="top">
+<ul>
+<li>Completed:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Visible fields</h3>
+<table border="1" width="100%">
+<tr>
+<th>Field</th><th>Override Editability</th><th>Override Relevance</th>
+</tr>
+                
+<tr>
+<td>Summary</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+                
+<tr>
+<td>State</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+                
+<tr>
+<td>Project</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+                
+<tr>
+<td>Attachments</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+                
+<tr>
+<td>Spawns</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+                
+<tr>
+<td>Description</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+            
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<hr>
+<hr>
+<h2>
+<a name="Requirement Document">Requirement Document</a>
+</h2>
+<h3>State transitions</h3>
+<table border="1" width="100%">
+<tr>
+<th>State</th><th>Next</th><th>Mandatory fields</th>
+</tr>
+<tr>
+<td valign="top">In Review</td><td valign="top">
+<ul>
+<li>In Review:everyone</li>
+<li>Published:everyone,Senior Project Team</li>
+<li>Open:everyone,Senior Project Team</li>
+<li>Restricted:everyone,Senior Project Team</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Document Short Title</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Published</td><td valign="top">
+<ul>
+<li>Published:everyone</li>
+<li>Restricted:everyone,Senior Project Team</li>
+<li>Delivered:everyone,Senior Project Team</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Document Short Title</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Open</td><td valign="top">
+<ul>
+<li>In Review:everyone,Senior Project Team</li>
+<li>Open:everyone</li>
+<li>Restricted:everyone,Senior Project Team</li>
+<li>Inactive:everyone</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Document Short Title</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Restricted</td><td valign="top">
+<ul>
+<li>In Review:everyone,Senior Project Team</li>
+<li>Open:everyone,Senior Project Team</li>
+<li>Restricted:everyone</li>
+<li>Review Pending:everyone,Senior Project Team</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Document Short Title</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Review Pending</td><td valign="top">
+<ul>
+<li>In Review:everyone,Senior Project Team</li>
+<li>Restricted:everyone,Senior Project Team</li>
+<li>Review Pending:everyone</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Document Short Title</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Delivered</td><td valign="top">
+<ul>
+<li>Restricted:everyone</li>
+<li>Delivered:everyone</li>
+<li>Retired:everyone,Senior Project Team</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Document Short Title</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Retired</td><td valign="top">
+<ul>
+<li>Retired:everyone</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Document Short Title</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Inactive</td><td valign="top">
+<ul>
+<li>Open:everyone</li>
+<li>Inactive:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Unspecified</td><td valign="top">
+<ul>
+<li>Open:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Visible fields</h3>
+<table border="1" width="100%">
+<tr>
+<th>Field</th><th>Override Editability</th><th>Override Relevance</th>
+</tr>
+        
+<tr>
+<td>Summary</td><td>(false)&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>State</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Assigned User</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Project</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Documents</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Attachments</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Revision Date</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Parameters</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Document Phase</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Use Hierarchical Editability</td><td>(false)&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+        
+<tr>
+<td>Valid Change Order</td><td>(false)&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+
+        
+<tr>
+<td>Allow Edits</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Allow Links</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Allow Traces</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+
+        
+<tr>
+<td>Parameter Values</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Shared Attachments</td><td>(((field["Allow Edits"] = "true") and ((field["Valid Change Order"] = "true") or (field["Use Hierarchical Editability"] = "false"))))&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Root Document</td><td>((user is a member of "Senior Project Team") or (field["Project"] == ""))&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Shared Text</td><td>(item is segment)&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Document Short Title</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Category Int Value</td><td>(false)&nbsp;
+        </td><td>(false)&nbsp;
+        </td>
+</tr>
+    
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h3>Properties</h3>
+<table border="1" width="100%">
+<tr>
+<th>Property</th><th>Value</th><th>Description</th>
+</tr>
+<tr>
+<td>MKS.RQ.Domain</td><td>Requirement&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.Editability.1</td><td>Project,Shared Attachments,Shared Text,Shared Category,Contains,Summary&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.Editability.Document.1</td><td>Project,Shared Attachments,Shared Text,Shared Category,Contains,Summary,Changes Authorized By&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.Editability.Document.3</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.item.editissue.title</td><td>Properties for {Summary}&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<hr>
+<hr>
+<h2>
+<a name="Requirement">Requirement</a>
+</h2>
+<h3>State transitions</h3>
+<table border="1" width="100%">
+<tr>
+<th>State</th><th>Next</th><th>Mandatory fields</th>
+</tr>
+<tr>
+<td valign="top">Active</td><td valign="top">
+<ul>
+<li>Active:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Unspecified</td><td valign="top">
+<ul>
+<li>Active:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Visible fields</h3>
+<table border="1" width="100%">
+<tr>
+<th>Field</th><th>Override Editability</th><th>Override Relevance</th>
+</tr>
+       
+<tr>
+<td>State</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Project</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Attachments</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Trace Status</td><td>(false)&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Revision Date</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Input Shared Item Revision Date</td><td>(false)&nbsp;
+        </td><td>(false)&nbsp;
+        </td>
+</tr>
+       
+       
+<tr>
+<td>Parameter Values</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Priority</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Category Int Value</td><td>(false)&nbsp;
+        </td><td>(false)&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Changes Authorized By</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Text</td><td>((field["Reference Mode"] != "Share"))&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Text Attachments</td><td>((field["Reference Mode"] != "Share"))&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Valid Change Order</td><td>(false)&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Allow Links</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Allow Traces</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+
+        
+        
+<tr>
+<td>Decomposes To</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Is Related To</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+        
+    
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h3>Properties</h3>
+<table border="1" width="100%">
+<tr>
+<th>Property</th><th>Value</th><th>Description</th>
+</tr>
+<tr>
+<td>MKS.RQ.Editability.1</td><td>Project,Contains,References,Contained By,Text,Category,Text Attachments&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.Editability.Document.1</td><td>Project,Contains,References,Contained By,Text,Category,Text Attachments,Changes Authorized By&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.Editability.Document.2</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.Editability.Document.3</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<hr>
+<hr>
+<h2>
+<a name="Shared Requirement">Shared Requirement</a>
+</h2>
+<h3>State transitions</h3>
+<table border="1" width="100%">
+<tr>
+<th>State</th><th>Next</th><th>Mandatory fields</th>
+</tr>
+<tr>
+<td valign="top">Available</td><td valign="top">
+<ul>
+<li>Available:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Unspecified</td><td valign="top">
+<ul>
+<li>Available:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Visible fields</h3>
+<table border="1" width="100%">
+<tr>
+<th>Field</th><th>Override Editability</th><th>Override Relevance</th>
+</tr>
+       
+<tr>
+<td>State</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Parameters</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Parameter Values</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Shared Attachments</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Shared Text</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+    
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h3>Properties</h3>
+<table border="1" width="100%">
+<tr>
+<th>Property</th><th>Value</th><th>Description</th>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<hr>
+<hr>
+<h2>
+<a name="Specification Document">Specification Document</a>
+</h2>
+<h3>State transitions</h3>
+<table border="1" width="100%">
+<tr>
+<th>State</th><th>Next</th><th>Mandatory fields</th>
+</tr>
+<tr>
+<td valign="top">In Review</td><td valign="top">
+<ul>
+<li>In Review:everyone</li>
+<li>Published:everyone,Senior Project Team</li>
+<li>Open:everyone,Senior Project Team</li>
+<li>Restricted:everyone,Senior Project Team</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Document Short Title</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Published</td><td valign="top">
+<ul>
+<li>Published:everyone</li>
+<li>Restricted:everyone,Senior Project Team</li>
+<li>Delivered:everyone,Senior Project Team</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Document Short Title</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Open</td><td valign="top">
+<ul>
+<li>In Review:everyone,Senior Project Team</li>
+<li>Open:everyone</li>
+<li>Restricted:everyone,Senior Project Team</li>
+<li>Inactive:everyone</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Document Short Title</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Restricted</td><td valign="top">
+<ul>
+<li>In Review:everyone,Senior Project Team</li>
+<li>Open:everyone,Senior Project Team</li>
+<li>Restricted:everyone</li>
+<li>Review Pending:everyone,Senior Project Team</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Document Short Title</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Review Pending</td><td valign="top">
+<ul>
+<li>In Review:everyone,Senior Project Team</li>
+<li>Restricted:everyone,Senior Project Team</li>
+<li>Review Pending:everyone</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Document Short Title</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Delivered</td><td valign="top">
+<ul>
+<li>Restricted:everyone</li>
+<li>Delivered:everyone</li>
+<li>Retired:everyone,Senior Project Team</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Document Short Title</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Retired</td><td valign="top">
+<ul>
+<li>Retired:everyone</li>
+</ul>
+</td><td valign="top">
+<ul>
+<li>Document Short Title</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Inactive</td><td valign="top">
+<ul>
+<li>Open:everyone</li>
+<li>Inactive:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Unspecified</td><td valign="top">
+<ul>
+<li>Open:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Visible fields</h3>
+<table border="1" width="100%">
+<tr>
+<th>Field</th><th>Override Editability</th><th>Override Relevance</th>
+</tr>
+        
+<tr>
+<td>Summary</td><td>(false)&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>State</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Assigned User</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Project</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Documents</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Attachments</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Revision Date</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Parameters</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Document Phase</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Use Hierarchical Editability</td><td>(false)&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+        
+<tr>
+<td>Valid Change Order</td><td>(false)&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+
+        
+<tr>
+<td>Allow Edits</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Allow Links</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Allow Traces</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+
+        
+<tr>
+<td>Parameter Values</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Shared Attachments</td><td>(((field["Allow Edits"] = "true") and ((field["Valid Change Order"] = "true") or (field["Use Hierarchical Editability"] = "false"))))&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Root Document</td><td>((user is a member of "Senior Project Team") or (field["Project"] == ""))&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Shared Text</td><td>(item is segment)&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Document Short Title</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Category Int Value</td><td>(false)&nbsp;
+        </td><td>(false)&nbsp;
+        </td>
+</tr>
+        
+    
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h3>Properties</h3>
+<table border="1" width="100%">
+<tr>
+<th>Property</th><th>Value</th><th>Description</th>
+</tr>
+<tr>
+<td>MKS.RQ.Domain</td><td>Specification&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.Editability.1</td><td>Project,Shared Attachments,Shared Text,Shared Category,Contains,Summary&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.Editability.Document.1</td><td>Project,Shared Attachments,Shared Text,Shared Category,Contains,Summary,Changes Authorized By&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.Editability.Document.3</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.item.editissue.title</td><td>Properties for {Summary}&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<hr>
+<hr>
+<h2>
+<a name="Specification">Specification</a>
+</h2>
+<h3>State transitions</h3>
+<table border="1" width="100%">
+<tr>
+<th>State</th><th>Next</th><th>Mandatory fields</th>
+</tr>
+<tr>
+<td valign="top">Active</td><td valign="top">
+<ul>
+<li>Active:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Unspecified</td><td valign="top">
+<ul>
+<li>Active:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Visible fields</h3>
+<table border="1" width="100%">
+<tr>
+<th>Field</th><th>Override Editability</th><th>Override Relevance</th>
+</tr>
+       
+<tr>
+<td>State</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Project</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Attachments</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Trace Status</td><td>(false)&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Revision Date</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Input Shared Item Revision Date</td><td>(false)&nbsp;
+        </td><td>(false)&nbsp;
+        </td>
+</tr>
+       
+       
+<tr>
+<td>Parameter Values</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Priority</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Category Int Value</td><td>(false)&nbsp;
+        </td><td>(false)&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Changes Authorized By</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Text</td><td>((field["Reference Mode"] != "Share"))&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Text Attachments</td><td>((field["Reference Mode"] != "Share"))&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Valid Change Order</td><td>(false)&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Allow Links</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+<tr>
+<td>Allow Traces</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+        
+        
+<tr>
+<td>Is Related To</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+
+        
+    
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h3>Properties</h3>
+<table border="1" width="100%">
+<tr>
+<th>Property</th><th>Value</th><th>Description</th>
+</tr>
+<tr>
+<td>MKS.RQ.Editability.1</td><td>Project,Contains,References,Contained By,Text,Category,Text Attachments&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.Editability.Document.1</td><td>Project,Contains,References,Contained By,Text,Category,Text Attachments,Changes Authorized By&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.Editability.Document.2</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+<tr>
+<td>MKS.RQ.Editability.Document.3</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<hr>
+<hr>
+<h2>
+<a name="Shared Specification">Shared Specification</a>
+</h2>
+<h3>State transitions</h3>
+<table border="1" width="100%">
+<tr>
+<th>State</th><th>Next</th><th>Mandatory fields</th>
+</tr>
+<tr>
+<td valign="top">Available</td><td valign="top">
+<ul>
+<li>Available:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+<tr>
+<td valign="top">Unspecified</td><td valign="top">
+<ul>
+<li>Available:everyone</li>
+</ul>
+</td><td valign="top">&nbsp;<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Visible fields</h3>
+<table border="1" width="100%">
+<tr>
+<th>Field</th><th>Override Editability</th><th>Override Relevance</th>
+</tr>
+       
+<tr>
+<td>State</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Parameters</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Parameter Values</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Shared Attachments</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+       
+<tr>
+<td>Shared Text</td><td>&nbsp;
+        </td><td>&nbsp;
+        </td>
+</tr>
+    
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h3>Properties</h3>
+<table border="1" width="100%">
+<tr>
+<th>Property</th><th>Value</th><th>Description</th>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<hr>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h1>
+<a name="fields">Fields</a>
+</h1>
+<h2>
+<a name="shorttext">Short Text</a>
+</h2>
+<table width="100%" border="1">
+<tr>
+<th>Name</th><th>Max. length</th><th>Relevance</th><th>Editability</th><th>Description</th>
+</tr>
+<tr>
+<td><b>Document Short Title</b></td><td>100&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+</tr>
+<tr>
+<td><b>Short Text Field</b></td><td>255&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h2>
+<a name="longtext">Long Text</a>
+</h2>
+<table width="100%" border="1">
+<tr>
+<th>Name</th><th>Max. length</th><th>Relevance</th><th>Editability</th><th>Description</th>
+</tr>
+<tr>
+<td><b>Shared Text</b></td><td>200000&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+</tr>
+<tr>
+<td><b>Long Text Field</b></td><td>32000&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+</tr>
+<tr>
+<td><b>Description</b></td><td>32000&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+</tr>
+<tr>
+<td><b>Logged Long Text</b></td><td>32000&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h2>
+<a name="integer">Integer numeric / computed</a>
+</h2>
+<table width="100%" border="1">
+<tr>
+<th>Name</th><th>Computation</th><th>Relevance</th><th>Editability</th><th>Description</th>
+</tr>
+<tr>
+<td><b>Category Int Value</b></td><td>IsEmpty(Category, 0)/1 + IsEmpty("Shared Category", 0)/1&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Calculates the integer value associated with the Category/Shared Category field's pick value.  This is a hidden field used by the Document Traces Tree View report recipe to display content specifc images&nbsp;</td>
+</tr>
+<tr>
+<td><b>Integer Field</b></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Test field for integer. Sets a default value.&nbsp;</td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h2>
+<a name="float">Float numeric / computed</a>
+</h2>
+<table width="100%" border="1">
+<tr>
+<th>Name</th><th>Computation</th><th>Relevance</th><th>Editability</th><th>Description</th>
+</tr>
+<tr>
+<td><b>Float Field</b></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Test float field with a display pattern.&nbsp;</td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h2>
+<a name="pick">Picks</a>
+</h2>
+<table width="100%" border="1">
+<tr>
+<th>Name</th><th>Values</th><th>Relevance</th><th>Editability</th><th>Description</th>
+</tr>
+<tr>
+<td valign="top"><b>Priority</b></td><td>
+<ul>
+<li>Low</li>
+<li>Medium</li>
+<li>High</li>
+<li>Critical</li>
+</ul>
+</td><td>&nbsp;</td><td>&nbsp;</td><td>Priority of the issue.&nbsp;</td>
+</tr>
+<tr>
+<td valign="top"><b>Trace Status</b></td><td>
+<ul>
+<li>none</li>
+<li>downstream</li>
+<li>related</li>
+<li>downstream related</li>
+<li>downstream related suspect</li>
+<li>downstream suspect</li>
+<li>downstream suspect related</li>
+<li>downstream suspect related suspect</li>
+<li>related suspect</li>
+<li>upstream</li>
+<li>upstream downstream</li>
+<li>upstream downstream related</li>
+<li>upstream downstream related suspect</li>
+<li>upstream downstream suspect</li>
+<li>upstream downstream suspect related</li>
+<li>upstream downstream suspect related suspect</li>
+<li>upstream related</li>
+<li>upstream related suspect</li>
+<li>upstream suspect</li>
+<li>upstream suspect downstream</li>
+<li>upstream suspect downstream related</li>
+<li>upstream suspect downstream related suspect</li>
+<li>upstream suspect downstream suspect</li>
+<li>upstream suspect downstream suspect related</li>
+<li>upstream suspect downstream suspect related suspect</li>
+<li>upstream suspect related</li>
+<li>upstream suspect related suspect</li>
+</ul>
+</td><td>&nbsp;</td><td>&nbsp;</td><td>Summary of the trace relationships emanating from this node. upstream/downstream corresponds to backward/forward direction.
+upstream =&gt; at least one upstream trace exists.
+downstream =&gt; at least one downstream trace exists.
+related =&gt; at least one peer trace (Is Related To) exists.
+suspect =&gt; at least one of the traces is suspect in the indicated class of traces.&nbsp;</td>
+</tr>
+<tr>
+<td valign="top"><b>Pick Field</b></td><td>
+<ul>
+<li>Low</li>
+<li>Medium</li>
+<li>High</li>
+<li>Critical</li>
+</ul>
+</td><td>&nbsp;</td><td>&nbsp;</td><td>Test field for simple pick.&nbsp;</td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h2>
+<a name="ibpl">IBPLs</a>
+</h2>
+<table width="100%" border="1">
+<tr>
+<th>Name</th><th>Backing type</th><th>Field</th><th>States</th><th>Editability</th><th>Relevance</th><th>Description</th>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h2>
+<a name="qbr">QBRs</a>
+</h2>
+<table width="100%" border="1">
+<tr>
+<th>Name</th><th>Query</th><th>Correlation</th><th>Display</th><th>Editability</th><th>Relevance</th><th>Description</th>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h2>
+<a name="fva">FVAs</a>
+</h2>
+<table width="100%" border="1">
+<tr>
+<th>Name</th><th>Backed By</th><th>Backing Field</th><th>Editability</th><th>Relevance</th><th>Description</th>
+</tr>
+<tr>
+<td valign="top"><b>Text</b></td><td></td><td></td><td>&nbsp;</td><td>&nbsp;</td><td>The primary contents of the artifact&nbsp;</td>
+</tr>
+<tr>
+<td valign="top"><b>Text Attachments</b></td><td></td><td></td><td>&nbsp;</td><td>&nbsp;</td><td>The attachments exposed on the shared item&nbsp;</td>
+</tr>
+<tr>
+<td valign="top"><b>Input Shared Item Revision Date</b></td><td></td><td></td><td>&nbsp;</td><td>&nbsp;</td><td>The revision date of the shared item&nbsp;</td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h2>
+<a name="relationship">Relationships</a>
+</h2>
+<table width="100%" border="1">
+<tr>
+<th>Name</th><th>Relates</th><th>Reverse Name</th><th>Reverse Relates</th><th>Editability</th><th>Relevance</th><th>Description</th>
+</tr>
+<tr>
+<td valign="top"><b>Authorizes Changes To</b></td><td>Change Order:Requirement</td><td>Changes Authorized By</td><td>Requirement:Change Order</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+</tr>
+<tr>
+<td valign="top"><b>Documented By</b></td><td>Project:Requirement Document</td><td>Documents</td><td>Requirement Document:Project</td><td>&nbsp;</td><td>&nbsp;</td><td>Segment roots corresponding to the top-level documents in the project.&nbsp;</td>
+</tr>
+<tr>
+<td valign="top"><b>Decomposes To</b></td><td>Requirement:Specification</td><td>Decomposed From</td><td>Specification:Requirement</td><td>&nbsp;</td><td>&nbsp;</td><td>Trace relationship between a higher level artifact and a lower level artifact.&nbsp;</td>
+</tr>
+<tr>
+<td valign="top"><b>Is Related To</b></td><td>Requirement:Requirement</td><td>Is Related To'</td><td>Requirement:Requirement</td><td>&nbsp;</td><td>&nbsp;</td><td>Generic trace relationship between two nodes&nbsp;</td>
+</tr>
+<tr>
+<td valign="top"><b>Spawns</b></td><td>Change Request:Change Order</td><td>Spawned By</td><td>Change Order:Change Request</td><td>&nbsp;</td><td>&nbsp;</td><td>Relates Change Requests to Change Orders. Tests default comumns. Test default quesy.&nbsp;</td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h2>
+<a name="users">Users</a>
+</h2>
+<table width="100%" border="1">
+<tr>
+<th>Name</th><th>Multivalued</th><th>Editability</th><th>Relevance</th><th>Description</th>
+</tr>
+<tr>
+<td valign="top"><b>User Field</b></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Test field for a user&nbsp;</td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h2>
+<a name="dates">Dates</a>
+</h2>
+<table width="100%" border="1">
+<tr>
+<th>Name</th><th>Editability</th><th>Relevance</th><th>Description</th>
+</tr>
+<tr>
+<td valign="top"><b>Revision Date</b></td><td>&nbsp;</td><td>&nbsp;</td><td>Date of last significant modification to this item. If this item is a node then the value is the date of the last significant edit that on either the node or the shared item, whichever is latest.&nbsp;</td>
+</tr>
+<tr>
+<td valign="top"><b>Date Field</b></td><td>&nbsp;</td><td>&nbsp;</td><td>Test field for dates.&nbsp;</td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h1>
+<a name="states">States</a>
+</h1>
+<h3>Active</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>In progress</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Restricted</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Document modifications allowed only if a change order is attached to the document or one of its contents, the change order is assigned to a user, and it is in the Open state</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Review Pending</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Last change order to be closed will result in document being placed In Review</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Delivered</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Trace relationships not allowed, but external relationships allowed. Transition to Change Orders Required allowed only for members of the RM Executive team.</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Retired</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Only editable field is the Notes field on the document root.</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Inactive</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Not currently in progress</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Available</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Available for use in the application</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>In Review</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>New change orders not allowed, though existing change orders can be put back into the Reopened state.</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Cancelled</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Cancelled.</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Published</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Published - will not change.</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Unassigned</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Not assigned to anybody by the review team</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Assigned</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Assigned to a user by the review team</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Rejected</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Will never be considered</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Open</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Analyst has been assigned and at least one document linked, or analyst is allowed to allocate his own documents</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Closed</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Analyst has marked the change order as complete</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Completed</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Analyst has marked the change order as complete</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Suspended</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Temporarily suspended</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Started</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Work has started but bulk of activities are still pending review and acceptance.</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Proposed</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>A unit of work that has been proposed but not yet scheduled</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Defined</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Projects transition to this state when the work breakdown structure is completed and all specifications are approved</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>Accepted</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Represents the acceptance of work or milestones.</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul></ul>
+</td>
+</tr>
+</table>
+<h3>In Development</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Development in progress.</td>
+</tr>
+<tr>
+<td>Capabilities</td><td>
+<ul>
+<li>OpenChangePackages</li>
+<li>ChangePackagesUnderReview</li>
+<li>TimeTracking</li>
+</ul>
+</td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h1>
+<a name="queries">Queries</a>
+</h1>
+<h3>All Change Orders</h3>
+<table border="1" width="100%">
+<tr>
+<td>Shared to</td><td>everyone</td>
+</tr>
+<tr>
+<td>Definition</td><td>(field[Type]=Change Order)</td>
+</tr>
+<tr>
+<td>Description</td><td>All Change Order items.</td>
+</tr>
+</table>
+<h3>All Change Requests</h3>
+<table border="1" width="100%">
+<tr>
+<td>Shared to</td><td>everyone</td>
+</tr>
+<tr>
+<td>Definition</td><td>(field[Type]=Change Request)</td>
+</tr>
+<tr>
+<td>Description</td><td>All change requests.</td>
+</tr>
+</table>
+<h3>All Requirement Documents</h3>
+<table border="1" width="100%">
+<tr>
+<td>Shared to</td><td>everyone</td>
+</tr>
+<tr>
+<td>Definition</td><td>(field[Type]=Requirement Document)</td>
+</tr>
+<tr>
+<td>Description</td><td>All change requests.</td>
+</tr>
+</table>
+<h3>All Specification Documents</h3>
+<table border="1" width="100%">
+<tr>
+<td>Shared to</td><td>everyone</td>
+</tr>
+<tr>
+<td>Definition</td><td>(field[Type]=Specification Document)</td>
+</tr>
+<tr>
+<td>Description</td><td>All change requests.</td>
+</tr>
+</table>
+<h3>All Documents</h3>
+<table border="1" width="100%">
+<tr>
+<td>Shared to</td><td>everyone</td>
+</tr>
+<tr>
+<td>Definition</td><td>((field[Type]=Specification Document) or (field[Type]=Requirement Document))</td>
+</tr>
+<tr>
+<td>Description</td><td>All change requests.</td>
+</tr>
+</table>
+<h3>All Projects and Libraries</h3>
+<table border="1" width="100%">
+<tr>
+<td>Shared to</td><td>everyone</td>
+</tr>
+<tr>
+<td>Definition</td><td>(field[Type]=Project)</td>
+</tr>
+<tr>
+<td>Description</td><td>All Library and Project items. This query is used by the Valid Change Order computation to determine Change Order applicability.</td>
+</tr>
+</table>
+<h3>Finder Projects</h3>
+<table border="1" width="100%">
+<tr>
+<td>Shared to</td><td>everyone</td>
+</tr>
+<tr>
+<td>Definition</td><td>(field[Show In Finder]=true)</td>
+</tr>
+<tr>
+<td>Description</td><td>Projects that are displayed on the left side of the Finder dialog on Document | Open.
+This includes all project documents, all libraries, and all templates.</td>
+</tr>
+</table>
+<h3>Open Change Requests</h3>
+<table border="1" width="100%">
+<tr>
+<td>Shared to</td><td>everyone</td>
+</tr>
+<tr>
+<td>Definition</td><td>(field[Type]=Change Request)</td>
+</tr>
+<tr>
+<td>Description</td><td>Test the releationship default query.</td>
+</tr>
+</table>
+<h3>Open Change Orders</h3>
+<table border="1" width="100%">
+<tr>
+<td>Shared to</td><td>everyone</td>
+</tr>
+<tr>
+<td>Definition</td><td>(field[Type]=Change Order)</td>
+</tr>
+<tr>
+<td>Description</td><td>Test the releationship default query.</td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+<h1>
+<a name="triggers">Triggers</a>
+</h1>
+<h3>MKS.ALM: Trace Status (rule,)</h3>
+<table border="1" width="100%">
+<tr>
+<td>Description</td><td>Sets the Trace Status picklist value each time a trace field is updated on a node.</td>
+</tr>
+<tr>
+<td>Script</td><td>TIF/TraceStatus.js</td>
+</tr>
+<tr>
+<td>Rule</td><td>(item is node)</td>
+</tr>
+<tr>
+<td>Params</td><td></td>
+</tr>
+</table>
+<p class="smalllink">
+<a href="#top">Back to top</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

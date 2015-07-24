@@ -1,0 +1,123 @@
+TIF Release Notes
+=================
+
+1.0.10 2014/3/21
+
+Fixes
+-----
+Transforms
+            Fix: corrected tif namespace on all select nad matches. 
+                 Other mods to comply with schema,
+                 
+                 
+1.0.9 2013/10/22
+Fixes
+-----
+Extractor 
+            Fix.Read field display pattern.
+            Fix. Read scheduled triggers correctly.
+            Fix. Recover correctly when reading a field override that does not
+                 exist for a particular field type, e.g. an editability rule 
+                 for a computed field or a default for a phase.
+            
+            
+Deployment
+            Fix.Correctly process the RichContent flag for long text fields.
+                Also allow the TIF to specify false.
+            Fix. Correctly set the default columns on releationship fields 
+                Specified in both directions in the TIF
+            Fix. Set the default query for relationships fields (both directions)
+            Fix. Set the field default value.
+            Fix. Set the Project description during deploy.
+            Fix. Set the document significant edit fields from those specified in the TIF.
+            Fix. Correctly process the type attributes: enable delete item, enable revision.
+
+New
+---
+Extractor
+            New. Don't write overrides to the template unless they exist.
+                Done for editability, relevance and description.
+            New. Read the Shared Category field as an <edit-field> element.
+            New. Read pick list index values. 
+                Note: API does not allow the reading of the "class" attribute used on the
+                Shared Category. This distinguishes between meaningful and non-meaningful content.
+            New. Added extraction of type description
+            New. Extract the significant edit fields.
+            New. When extracting states ignore "unspecified".
+            New. When extracting phases ignore "out of phase"
+
+Workbench
+            Improvements to the generation of TIF differences.  
+            Open two TIF files and selet Tools - Difference.
+
+--------------------------------------------------------------------------------------------
+
+1.0.8 2013/10/06
+Fixes
+-----
+Phase field
+    	o Update to schema - enclose in <phases> element..
+    	o Read phase field in extractor.
+    	o Update script generator
+Relationship- Is Multi, variable height rows.
+	o Schema. Multivalued. Variable height rows.
+	o Reader. Variable Height Rows not supported by API. Trace extracted
+	o Deploy. Updated script generator.
+Type Attributes - back projects, revisions, deletion, description.
+	o Schema. Back project. revisions, deletion
+	o Reader. Allow CP, CP policy, backs projects, rev is enabled, delete item, show workflow, show history, time tracking, phase field, label. ü
+	o Update script enerator.
+State capabilities
+	o Schema.
+	o Extractor
+	o update script generator.
+Queries - default columns. 
+	o Schema 
+	o Reader. 
+	o Deploy
+Issues
+	o Extract trigger parameters (985)
+	o Excluse built-in triggers and queries from extraction (981)
+	o Corrected extraction of root projects by excluding the initial forward slash (977)
+	o Excluse "everyone" group from the extraction (975)
+
+
+1.0.7 2013/08/01
+Features
+--------
+Added TIF check to cross-check declarations and usage of fields and states.
+Added SimpleTM sample. 
+
+Fixes
+-----
+Removed CLI dependency for reading relationships.
+Extract default attachement field for rich text fields.
+Corrected Range field support in schema.
+Deployment range support consistent with schema.
+Extract relationhip default query and column set.
+Corrected extraction of logging settings for long text fields.
+Deployment - create dummy query for QBRs so that deployment works on a clean database. Previously
+relied on All Defects query.
+FVA field correctely extracts the type of the backing field.
+
+
+
+1.0.6 2013/07/19
+
+Removed dependence on PERl scripts. Moved update of relationships, properties and presentation template
+to Java classes in TifUtils.jar.
+
+Added a mechanism to update an existing environment with the latest transforms and external scripts.
+See manual.
+
+Added the MDE template to the samples. This shows how to create new domains on top of ALM
+(including editing the category field) and editing and existing type (Change Order).
+
+Issue:972
+An environment can be created in an existing directory. The directory must not contain
+a build.properties file.
+
+Issue:969
+Script externalScripts/restoreDB.ksh now takes the name of the db user and password from build.properties.
+
+

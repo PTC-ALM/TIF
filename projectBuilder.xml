@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************
+     *  TIF Workbench deployment ant script.                            *
+     *  Version: $revision$                                             *
+     *                                                                  *
+     *   ant -f projectBuilder.xml deploy                               *
+     *                                                                  *
+     *                                                                  *
+     ********************************************************************
+-->
+
+<project name="TifWorkbench" default="all" basedir=".">
+   <property file="nbproject/project.properties"/>
+   <property file="build.properties" />
+
+   <property name="deploy.dir" value="r:/projects/tifworkbench-whittle" />
+   <property name="version.num" value="1.0.9a" />
+
+   <property name="tif.zip" value="tif${version.num}.zip" />
+   <property name="tif.source.zip" value="tif${version.num}-source.zip" />
+   <property name="tif.template.zip" value="tif-template${version.num}.zip" />
+   <property name="tif.jar" value="tif${version.num}.jar" />
+
+
+   <property name="tif.transforms.dir" value="${deploy.dir}/transforms" />
+
+   <property name="tif.samples" value="samples" />
+   <property name="tif.samples.simple.domain" value="${tif.samples}/simple-domain" />
+   <property name="tif.samples.simple.domain.diff" value="${tif.samples}/simple-domain-diff" />
+   <property name="tif.samples.mde" value="${tif.samples}/mde" />
+   <property name="tif.samples.tm"  value="${tif.samples}/SimpleTM" />
+   <property name="tif.user.guide" value="TIF Workbench User and Admin Guide ${version.num}.pdf" />
+
+    
+    <target name="all">
+        <!-- TODO define script. See Help menu or http://ant.apache.org/ -->
+    </target>
+
+    <target name="deploy" depends="makezip,deploy-docs,deploy-app" >
+    
+    </target>
+    
+    
+     <target name="generate-sources">  
+          <taskdef name="xjc" classname="org.jvnet.jaxb2_commons.xjc.XJC2Task">  
+             <classpath>  
+                <fileset dir="C:/Program Files/NetBeans 7.2.1/ide/modules/ext/jaxb">  
+                   <include name="activation.jar"/>  
+                   <include name="jaxb-api.jar"/>  
+                   <include name="jaxb-impl.jar"/>  
+                   <include name="jsr173_1.0_api.jar"/>  
+                   <!--include name="stax-api-*.jar"/-->  
+                   <include name="jaxb-xjc.jar"/>  
+                </fileset>  
+                <fileset dir="C:/Java/jaxb2-basics-0.6.0">  
+                   <include name="jaxb2-basics-ant-*.jar"/>  
+                </fileset>  
+             </classpath>  
+          </taskdef>  
+
+        <!-- Generate the Java code for XSD -->  
+        <xjc destdir="${basedir}/jaxb-gen" extension="true" package="com.ptc.tifworkbench.jaxbbinding">  
+            <arg line="-Xequals -XhashCode -XtoString"/>  
+            <schema dir="${basedir}">  
+                <include name="schema/TIF.xsd"/>  
+            </schema>  
+            <!-- JAXB2 Plugins and Dependencies -->  
+            <classpath>  
+                <fileset dir="C:/Java/jaxb2-basics-dist-0.6.0/dist">  
+                    <include name="jaxb2-basics-0.6.0.jar"/>  
+                    <include name="jaxb2-basics-ant-0.6.0.jar"/>  
+                    <include name="jaxb2-basics-runtime-0.6.0.jar"/>  
+                    <include name="jaxb2-basics-tools-0.6.0.jar"/>  
+                    <include name="jaxb2-basics-testing-0.6.0.jar"/>  
+                    <include name="jaxb2-basics-annotate-0.6.0.jar"/>  
+                </fileset>  
+                <fileset dir="C:/Java/jaxb2-basics-dist-0.6.0/lib">  
+                    <include name="commons-beanutils-1.8.0.jar"/>  
+                    <include name="commons-lang-2.2.jar"/>  
+                    <include name="commons-logging-1.1.1.jar"/>  
+                    <include name="annox-0.5.0.jar"/>  
+                </fileset>  
+            </classpath>  
+        </xjc>  
+    </target>  
+    
+    
+   <target name="makejar" description="Make the TIF workbench jar file.">
+       <delete file="deploy/${tif.jar}"></delete>
+       <delete file="MANIFEST.MF"></delete>
+       <buildnumber file="build.num" />
+       
+        <manifest file="MANIFEST.MF">
+            <attribute name="Built-By" value="${user.name}"/>
+            <attribute name="Main-Class" value="com.ptc.tifworkbench.TifWorkbenchApplication"/>
+            <attribute name="Implementation-Version" 
+                       value="${version.num} build ${build.number}"/> 
+       </manifest>
+       
+       <jar jarfile="deploy/${tif.jar}" manifest="MANIFEST.MF">
+          <fileset dir="build/classes" excludes="**/project.pj" />
+       </jar>
+   </target>
+   
+   <target name="makezip" description="Make the TIF workbench distributable zip file." 
+           depends="makejar,make-template-zip,zip-samples" >
+       <delete file="deploy/${tif.zip}"></delete>
+       <zip destfile="deploy/${tif.zip}" >
+           <zipfileset dir="lib"       prefix="lib"        includes="mksapi.jar"   />
+           <zipfileset dir="lib"       prefix="lib"        includes="commons-lang.jar" />
+           <zipfileset dir="lib"       prefix="lib"        includes="guava-14.0.1.jar" />
+           <zipfileset dir="lib"       prefix="lib"        includes="reflections-0.9.9-RC1-uberjar.jar" />
+           <zipfileset dir="lib"       prefix="lib"        includes="commons-configuration-1.9.jar" />
+           <zipfileset dir="lib"       prefix="lib"        includes="commons-io-2.4.jar" />
+           <zipfileset dir="lib"       prefix="lib"        includes="commons-lang.jar" />
+           <zipfileset dir="lib"       prefix="lib"        includes="zip4j_1.3.1.jar" />
+           <zipfileset dir="lib"       prefix="lib"        includes="jaxb2-basics-0.6.0.jar" />
+           <zipfileset dir="lib"       prefix="lib"        includes="jaxb2-basics-runtime-0.6.0.jar" />
+           <zipfileset dir="lib"       prefix="lib"        includes="jaxb2-basics-tools-0.6.0.jar" />
+           <zipfileset dir="deploy"    prefix=""           includes="${tif.jar}"          />
+           <zipfileset dir="deploy"    prefix=""           includes="tif.bat"  />
+           <zipfileset dir="resources" prefix="resources"  includes="*.zip,*.xml" />
+           <zipfileset dir="documents" prefix="documents"  includes="*.xlsx" />
+           <zipfileset dir="documents" prefix="documents"  includes="Release Notes.txt" />
+           <zipfileset dir="documents" prefix="documents"  includes="${tif.user.guide}" />
+       </zip>
+       <echo>Created zip file ${tif.zip}</echo>
+       <echo>User guide ${tif.user.guide}</echo>
+   </target>
+   
+   <target name="make-source-zip" description="Zip up the source." depends="" >
+       <delete file="deploy/${tif.souce.zip}"></delete>
+       <zip destfile="deploy/${tif.source.zip}" >
+           <zipfileset dir="schema" prefix="schema"   excludes="*.pj" />
+           <zipfileset dir="lib" prefix="lib"   excludes="*.pj" />
+           <zipfileset dir="nbproject" prefix="nbproject"   excludes="*.pj" />
+           <zipfileset dir="src" prefix="src"  excludes="*.pj" />
+           <zipfileset dir="." includes="projectBuilder.xml" />
+           <zipfileset dir="." includes="gen-src.bat" />
+       </zip>
+       <echo>Created zip file ${tif.zip}</echo>
+       <echo>User guide ${tif.user.guide}</echo>
+   </target>
+   
+    
+   <target name="make-template-zip" description="Make the TIF template distributable zip file." depends="" >
+       <delete file="resources/${tif.template.zip}"></delete>
+       <zip destfile="resources/${tif.template.zip}" >
+           <zipfileset dir="tif-template"  excludes="*.pj" />
+           <zipfileset dir="transforms"   includes="*.xsl"  prefix="xsl"/>
+       </zip>
+       <echo>Created zip file ${tif.template.zip}</echo>
+   </target>
+   
+    
+    <target name="deploy-docs">
+        <copy todir="${deploy.dir}/documents" force="true" >
+            <fileset dir="documents" excludes="*.pj" />
+        </copy>
+        
+    </target>
+    
+    <target name="deploy-app" depends="makezip,deploy-docs">
+        <copy file="deploy/${tif.jar}" tofile="${deploy.dir}/${tif.jar}"  force="true" overwrite="true"/>
+        <copy file="deploy/${tif.zip}" tofile="${deploy.dir}/${tif.zip}"  force="true" overwrite="true"/>
+        <copy file="deploy/tif.bat" tofile="${deploy.dir}/tif.bat"  force="true" overwrite="true"/>
+        <copy file="schema/TIF.xsd" tofile="${deploy.dir}/TIF.xsd"  force="true" overwrite="true"/>
+        
+        <copy todir="${deploy.dir}/transforms"  force="true">
+            <fileset dir="transforms" excludes="*.pj" />
+        </copy>
+        
+        <copy file="resources/${tif.template.zip}" tofile="${deploy.dir}/resources/${tif.template.zip}"  force="true"/>
+        <copy file="resources/simple-domain.zip"   tofile="${deploy.dir}/resources/simple-domain.zip"    force="true"/>
+        <copy file="resources/mde-sample.zip"      tofile="${deploy.dir}/resources/mde-sample.zip"       force="true"/>
+        <copy file="resources/SimpleTM.zip"        tofile="${deploy.dir}/resources/SimpleTM.zip"         force="true"/>
+        
+        <copy todir="${deploy.dir}/lib" >
+            <fileset dir="lib" excludes="*.pj" />
+        </copy>
+    </target>
+    
+   <target name="zip-samples" description="Zip up the sample environments and put them in the resources directory.." depends="" >
+       <delete file="resources/simple-domain.zip"></delete>
+       <zip destfile="resources/simple-domain.zip" >
+           <zipfileset dir="${tif.samples.simple.domain}"  />
+       </zip>
+       <delete file="resources/mde-sample.zip"></delete>
+       <zip destfile="resources/mde-sample.zip" >
+           <zipfileset dir="${tif.samples.mde}"  />
+       </zip>
+       <delete file="resources/SimpleTM.zip"></delete>
+       <zip destfile="resources/SimpleTM.zip" >
+           <zipfileset dir="${tif.samples.tm}"  />
+       </zip>
+   </target>
+    
+    <target name="sync-template" depends="deploy-docs" description="Sync all the significant files from the test environment into the template environment.">
+        
+        <copy todir="${deploy.dir}/transforms" >
+            <fileset dir="${tif.samples.simple.domain}/xsl" excludes="*.pj" />
+        </copy>
+        
+        <copy todir="${deploy.dir}/tif-template/external-scripts" >
+            <fileset dir="${tif.samples.simple.domain}/external-scripts" excludes="*.pj" />
+        </copy>
+        
+        <copy todir="${deploy.dir}/resources" >
+            <fileset dir="resources" excludes="*.pj" />
+        </copy>
+        
+        <copy todir="${deploy.dir}/lib" >
+            <fileset dir="lib" excludes="*.pj" />
+        </copy>
+    </target>
+    
+    <!--target name="init">
+       <mkdir dir="${build.generated.sources.dir}"/>
+    </target-->
+    
+    <target name="diff-transforms">
+        <!--exec executable="which">
+            <arg value="diff.exe"/>
+        </exec-->
+        <delete file="tx-diff.out" />
+        <apply executable="diff" force="yes" output="tx-diff.out" append="true" verbose="true">
+            <arg line="-C 0"/>
+            <fileset dir="${tif.transforms.dir}" />
+            <srcfile />
+            <targetfile />
+            <mapper type="glob" from="*.xsl" to="${tif.samples.simple.domain.diff}/xsl/*.xsl" />
+        </apply>    
+    
+    </target>
+</project>

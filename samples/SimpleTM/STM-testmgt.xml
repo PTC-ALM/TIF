@@ -1,0 +1,716 @@
+<type name="Test Suite" presentation="doc-blue">
+    <fields>
+        <field name="Summary">
+            <editability>(false)</editability>
+        </field>
+        <field name="State"/>
+        <field name="Assigned User"/>
+        <field name="Project"/>
+        <field name="Attachments"/>
+        <field name="Revision Date">
+            <description>Date of last significant modification to this item. If this item is a node then the value is the date of the last significant edit that on either the node or the shared item, whichever is latest.</description>
+        </field>
+        <field name="Parameters">
+            <description>The substitution parameter definitions</description>
+        </field>
+        <field name="Document Phase">
+        </field>
+        <field name="Use Hierarchical Editability">
+            <editability>(false)</editability>
+            <description>Field exposed on document roots which, when true, enables change order and document-level authorization controls</description>
+        </field>
+        <field name="Show In Finder">
+            <default>true</default>
+        </field>
+        <field name="Record Results As Shared"/>
+        
+        <field name="Valid Change Order">
+            <editability>(false)</editability>
+            <description>Local computation which is true if the project does not require change orders, or the item is a disconnected node, or there is at least one change order attached to the item assigned to the current user and in the open phase.</description>
+        </field>
+
+        <field name="Allow Edits">
+            <description>Document computation which controls whether the main text of the content is editable</description>
+        </field>
+        <field name="Allow Links">
+        </field>
+        <field name="Allow Traces">
+        </field>
+
+        <field name="Parameter Values">
+            <description>The parameter values for substitution</description>
+        </field>
+        <field name="Shared Attachments">
+            <editability>(((field[&quot;Allow Edits&quot;] = &quot;true&quot;) and ((field[&quot;Valid Change Order&quot;] = &quot;true&quot;) or (field[&quot;Use Hierarchical Editability&quot;] = &quot;false&quot;))))</editability>
+            <description>Attachments used by shared items in the RM Solution</description>
+        </field>
+        <field name="Root Document">
+            <editability>((user is a member of &quot;Senior Project Team&quot;) or (field[&quot;Project&quot;] == &quot;&quot;))</editability>
+            <description>Document field which, when true, causes the document to show up as a top-level document in the project</description>
+            <default>true</default>
+        </field>
+        <field name="Shared Text">
+            <editability>(item is segment)</editability>
+            <description>The main payload for the document contents</description>
+        </field>
+        <field name="Document Short Title">
+            <!--editability>((false) or ((field[&quot;Allow Edits&quot;] = &quot;true&quot;) and ((field[&quot;Valid Change Order&quot;] = &quot;true&quot;) or (field[&quot;Use Hierarchical Editability&quot;] = &quot;false&quot;))) or (field[&quot;Allow Edits&quot;] = &quot;&quot;))</editability-->
+            <description>The short name of the document. The value is editable by the user and is used to construct the full name that is stored in the Summary and Shared Text fields. The Document Name trigger constructs the full name of the document.</description>
+        </field>
+        <field name="Category Int Value">
+            <editability>(false)</editability>
+            <relevance>(false)</relevance>
+            <description>Calculates the integer value associated with the Category/Shared Category field's pick value.  This is a hidden field used by the Document Traces Tree View report recipe to display content specifc images</description>
+        </field>
+    </fields>
+    <states>
+        <state name="In Review">
+            <next group="everyone" name="In Review"/>
+            <next group="everyone,Senior Project Team" name="Published"/>
+            <next group="everyone,Senior Project Team" name="Open"/>
+            <next group="everyone,Senior Project Team" name="Restricted"/>
+            <mandatory>
+                <field name="Document Short Title"/>
+            </mandatory>
+        </state>
+        <state name="Published">
+            <next group="everyone" name="Published"/>
+            <next group="everyone,Senior Project Team" name="Restricted"/>
+            <next group="everyone,Senior Project Team" name="Delivered"/>
+            <mandatory>
+                <field name="Document Short Title"/>
+            </mandatory>
+        </state>
+        <state name="Open">
+            <next group="everyone,Senior Project Team" name="In Review"/>
+            <next group="everyone" name="Open"/>
+            <next group="everyone,Senior Project Team" name="Restricted"/>
+            <next group="everyone" name="Inactive"/>
+            <mandatory>
+                <field name="Document Short Title"/>
+            </mandatory>
+        </state>
+        <state name="Restricted">
+            <next group="everyone,Senior Project Team" name="In Review"/>
+            <next group="everyone,Senior Project Team" name="Open"/>
+            <next group="everyone" name="Restricted"/>
+            <next group="everyone,Senior Project Team" name="Review Pending"/>
+            <mandatory>
+                <field name="Document Short Title"/>
+            </mandatory>
+        </state>
+        <state name="Review Pending">
+            <next group="everyone,Senior Project Team" name="In Review"/>
+            <next group="everyone,Senior Project Team" name="Restricted"/>
+            <next group="everyone" name="Review Pending"/>
+            <mandatory>
+                <field name="Document Short Title"/>
+            </mandatory>
+        </state>
+        <state name="Delivered">
+            <next group="everyone" name="Restricted"/>
+            <next group="everyone" name="Delivered"/>
+            <next group="everyone,Senior Project Team" name="Retired"/>
+            <mandatory>
+                <field name="Document Short Title"/>
+            </mandatory>
+        </state>
+        <state name="Retired">
+            <next group="everyone" name="Retired"/>
+            <mandatory>
+                <field name="Document Short Title"/>
+            </mandatory>
+        </state>
+        <state name="Inactive">
+            <next group="everyone" name="Open"/>
+            <next group="everyone" name="Inactive"/>
+        </state>
+        <state name="Unspecified">
+            <next group="everyone" name="Open"/>
+        </state>
+    </states>
+    <properties>
+       <property value="{Document Short Title}" name="MKS.RQ.DocumentTitleFormat">
+           <description>Document title displayed in the tab.</description>
+       </property>
+        <property value="Test" name="MKS.RQ.Domain">
+            <description>(Configurable) The solution domain this document type is used with.  Change this value only if you are copying this type to create a new domain.</description>
+        </property>
+        <property value="Project,Shared Attachments,Shared Text,Shared Category,Contains,Summary" name="MKS.RQ.Editability.1">
+            <description>(Configurable) Fields that are editable only when the field referenced by property MKS.RQ.EditabilityField.1 has value true.</description>
+        </property>
+        <property value="Project,Shared Attachments,Shared Text,Shared Category,Contains,Summary,Changes Authorized By" name="MKS.RQ.Editability.Document.1">
+            <description>(Configurable) Fields that are editable only when the field referenced by property MKS.RQ.EditabilityField.Document.1 has value true.</description>
+        </property>
+        <property value="" name="MKS.RQ.Editability.Document.3">
+            <description>(Configurable) Fields that are editable only when the field referenced by property MKS.RQ.EditabilityField.Document.3 has value true.</description>
+        </property>
+        <property value="Properties for {Summary}" name="MKS.RQ.item.editissue.title">
+            <description>(Configurable) Edit item title override. The application substitutes field names in curly braces with the value.</description>
+        </property>
+    </properties>
+    <document-model associated-type="Test Case" role="segment"/>
+    <test-management role="testSuite"/>
+    <constraints>
+        <constraint type="fieldRelationship">
+            <source name="Type">
+                <value>Test Suite</value>
+            </source>
+            <target name="Shared Category" mandatory="true">
+                <value>Suite</value>
+            </target>
+        </constraint>
+    </constraints>
+</type>
+
+<type name="Test Case" presentation="segment-blue">
+    <fields>
+       <field name="State"/>
+       <field name="Project"/>
+       <field name="Attachments"/>
+        <field name="Trace Status">
+            <editability>(false)</editability>
+            <description>Summary of the trace relationships emanating from this node. upstream/downstream corresponds to backward/forward direction.
+upstream =&gt; at least one upstream trace exists.
+downstream =&gt; at least one downstream trace exists.
+related =&gt; at least one peer trace (Is Related To) exists.
+suspect =&gt; at least one of the traces is suspect in the indicated class of traces.</description>
+            <default>none</default>
+        </field>
+        <field name="Revision Date">
+            <description>Date of last significant modification to this item. If this item is a node then the value is the date of the last significant edit that on either the node or the shared item, whichever is latest.</description>
+        </field>
+        <field display-name="Input Shared Item Revision Date" type="fva" name="Input Shared Item Revision Date">
+            <description>The revision date of the shared item</description>
+            <editability>(false)</editability>
+            <relevance>(false)</relevance>
+            <backing-issue relationship="References" field="Input Revision Date"/>
+        </field>
+       
+       <field name="Expected Results">
+       </field>
+       <field name="Parameter Values">
+           <description>The parameter values for substitution</description>
+       </field>
+       <field name="Priority">
+           <description>Priority of the issue.</description>
+       </field>
+       <field name="Category Int Value">
+           <editability>(false)</editability>
+           <relevance>(false)</relevance>
+           <description>Calculates the integer value associated with the Category/Shared Category field's pick value.  This is a hidden field used by the Document Traces Tree View report recipe to display content specifc images</description>
+       </field>
+       <field name="Changes Authorized By">
+           <description>Relationship between nodes and segment roots and the change orders that authorize changes to them.</description>
+       </field>
+       <field name="Text">
+           <editability>((field[&quot;Reference Mode&quot;] != &quot;Share&quot;))</editability>
+           <description>The primary contents of the artifact</description>
+       </field>
+       <field name="Text Attachments">
+           <editability>((field[&quot;Reference Mode&quot;] != &quot;Share&quot;))</editability>
+           <description>The attachments exposed on the shared item</description>
+       </field>
+       <field name="Valid Change Order">
+            <editability>(false)</editability>
+            <description>Local computation which is true if the project does not require change orders, or the item is a disconnected node, or there is at least one change order attached to the item assigned to the current user and in the open phase.</description>
+       </field>
+        <field name="Allow Links">
+        </field>
+        <field name="Allow Traces">
+        </field>
+        
+        <field name="Record Results As Shared">
+            <editability>(field[&quot;Reference Mode&quot;] = &quot;Share&quot;)</editability>
+            <relevance>(field[&quot;Reference Mode&quot;] = &quot;Share&quot;)</relevance>
+            <description>Share results for a shared test case with the test case it is sharing from.  If false, the results of the sharing test case will not appear as results on the shared test case, all other values will share results.  This field is only relevent for test cases with reference mode of share.  </description>
+            <default>true</default>
+        </field>
+        
+
+        <!-- *** Traces *** -->
+        <field name="Is Related To">
+            <traces backward="Is Related To'" description="A test case can be traced to another test case.">
+              <trace target="Test Case" />
+            </traces>
+        </field>
+        <field name="Validates">
+            <traces backward="Is Validated By" description="A test case validates a requirement..">
+              <trace target="Requirement" />
+            </traces>
+        </field>
+        
+        
+    </fields>
+    <states>
+       <state name="Active">
+           <next group="everyone" name="Active"/>
+       </state>
+       <state name="Unspecified">
+           <next group="everyone" name="Active"/>
+       </state>
+    </states>
+    <properties>
+       <property value="Project,Contains,References,Contained By,Text,Category,Text Attachments" name="MKS.RQ.Editability.1">
+           <description>(Configurable) Fields that are editable only when the field referenced by property MKS.RQ.EditabilityField.1 has value true. Do not specify the reverse couplet relationships (Referenced By) in this list - it will be ignored.</description>
+       </property>
+       <property value="Project,Contains,References,Contained By,Text,Category,Text Attachments,Changes Authorized By" name="MKS.RQ.Editability.Document.1">
+           <description>(Configurable) Fields that are editable only when the field referenced by property MKS.RQ.EditabilityField.Document.1 has value true. Do not specify the reverse couplet relationships (Referenced By) in this list - it will be ignored.</description>
+       </property>
+       <property value="" name="MKS.RQ.Editability.Document.2">
+           <description>(Configurable) Fields that are editable only when the field referenced by property MKS.RQ.EditabilityField.Document.2 has value true.</description>
+       </property>
+       <property value="" name="MKS.RQ.Editability.Document.3">
+           <description>(Configurable) Fields that are editable only when the field referenced by property MKS.RQ.EditabilityField.Document.3 has value true.</description>
+       </property>
+    </properties>
+    <document-model associated-type="Shared Test Case" role="node"/>
+    <test-management role="testCase">
+        <testcase enableTestSteps="true">
+            <result-fields>
+                <field>Text</field>
+                <field>Expected Results</field>
+            </result-fields>
+        </testcase>
+    </test-management>
+    
+    <constraints>
+       <constraint type="fieldRelationship">
+           <source name="Referenced Item Type">
+               <value>Test Suite</value>
+           </source>
+           <target name="Category" mandatory="false">
+               <value>Document</value>
+           </target>
+       </constraint>
+       <constraint type="fieldRelationship">
+           <source name="Referenced Item Type">
+               <value>Shared Test Case</value>
+           </source>
+           <target name="Category" mandatory="false">
+                <value>Integration Test</value>
+                <value>Performance Test</value>
+                <value>Load Test</value>
+                <value>User Acceptance Test</value>
+                <value>Heading</value>
+                <value>System Test</value>
+                <value>Comment</value>
+                <value>Component Test</value>
+           </target>
+       </constraint>
+    </constraints>
+</type>
+
+<type name="Shared Test Case">
+    <fields>
+       <field name="State"/>
+       <field name="Parameters">
+           <description>The substitution parameter definitions</description>
+       </field>
+       <field name="Parameter Values">
+           <description>The parameter values for substitution</description>
+       </field>
+       <field name="Shared Attachments">
+           <description>Attachments used by shared items in the RM Solution</description>
+       </field>
+       <field name="Shared Text">
+           <description>The main payload for the document contents</description>
+       </field>
+       <field name="Shared Expected Results">
+       </field>
+       
+    </fields>
+    <states>
+       <state name="Available">
+           <next group="everyone" name="Available"/>
+       </state>
+       <state name="Unspecified">
+           <next group="everyone" name="Available"/>
+       </state>
+    </states>
+    <properties/>
+    <document-model role="shareditem"/>
+    <constraints>
+       <constraint type="fieldRelationship">
+           <source name="Type">
+               <value>Shared Test Case</value>
+           </source>
+           <target name="Shared Category" mandatory="false">
+                <value>Integration Test</value>
+                <value>Performance Test</value>
+                <value>Load Test</value>
+                <value>User Acceptance Test</value>
+                <value>Heading</value>
+                <value>System Test</value>
+                <value>Comment</value>
+                <value>Component Test</value>
+           </target>
+       </constraint>
+    </constraints>
+</type>
+
+
+<type name="Test Step">
+    <fields>
+        <field name="Summary">
+        </field>
+        <field name="State">
+        </field>
+        <field name="Project">
+        </field>
+        <field name="Attachments">
+        </field>
+        <field name="Test Cases">
+        </field>
+        <field name="Description">
+            <description>Detailed description of the issue.</description>
+            <default>&lt;!-- MKS HTML --&gt;&lt;p&gt;&amp;#160;&lt;/p&gt;&lt;p&gt;&lt;u&gt;Setup&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&amp;#160;&lt;/p&gt;&lt;p&gt;&lt;u&gt;Test Procedure&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&amp;#160;&lt;/p&gt;&lt;p&gt;&lt;u&gt;Expected Results&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&amp;#160;&lt;/p&gt;</default>
+        </field>
+        <field name="Changes Authorized By">
+            <description>Relationship between nodes and segment roots and the change orders that authorize changes to them.</description>
+        </field>
+    </fields>
+    <states>
+        <state name="Active">
+            <next group="everyone" name="Active"/>
+            <mandatory>
+                <field name="Project"/>
+                <field name="Description"/>
+            </mandatory>
+        </state>
+        <state name="Unspecified">
+            <next group="everyone" name="Active"/>
+        </state>
+    </states>
+    <properties/>
+    <test-management role="testStep"/>
+</type>
+
+<type name="Test Session" presentation="testsession-blue">
+    <fields>
+        <field name="Summary"/>
+        <field name="State"/>
+        <field name="Assigned User"/>
+        <field name="Assigned Group"/>
+        <field name="Project"/>
+        <field name="Attachments"/>
+        <field name="Tests">
+            <relevance>(field[&quot;Session Type&quot;] != &quot;Exploratory&quot;)</relevance>
+        </field>
+        <field name="Parameters">
+            <description>The substitution parameter definitions</description>
+        </field>
+        <field name="Parameter Values">
+            <description>The parameter values for substitution</description>
+        </field>
+        <field name="Priority">
+            <description>Priority of the issue.</description>
+        </field>
+        <field name="Test Environment">
+            <description>Text field used to describe the testing environment for a Test Session.</description>
+        </field>
+        <field name="Build ID">
+            <relevance>((field[&quot;State&quot;] &lt;&gt; &quot;Cancelled&quot;))</relevance>
+            <description>A short text field used to track and identify the build being tested by a Test Session. This may be replaced by an IBPL referencing a Build item type for a stronger typed solution.</description>
+        </field>
+        <field name="Session Type">
+            <description>A pick list denoting the type of Test Session this is. A manual session is used for entering results with the test results editor. An automated session is used for capturing results with the automated test execution framework. An exploratory session is used for logging testing notes informally, exploratory sessions are sometimes used during the initial stages of testing to flush out obvious defects and can be used as a quality gate before formal testing is conducted.</description>
+            <default>Manual</default>
+        </field>
+        <field name="Test Objective">
+            <description>The associated test objective.</description>
+        </field>
+    </fields>
+    <states>
+        <state name="Cancelled">
+            <next group="everyone" name="Cancelled"/>
+            <next group="everyone" name="Submit"/>
+        </state>
+        <state name="Submit">
+            <next group="everyone" name="Cancelled"/>
+            <next group="everyone" name="Submit"/>
+            <next group="everyone" name="In Testing"/>
+            <mandatory>
+                <field name="Summary"/>
+                <field name="Project"/>
+                <field name="Test Objective"/>
+            </mandatory>
+        </state>
+        <state name="Completed">
+            <next group="everyone" name="Cancelled"/>
+            <next group="everyone" name="Completed"/>
+        </state>
+        <state name="In Testing">
+            <next group="everyone" name="Cancelled"/>
+            <next group="everyone" name="Completed"/>
+            <next group="everyone" name="In Testing"/>
+        </state>
+        <state name="Unspecified">
+            <next group="everyone" name="Submit"/>
+        </state>
+    </states>
+    <properties>
+        <property value="Attachments" name="MKS.RQ.model.mathworks.simulation.SimulationItemAttachmentFieldName">
+            <description>Field for Mathworks simulation attachments.</description>
+        </property>
+        <property value="Simulated Model" name="MKS.RQ.model.mathworks.simulation.SimulationModelLinkFieldName">
+            <description>Simulink model being tested</description>
+        </property>
+        <property value="In Testing" name="MKS.RQ.StatesToSetTestsAsOfDateField">
+            <description>(Configurable) A trigger will set the field Tests As Of Date to the current date and time when any of the listed states are set on a Test Session.  An existing value will not be overriden. Seperate multiple values with commas.</description>
+        </property>
+        <property value="External Script Name" name="QTPSessionAdapter.testCasePathFieldName">
+            <description>(Configurable) The field on the Test Case which contains the path to the QTP Test Script that is to be executed</description>
+        </property>
+    </properties>
+    <test-management role="testSession" >
+        <testsession resultModBy="userField" fieldname="Assigned User" />
+    </test-management>
+    <constraints>
+        <!--constraint type="fieldRelationship">
+            <source name="Type">
+                <value>Test Session</value>
+            </source>
+            <target name="Assigned User" mandatory="false">
+                <value>hasProjectPermission</value>
+            </target>
+        </constraint-->
+        <constraint type="ibpl">
+            <target name="Test Objective" mandatory="false"/>
+            <rule>(field[&quot;Project&quot;] = field'[&quot;Project&quot;])</rule>
+        </constraint>
+    </constraints>
+</type>
+
+<type name="Test Plan" presentation="testplan-blue">
+    <fields>
+        <field name="Summary"/>
+        <field name="State"/>
+        <field name="Assigned User"/>
+        <field name="Assigned Group"/>
+        <field name="Project"/>
+        <field name="Attachments"/>
+        <field name="Test Objectives">
+            <description>Relationship used to relate a Test Plan to one or more Test Objectives. This relationship field can also be used to nest a hierarchy of Test Objectives.</description>
+        </field>
+        <field name="Description">
+            <description>Detailed description of the issue.</description>
+        </field>
+    </fields>
+    <states>
+        <state name="In Review">
+            <next group="everyone" name="In Review"/>
+            <next group="everyone" name="Cancelled"/>
+            <next group="everyone" name="In Progress"/>
+            <mandatory>
+                <field name="Summary"/>
+                <field name="Description"/>
+            </mandatory>
+        </state>
+        <state name="Cancelled">
+            <next group="everyone" name="Cancelled"/>
+        </state>
+        <state name="Submit">
+            <next group="everyone" name="In Review"/>
+            <next group="everyone" name="Submit"/>
+            <next group="everyone" name="In Progress"/>
+            <mandatory>
+                <field name="Summary"/>
+                <field name="Description"/>
+            </mandatory>
+        </state>
+        <state name="Completed">
+            <next group="everyone" name="Completed"/>
+            <mandatory>
+                <field name="Summary"/>
+                <field name="Test Objectives"/>
+                <field name="Description"/>
+            </mandatory>
+        </state>
+        <state name="In Progress">
+            <next group="everyone" name="Cancelled"/>
+            <next group="everyone" name="Completed"/>
+            <next group="everyone" name="In Progress"/>
+            <mandatory>
+                <field name="Summary"/>
+                <field name="Test Objectives"/>
+                <field name="Description"/>
+            </mandatory>
+        </state>
+        <state name="Unspecified">
+            <next group="everyone" name="Submit"/>
+        </state>
+    </states>
+    <properties>
+        <property value="" name="MKS.RQ.MustBeTopLevel">
+            <description>(MKS Only) If exists then this type must be contained directly by the Project in the container hierarchy.</description>
+        </property>
+        <property value="via project or relationship" name="MKS.RQ.ProjectIsReassignable">
+            <description>(MKS Only) The project to which this item belongs is determined either by the container hierarchy having the Project item at the root or by the Project field on this item. If not in a hierarchy the related artifacts are not tracked in the dashboard.</description>
+        </property>
+        <property value="Test Objectives" name="MKS.RQ.WBSDownRelationships">
+            <description>(MKS Only) The comma-separated list of contains relationships for the container hierarchy having the Project item at the root.</description>
+        </property>
+        <property value="Test Plan For" name="MKS.RQ.WBSUpRelationship">
+            <description>(MKS Only) The containing relationship for the container hierarchy having the Project item at the root.</description>
+        </property>
+    </properties>
+    <constraints>
+        <!--constraint type="fieldRelationship">
+            <source name="Type">
+                <value>Test Plan</value>
+            </source>
+            <target name="Assigned User" mandatory="false">
+                <value>hasProjectPermission</value>
+            </target>
+        </constraint-->
+        <!--constraint type="fieldRelationship">
+            <source name="Type">
+                <value>Test Plan</value>
+            </source>
+            <target name="Assigned Group" mandatory="false">
+                <value>hasProjectPermission</value>
+            </target>
+        </constraint-->
+    </constraints>
+</type>
+
+<type name="Test Objective" presentation="testobj-blue">
+    <fields>
+        <field name="Summary"/>
+        <field name="State"/>
+        <field name="Assigned User"/>
+        <field name="Assigned Group"/>
+        <field name="Project"/>
+        <field name="Attachments"/>
+        <field name="Tests"/>
+        <field name="Priority">
+            <description>Priority of the issue.</description>
+        </field>
+        <field name="Test Objectives">
+            <description>Relationship used to relate a Test Plan to one or more Test Objectives. This relationship field can also be used to nest a hierarchy of Test Objectives.</description>
+        </field>
+        <field name="Description">
+            <description>Detailed description of the issue.</description>
+        </field>
+        <field name="Test Objective For">
+            <description>The backwards relationship used to relate a Test Plan to one or more Test Objectives. This relationship field can also be used to nest a hierarchy of Test Objectives.</description>
+        </field>
+        <field name="Completed Test Sessions">
+            <editability>(false)</editability>
+            <description>A query backed relationship which identifies all Test Sessions which are in a Completed phase. This query backed relationship is used throughout the solution to identify sessions which are complete and should be considered by metrics and computations. Contrary to this, active test sessions are considered work in progress, therefore session metrics are not rolled up to the Test Objective, Test Plan and Project.</description>
+        </field>
+        <field name="Active Test Sessions">
+            <editability>(false)</editability>
+            <description>Active test sessions belonging to this test objective.</description>
+        </field>
+    </fields>
+    <states>
+        <state name="Cancelled">
+            <next group="everyone" name="Cancelled"/>
+        </state>
+        <state name="Assigned">
+            <next group="everyone" name="Cancelled"/>
+            <next group="everyone" name="Assigned"/>
+            <next group="everyone" name="In Development"/>
+            <next group="everyone" name="In Testing"/>
+            <mandatory>
+                <field name="Summary"/>
+                <field name="State"/>
+                <field name="Project"/>
+            </mandatory>
+        </state>
+        <state name="Rejected">
+            <next group="everyone" name="Rejected"/>
+            <next group="everyone" name="Proposed"/>
+        </state>
+        <state name="In Development">
+            <next group="everyone" name="Cancelled"/>
+            <next group="everyone" name="In Development"/>
+            <next group="everyone" name="In Testing"/>
+            <mandatory>
+                <field name="Summary"/>
+                <field name="State"/>
+                <field name="Project"/>
+                <field name="Test Objective For"/>
+            </mandatory>
+        </state>
+        <state name="Completed">
+            <next group="everyone" name="Completed"/>
+            <next group="everyone" name="In Retesting"/>
+            <mandatory>
+                <field name="Summary"/>
+                <field name="State"/>
+                <field name="Project"/>
+                <field name="Test Objective For"/>
+            </mandatory>
+        </state>
+        <state name="In Testing">
+            <next group="everyone" name="Cancelled"/>
+            <next group="everyone" name="Completed"/>
+            <next group="everyone" name="In Testing"/>
+            <mandatory>
+                <field name="Summary"/>
+                <field name="State"/>
+                <field name="Project"/>
+                <field name="Test Objective For"/>
+            </mandatory>
+        </state>
+        <state name="In Retesting">
+            <next group="everyone" name="Completed"/>
+            <next group="everyone" name="In Retesting"/>
+            <mandatory>
+                <field name="Summary"/>
+                <field name="State"/>
+                <field name="Project"/>
+                <field name="Test Objective For"/>
+            </mandatory>
+        </state>
+        <state name="Proposed">
+            <next group="everyone" name="Assigned"/>
+            <next group="everyone" name="Rejected"/>
+            <next group="everyone" name="Proposed"/>
+            <mandatory>
+                <field name="Summary"/>
+                <field name="State"/>
+                <field name="Project"/>
+            </mandatory>
+        </state>
+        <state name="Unspecified">
+            <next group="everyone" name="Proposed"/>
+        </state>
+    </states>
+    <properties>
+        <property value="via relationship" name="MKS.RQ.ProjectIsReassignable">
+            <description>(MKS Only) The project to which this task belongs is determined ultimately by the container hierarchy having the Project item at the root.</description>
+        </property>
+        <property value="Completed Test Sessions" name="MKS.RQ.SessionsRelationshipField">
+            <description>(Configurable) Defines the relationship field used when viewing results for a Test Objective.</description>
+        </property>
+        <property value="Test Objectives" name="MKS.RQ.WBSDownRelationships">
+            <description>(MKS Only) The comma-separated list of contains relationships for the container hierarchy having the Project item at the root.</description>
+        </property>
+        <property value="Test Objective For" name="MKS.RQ.WBSUpRelationship">
+            <description>(MKS Only) The containing relationship for the container hierarchy having the Project item at the root.</description>
+        </property>
+    </properties>
+    <constraints>
+        <!--constraint type="fieldRelationship">
+            <source name="Type">
+                <value>Test Objective</value>
+            </source>
+            <target name="Assigned User" mandatory="false">
+                <value>hasProjectPermission</value>
+            </target>
+        </constraint>
+        <constraint type="fieldRelationship">
+            <source name="Type">
+                <value>Test Objective</value>
+            </source>
+            <target name="Assigned Group" mandatory="false">
+                <value>hasProjectPermission</value>
+            </target>
+        </constraint-->
+    </constraints>
+</type>
+

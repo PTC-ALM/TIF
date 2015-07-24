@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IssuePresentationTemplate backgroundColor="White" version="2.0">
+    <Styles>
+        <TextStyle fontColor="Navy" fontSize="0" id="Blue Text" name="Blue Text"/>
+        <TextStyle fontColor="Black" fontSize="0" fontStyle="bold"
+                   id="Field Label Style" name="Field Label Style"/>
+        <TextStyle fontColor="#B54A4A" fontSize="0" fontStyle="bold"
+                   id="Mandatory Field Label Style"
+                   name="Mandatory Field Label Style"/>
+        <TextStyle fontColor="Navy" fontName="Calibri" fontSize="18"
+                   fontStyle="bold" id="Title" name="Title"/>
+        <DefaultStyles fieldLabel="Field Label Style"
+                       mandatoryFieldLabel="Mandatory Field Label Style"/>
+    </Styles>
+    <Grids>
+        <DefaultGridProperties border="0" cellpadding="0" cellspacing="5"
+                               fill="True" pack="True"/>
+        <DefaultCellProperties align="Left" valign="Top" wrap="True"/>
+    </Grids>
+    <Tabs>
+        <Tab hasIconDecorator="False" name="Properties" position="1">
+            <Grids>
+                <DefaultGridProperties border="0" cellpadding="0"
+                                       cellspacing="0" fill="True" pack="True"/>
+                <DefaultCellProperties align="Left" valign="Middle" wrap="True"/>
+                <Grid>
+                    <Cell height="1" width="5" x="0" y="0">
+                        <Label text="General" textStyle="Title"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="5" y="0"/>
+                    <Cell align="Right" height="1" width="1" x="0" y="1">
+                        <FieldLabel fieldID="-10"/>
+                    </Cell>
+                    <Cell height="1" width="2" x="1" y="1">
+                        <FieldValue fieldID="-10"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="3" y="1"/>
+                    <Cell height="1" width="1" x="4" y="1"/>
+                    <Cell height="1" width="1" x="5" y="1"/>
+                    <Cell align="Right" height="1" width="1" x="0" y="2">
+                        <FieldLabel fieldID="-8"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="1" y="2">
+                        <FieldValue fieldID="-8"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="2" y="2"/>
+                    <Cell align="Right" height="1" width="1" x="3" y="2">
+                        <FieldLabel fieldID="-6"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="4" y="2">
+                        <FieldValue fieldID="-6"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="5" y="2"/>
+                    <Cell align="Right" height="1" width="1" x="0" y="3">
+                        <FieldLabel fieldID="-9"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="1" y="3">
+                        <FieldValue fieldID="-9"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="2" y="3"/>
+                    <Cell align="Right" height="1" width="1" x="3" y="3">
+                        <FieldLabel fieldID="-7"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="4" y="3">
+                        <FieldValue fieldID="-7"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="5" y="3"/>
+                    <Cell height="1" width="1" x="0" y="4"/>
+                    <Cell height="1" width="1" x="1" y="4"/>
+                    <Cell height="1" width="1" x="2" y="4"/>
+                    <Cell align="Right" height="1" width="1" x="3" y="4">
+                        <FieldLabel fieldID="14"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="4" y="4">
+                        <FieldValue fieldID="14"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="5" y="4"/>
+                    <Cell height="1" width="4" x="0" y="5">
+                        <Label text="Description" textStyle="Title"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="4" y="5"/>
+                    <Cell height="1" width="1" x="5" y="5"/>
+                    <Cell height="1" width="6" x="0" y="6">
+                        <FieldValue fieldID="43"/>
+                    </Cell>
+                    <Cell height="1" width="6" x="0" y="7">
+                        <Label text="Planned Tests" textStyle="Title"/>
+                    </Cell>
+                    <Cell height="1" width="6" x="0" y="8">
+                        <FieldValue fieldID="-27"/>
+                    </Cell>
+                </Grid>
+            </Grids>
+        </Tab>
+        <Tab hasIconDecorator="True" name="Relationships" position="2">
+            <Grids>
+                <DefaultGridProperties border="0" cellpadding="0"
+                                       cellspacing="0" fill="True" pack="True"/>
+                <DefaultCellProperties align="Left" valign="Middle" wrap="True"/>
+                <Grid>
+                    <Cell height="1" width="2" x="0" y="0">
+                        <FieldLabel fieldID="38"/>
+                    </Cell>
+                    <Cell height="1" width="2" x="0" y="1">
+                        <FieldValue fieldID="38"/>
+                    </Cell>
+                    <Cell height="1" width="2" x="0" y="2">
+                        <FieldLabel fieldID="42"/>
+                    </Cell>
+                    <Cell height="1" width="2" x="0" y="3">
+                        <FieldValue fieldID="42"/>
+                    </Cell>
+                    <Cell height="1" width="2" x="0" y="4">
+                        <FieldLabel fieldID="41"/>
+                    </Cell>
+                    <Cell height="1" width="2" x="0" y="5">
+                        <FieldValue fieldID="41"/>
+                    </Cell>
+                    <Cell height="1" width="2" x="0" y="6">
+                        <FieldLabel fieldID="37"/>
+                    </Cell>
+                    <Cell height="1" width="2" x="0" y="7">
+                        <FieldValue fieldID="37"/>
+                    </Cell>
+                    <Cell height="1" width="2" x="0" y="8"/>
+                    <Cell height="1" width="2" x="0" y="9"/>
+                    <Cell height="1" width="2" x="0" y="10"/>
+                </Grid>
+            </Grids>
+        </Tab>
+        <Tab hasIconDecorator="True" name="Attachments" position="3">
+            <Grids>
+                <DefaultGridProperties border="0" cellpadding="0"
+                                       cellspacing="0" fill="True" pack="True"/>
+                <DefaultCellProperties align="Left" valign="Middle" wrap="True"/>
+                <Grid>
+                    <Cell height="1" width="1" x="0" y="0">
+                        <FieldLabel fieldID="-16"/>
+                    </Cell>
+                    <Cell height="1" width="1" x="0" y="1">
+                        <FieldValue fieldID="-16"/>
+                    </Cell>
+                </Grid>
+            </Grids>
+        </Tab>
+    </Tabs>
+</IssuePresentationTemplate>
