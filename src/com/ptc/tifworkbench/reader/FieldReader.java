@@ -158,14 +158,24 @@ class FieldReader extends AdminObjectReader
             if(specified("min", wk))
                 fdef.setMin(getSafeField("min", wk));
             if(specified("max", wk))
-                fdef.setMax(getSafeField("max", wk));
-            
+                fdef.setMax(getSafeField("max", wk)); 
             if(specified("richContent", wk))
                 fdef.setRichContent(getBooleanField("richContent", wk));
             if(specified("defaultAttachmentField", wk))
                 fdef.setDefaultAttachmentField(getSafeField("defaultAttachmentField", wk));
             if(specified("displayPattern", wk))
                 fdef.setDisplayPattern(getSafeField("displayPattern", wk));
+            if(specified("showDateTime", wk))
+                fdef.setIncludeTime(getBooleanField("showDateTime", wk));
+            if(specified("displayTrueAs", wk))
+                fdef.setDisplayTrueAs(getSafeField("displayTrueAs", wk));
+            if(specified("displayFalseAs", wk))
+                fdef.setDisplayFalseAs(getSafeField("displayFalseAs", wk));
+            if(specified("displayAsProgress", wk))
+            	fdef.setDisplayAsProgress(getBooleanField("displayAsProgress", wk));
+            if(specified("displayAsLink", wk))
+                fdef.setDisplayAsLink(getBooleanField("displayAsLink", wk));
+            
 
             readComputation(fdef, wk);
             if (FieldType.PICK.equals(ftype)) 
