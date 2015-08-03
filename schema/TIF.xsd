@@ -162,9 +162,14 @@
         <xsd:attribute name="max" type="xsd:string"/>
         <xsd:attribute name="min" type="xsd:string"/>
         <xsd:attribute name="defaultAttachmentField" type="xsd:string"/>
-      <xsd:attribute name="trace" type="xsd:boolean"/>
-      <xsd:attribute name="substParams" type="xsd:boolean"/>
-      <xsd:attribute name="variableHeightRows" type="xsd:boolean"/>
+        <xsd:attribute name="trace" type="xsd:boolean"/>
+        <xsd:attribute name="substParams" type="xsd:boolean"/>
+        <xsd:attribute name="variableHeightRows" type="xsd:boolean"/>
+        <xsd:attribute name="includeTime" type="xsd:boolean"/>
+        <xsd:attribute name="displayTrueAs" type="xsd:string"/>
+        <xsd:attribute name="displayFalseAs" type="xsd:string"/>
+	<xsd:attribute name="displayAsLink" type="xsd:boolean"/>
+	<xsd:attribute name="displayAsProgress" type="xsd:boolean"/>
     </xsd:complexType>
 
 
