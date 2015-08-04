@@ -96,7 +96,7 @@
 		<xsd:attribute name="name" type="xsd:string" use="required"/>
 		<xsd:attribute name="icon" type="xsd:string"/>
 	</xsd:complexType>
-
+	
 	<xsd:complexType name="FieldsDefinitions">
 		<xsd:sequence>
 			<xsd:element name="field" type="ptc:FieldDefinition" minOccurs="0" maxOccurs="unbounded"/>
@@ -145,6 +145,7 @@
 				</xsd:complexType>
 			</xsd:element>
 			<xsd:element name="phases" minOccurs="0" type="ptc:PhasesDefinition"/>
+			<xsd:element name="suggestions" minOccurs="0" maxOccurs="1" type="ptc:Suggestions"/>
 		</xsd:sequence>
 		<xsd:attribute name="name" type="xsd:string" use="required"/>
 		<xsd:attribute name="type" type="ptc:FieldType"
@@ -173,10 +174,10 @@
 		<xsd:attribute name="displayAs" type="ptc:DisplayAsType"/>
 		<xsd:attribute name="cycleDetection" type="xsd:boolean"/>
 		<xsd:attribute name="showVariableHeightRows" type="xsd:boolean"/>
-
+		<xsd:attribute name="substituteParameters" type="xsd:boolean"/>
+		<xsd:attribute name="storeToHistoryFrequency" type="ptc:StoreToHistoryFrequencyType"/>
 	</xsd:complexType>
-
-
+	
 	<xsd:simpleType name="FieldType">
 		<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="shorttext"/>
@@ -212,12 +213,22 @@
 			<xsd:enumeration value="checkbox"/>
 		</xsd:restriction>
 	</xsd:simpleType>
-
+	
 	<xsd:simpleType name="LoggingType">
 		<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="none"/>
 			<xsd:enumeration value="mostRecentFirst"/>
 			<xsd:enumeration value="mostRecentLast"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="StoreToHistoryFrequencyType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="never"/>
+			<xsd:enumeration value="daily"/>
+			<xsd:enumeration value="weekly"/>
+			<xsd:enumeration value="monthly"/>
+			<xsd:enumeration value="delta"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 
@@ -238,7 +249,7 @@
 			<xsd:enumeration value="ibpl"/>
 		</xsd:restriction>
 	</xsd:simpleType>
-
+	
 	<xsd:simpleType name="TypeConstraintType">
 		<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="rule"/>
@@ -288,6 +299,16 @@
 			<xsd:enumeration value="shareditem"/>
 		</xsd:restriction>
 	</xsd:simpleType>
+	
+	<xsd:complexType name="Suggestions">
+		<xsd:sequence>
+			<xsd:element name="suggestion" type="ptc:Suggestion" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Suggestion">
+		<xsd:attribute name="name" type="xsd:string"/>
+	</xsd:complexType>
 
 	<xsd:complexType name="TypesDefinition">
 		<xsd:sequence>

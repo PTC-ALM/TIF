@@ -14,34 +14,40 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TriggerType.
+ * <p>Java class for StoreToHistoryFrequencyType.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="TriggerType">
+ * &lt;simpleType name="StoreToHistoryFrequencyType">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="rule"/>
- *     &lt;enumeration value="scheduled"/>
- *     &lt;enumeration value="other"/>
+ *     &lt;enumeration value="never"/>
+ *     &lt;enumeration value="daily"/>
+ *     &lt;enumeration value="weekly"/>
+ *     &lt;enumeration value="monthly"/>
+ *     &lt;enumeration value="delta"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
  * 
  */
-@XmlType(name = "TriggerType")
+@XmlType(name = "StoreToHistoryFrequencyType")
 @XmlEnum
-public enum TriggerType {
+public enum StoreToHistoryFrequencyType {
 
-    @XmlEnumValue("rule")
-    RULE("rule"),
-    @XmlEnumValue("scheduled")
-    SCHEDULED("scheduled"),
-    @XmlEnumValue("other")
-    OTHER("other");
+    @XmlEnumValue("never")
+    NEVER("never"),
+    @XmlEnumValue("daily")
+    DAILY("daily"),
+    @XmlEnumValue("weekly")
+    WEEKLY("weekly"),
+    @XmlEnumValue("monthly")
+    MONTHLY("monthly"),
+    @XmlEnumValue("delta")
+    DELTA("delta");
     private final String value;
 
-    TriggerType(String v) {
+    StoreToHistoryFrequencyType(String v) {
         value = v;
     }
 
@@ -49,8 +55,8 @@ public enum TriggerType {
         return value;
     }
 
-    public static TriggerType fromValue(String v) {
-        for (TriggerType c: TriggerType.values()) {
+    public static StoreToHistoryFrequencyType fromValue(String v) {
+        for (StoreToHistoryFrequencyType c: StoreToHistoryFrequencyType.values()) {
             if (c.value.equals(v)) {
                 return c;
             }

@@ -28,16 +28,16 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
 
 /**
- * <p>Java class for PhasesDefinition complex type.
+ * <p>Java class for Suggestions complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="PhasesDefinition">
+ * &lt;complexType name="Suggestions">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="phase" type="{http://www.ptc.com/integrity-solution}PhaseDefinition" maxOccurs="unbounded"/>
+ *         &lt;element name="suggestion" type="{http://www.ptc.com/integrity-solution}Suggestion" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -47,59 +47,59 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PhasesDefinition", propOrder = {
-    "phase"
+@XmlType(name = "Suggestions", propOrder = {
+    "suggestion"
 })
-public class PhasesDefinition
+public class Suggestions
     implements Equals, HashCode, ToString
 {
 
     @XmlElement(required = true)
-    protected List<PhaseDefinition> phase;
+    protected List<Suggestion> suggestion;
 
     /**
-     * Gets the value of the phase property.
+     * Gets the value of the suggestion property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the phase property.
+     * This is why there is not a <CODE>set</CODE> method for the suggestion property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getPhase().add(newItem);
+     *    getSuggestion().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link PhaseDefinition }
+     * {@link Suggestion }
      * 
      * 
      */
-    public List<PhaseDefinition> getPhase() {
-        if (phase == null) {
-            phase = new ArrayList<PhaseDefinition>();
+    public List<Suggestion> getSuggestion() {
+        if (suggestion == null) {
+            suggestion = new ArrayList<Suggestion>();
         }
-        return this.phase;
+        return this.suggestion;
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof PhasesDefinition)) {
+        if (!(object instanceof Suggestions)) {
             return false;
         }
         if (this == object) {
             return true;
         }
-        final PhasesDefinition that = ((PhasesDefinition) object);
+        final Suggestions that = ((Suggestions) object);
         {
-            List<PhaseDefinition> lhsPhase;
-            lhsPhase = this.getPhase();
-            List<PhaseDefinition> rhsPhase;
-            rhsPhase = that.getPhase();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "phase", lhsPhase), LocatorUtils.property(thatLocator, "phase", rhsPhase), lhsPhase, rhsPhase)) {
+            List<Suggestion> lhsSuggestion;
+            lhsSuggestion = this.getSuggestion();
+            List<Suggestion> rhsSuggestion;
+            rhsSuggestion = that.getSuggestion();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "suggestion", lhsSuggestion), LocatorUtils.property(thatLocator, "suggestion", rhsSuggestion), lhsSuggestion, rhsSuggestion)) {
                 return false;
             }
         }
@@ -114,9 +114,9 @@ public class PhasesDefinition
     public int hashCode(ObjectLocator locator, HashCodeStrategy strategy) {
         int currentHashCode = 1;
         {
-            List<PhaseDefinition> thePhase;
-            thePhase = this.getPhase();
-            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "phase", thePhase), currentHashCode, thePhase);
+            List<Suggestion> theSuggestion;
+            theSuggestion = this.getSuggestion();
+            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "suggestion", theSuggestion), currentHashCode, theSuggestion);
         }
         return currentHashCode;
     }
@@ -142,9 +142,9 @@ public class PhasesDefinition
 
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
         {
-            List<PhaseDefinition> thePhase;
-            thePhase = this.getPhase();
-            strategy.appendField(locator, this, "phase", buffer, thePhase);
+            List<Suggestion> theSuggestion;
+            theSuggestion = this.getSuggestion();
+            strategy.appendField(locator, this, "suggestion", buffer, theSuggestion);
         }
         return buffer;
     }

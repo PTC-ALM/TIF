@@ -8,11 +8,9 @@
 
 package com.ptc.tifworkbench.jaxbbinding;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 import org.jvnet.jaxb2_commons.lang.Equals;
 import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
@@ -28,17 +26,15 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
 
 /**
- * <p>Java class for PhasesDefinition complex type.
+ * <p>Java class for Suggestion complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="PhasesDefinition">
+ * &lt;complexType name="Suggestion">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="phase" type="{http://www.ptc.com/integrity-solution}PhaseDefinition" maxOccurs="unbounded"/>
- *       &lt;/sequence>
+ *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -47,59 +43,52 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PhasesDefinition", propOrder = {
-    "phase"
-})
-public class PhasesDefinition
+@XmlType(name = "Suggestion")
+public class Suggestion
     implements Equals, HashCode, ToString
 {
 
-    @XmlElement(required = true)
-    protected List<PhaseDefinition> phase;
+    @XmlAttribute(name = "name")
+    protected String name;
 
     /**
-     * Gets the value of the phase property.
+     * Gets the value of the name property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the phase property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getPhase().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link PhaseDefinition }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<PhaseDefinition> getPhase() {
-        if (phase == null) {
-            phase = new ArrayList<PhaseDefinition>();
-        }
-        return this.phase;
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the value of the name property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setName(String value) {
+        this.name = value;
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof PhasesDefinition)) {
+        if (!(object instanceof Suggestion)) {
             return false;
         }
         if (this == object) {
             return true;
         }
-        final PhasesDefinition that = ((PhasesDefinition) object);
+        final Suggestion that = ((Suggestion) object);
         {
-            List<PhaseDefinition> lhsPhase;
-            lhsPhase = this.getPhase();
-            List<PhaseDefinition> rhsPhase;
-            rhsPhase = that.getPhase();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "phase", lhsPhase), LocatorUtils.property(thatLocator, "phase", rhsPhase), lhsPhase, rhsPhase)) {
+            String lhsName;
+            lhsName = this.getName();
+            String rhsName;
+            rhsName = that.getName();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "name", lhsName), LocatorUtils.property(thatLocator, "name", rhsName), lhsName, rhsName)) {
                 return false;
             }
         }
@@ -114,9 +103,9 @@ public class PhasesDefinition
     public int hashCode(ObjectLocator locator, HashCodeStrategy strategy) {
         int currentHashCode = 1;
         {
-            List<PhaseDefinition> thePhase;
-            thePhase = this.getPhase();
-            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "phase", thePhase), currentHashCode, thePhase);
+            String theName;
+            theName = this.getName();
+            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "name", theName), currentHashCode, theName);
         }
         return currentHashCode;
     }
@@ -142,9 +131,9 @@ public class PhasesDefinition
 
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
         {
-            List<PhaseDefinition> thePhase;
-            thePhase = this.getPhase();
-            strategy.appendField(locator, this, "phase", buffer, thePhase);
+            String theName;
+            theName = this.getName();
+            strategy.appendField(locator, this, "name", buffer, theName);
         }
         return buffer;
     }

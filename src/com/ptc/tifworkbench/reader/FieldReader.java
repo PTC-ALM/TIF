@@ -24,6 +24,9 @@ import com.ptc.tifworkbench.jaxbbinding.FieldsDefinitions;
 import com.ptc.tifworkbench.jaxbbinding.PhaseDefinition;
 import com.ptc.tifworkbench.jaxbbinding.PhasesDefinition;
 import com.ptc.tifworkbench.jaxbbinding.ReverseRelationship;
+import com.ptc.tifworkbench.jaxbbinding.StoreToHistoryFrequencyType;
+import com.ptc.tifworkbench.jaxbbinding.Suggestion;
+import com.ptc.tifworkbench.jaxbbinding.Suggestions;
 import com.ptc.tifworkbench.jaxbbinding.ValueDefinition;
 import com.ptc.tifworkbench.jaxbbinding.ValuesDefinition;
 import com.ptc.tifworkbench.model.StandardFields;
@@ -179,6 +182,10 @@ class FieldReader extends AdminObjectReader
                 fdef.setCycleDetection(getBooleanField("cycleDetection", wk));
             if(specified("showTallRows",wk))
                 fdef.setShowVariableHeightRows(getBooleanField("showTallRows", wk));
+            if(specified("suggestions",wk))
+                readSuggestions(fdef,wk);
+            if(specified("paramSubstitution",wk))
+                fdef.setShowVariableHeightRows(getBooleanField("paramSubstitution", wk));
             if(specified("displayAs",wk)){
                 String val = getSafeField("displayAs",wk);
                 DisplayAsType displayAs = (val.equals("Checkbox")) ? DisplayAsType.CHECKBOX : DisplayAsType.DROPDOWN;
@@ -189,7 +196,12 @@ class FieldReader extends AdminObjectReader
                 DisplayType displayStyle = (val.equals("table")) ? DisplayType.TABLE : DisplayType.CSV;
                 fdef.setDisplayType(displayStyle);
             }
-            
+            if(specified("storeToHistoryFrequency",wk)){
+                String val = getSafeField("storeToHistoryFrequency",wk);
+                StoreToHistoryFrequencyType frequencyType = StoreToHistoryFrequencyType.fromValue(val);
+                fdef.setStoreToHistoryFrequency(frequencyType);
+            }
+          
             readComputation(fdef, wk);
             if (FieldType.PICK.equals(ftype)) 
             {
@@ -259,6 +271,19 @@ class FieldReader extends AdminObjectReader
         //return returnField;
     }    
     
+    protected void readSuggestions(final FieldDefinition fdef, final WorkItem wk){
+        Suggestions fdefSuggestions = getFactory().createSuggestions();
+        Field suggestionsField = wk.getField("suggestions");
+        List<?> suggestions = suggestionsField.getList();
+        for(Object value : suggestions){
+            Suggestion suggestion = getFactory().createSuggestion();
+            suggestion.setName(value.toString());
+            fdefSuggestions.getSuggestion().add(suggestion);
+        }
+        fdef.setSuggestions(fdefSuggestions);
+    }
+    
+
     protected void readBasicRelationshipFields(FieldDefinition fdef, WorkItem wk)
     {
             fdef.setMultivalued(getBooleanField("isMultiValued", wk));
