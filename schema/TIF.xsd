@@ -6,637 +6,645 @@
             xmlns:ptc="http://www.ptc.com/integrity-solution"
             elementFormDefault="qualified">
 
-    <xsd:element name="im-solution" >
-        <xsd:complexType >
-    	<xsd:sequence>
-    		<xsd:element name="users" type="ptc:UsersDefinitions"
+	<xsd:element name="im-solution" >
+		<xsd:complexType >
+			<xsd:sequence>
+				<xsd:element name="users" type="ptc:UsersDefinitions"
     			minOccurs="1">
-    		</xsd:element>
-    		<xsd:element name="fields" type="ptc:FieldsDefinitions"
+				</xsd:element>
+				<xsd:element name="fields" type="ptc:FieldsDefinitions"
     			minOccurs="1">
-    		</xsd:element>
-    		<xsd:element name="types" type="ptc:TypesDefinition"
+				</xsd:element>
+				<xsd:element name="types" type="ptc:TypesDefinition"
     			minOccurs="1">
-    		</xsd:element>
-    		<xsd:element name="groups" type="ptc:GroupsDefinition"
+				</xsd:element>
+				<xsd:element name="groups" type="ptc:GroupsDefinition"
     			minOccurs="1">
-    		</xsd:element>
-    		<xsd:element name="projects" type="ptc:ProjectsDefinitions"
+				</xsd:element>
+				<xsd:element name="projects" type="ptc:ProjectsDefinitions"
     			minOccurs="1">
-    		</xsd:element>
-    		<xsd:element name="states" type="ptc:StatesDefinition" minOccurs="1"></xsd:element>
-    	    <xsd:element name="triggers" minOccurs="1" maxOccurs="1" type="ptc:TriggersDefinition"></xsd:element>
-    	    <xsd:element name="queries" type="ptc:QueriesDefinition"></xsd:element>
-    	    <xsd:element name="dynamic-groups" type="ptc:DynamicGroupsDefinition"/>
-    	</xsd:sequence>
-    	<xsd:attribute name="title" type="xsd:string" use="required"></xsd:attribute>
-    </xsd:complexType>
-    
-    </xsd:element>
+				</xsd:element>
+				<xsd:element name="states" type="ptc:StatesDefinition" minOccurs="1"/>
+				<xsd:element name="triggers" minOccurs="1" maxOccurs="1" type="ptc:TriggersDefinition"/>
+				<xsd:element name="queries" type="ptc:QueriesDefinition"/>
+				<xsd:element name="dynamic-groups" type="ptc:DynamicGroupsDefinition"/>
+			</xsd:sequence>
+			<xsd:attribute name="title" type="xsd:string" use="required"/>
+		</xsd:complexType>
 
-    <xsd:complexType name="UsersDefinitions">
-    	<xsd:sequence>
-    		<xsd:element name="user" type="ptc:UserDefinition" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-    	</xsd:sequence>
-    </xsd:complexType>
+	</xsd:element>
 
-    <xsd:complexType name="UserDefinition">
-    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
-    	<xsd:attribute name="full-name" type="xsd:string"></xsd:attribute>
-    	<xsd:attribute name="email" type="xsd:string"></xsd:attribute>
-        <xsd:attribute name="description" type="xsd:string"/>
-        <xsd:attribute name="notification-rule" type="xsd:string"/>
-        <xsd:attribute name="active" type="xsd:boolean"/>
-    </xsd:complexType>
+	<xsd:complexType name="UsersDefinitions">
+		<xsd:sequence>
+			<xsd:element name="user" type="ptc:UserDefinition" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="UserDefinition">
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="full-name" type="xsd:string"/>
+		<xsd:attribute name="email" type="xsd:string"/>
+		<xsd:attribute name="description" type="xsd:string"/>
+		<xsd:attribute name="notification-rule" type="xsd:string"/>
+		<xsd:attribute name="active" type="xsd:boolean"/>
+	</xsd:complexType>
 
 
-    <xsd:complexType name="ProjectsDefinitions">
-    	<xsd:sequence>
-    		<xsd:element name="project" type="ptc:ProjectDefinition" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-    	</xsd:sequence>
-    </xsd:complexType>
+	<xsd:complexType name="ProjectsDefinitions">
+		<xsd:sequence>
+			<xsd:element name="project" type="ptc:ProjectDefinition" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
 
-    <xsd:complexType name="ProjectDefinition">
-    	<xsd:sequence></xsd:sequence>
-    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
-    	<xsd:attribute name="parent" type="xsd:string"></xsd:attribute>
-    	<xsd:attribute name="openImage" type="xsd:string"></xsd:attribute>
-    	<xsd:attribute name="closedImage" type="xsd:string"></xsd:attribute>
-    	<xsd:attribute name="permittedGroups" type="xsd:string"></xsd:attribute>
-        <xsd:attribute name="description" type="xsd:string"/>
-    </xsd:complexType>
+	<xsd:complexType name="ProjectDefinition">
+		<xsd:sequence/>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+		<xsd:attribute name="parent" type="xsd:string"/>
+		<xsd:attribute name="openImage" type="xsd:string"/>
+		<xsd:attribute name="closedImage" type="xsd:string"/>
+		<xsd:attribute name="permittedGroups" type="xsd:string"/>
+		<xsd:attribute name="description" type="xsd:string"/>
+	</xsd:complexType>
 
-    <xsd:complexType name="GroupDefinition">
-    	<xsd:sequence>
-    		<xsd:element name="member" type="ptc:GroupMember"></xsd:element>
-    	</xsd:sequence>
-        <xsd:attribute name="name" type="xsd:string"/>
-        <xsd:attribute name="notification-rule" type="xsd:string"/>
-        <xsd:attribute name="description" type="xsd:string"/>
-        <xsd:attribute name="active" type="xsd:boolean"/>
-        <xsd:attribute name="email" type="xsd:string"/>
-    </xsd:complexType>
-    
-    <xsd:complexType name="GroupMember">
-    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
-    </xsd:complexType>
+	<xsd:complexType name="GroupDefinition">
+		<xsd:sequence>
+			<xsd:element name="member" type="ptc:GroupMember"/>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="notification-rule" type="xsd:string"/>
+		<xsd:attribute name="description" type="xsd:string"/>
+		<xsd:attribute name="active" type="xsd:boolean"/>
+		<xsd:attribute name="email" type="xsd:string"/>
+	</xsd:complexType>
 
-    <xsd:complexType name="StatesDefinition">
-    	<xsd:sequence>
-    		<xsd:element name="state" type="ptc:StateDefinition" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-    	  <xsd:element name="edit-state" minOccurs="0" maxOccurs="unbounded" type="ptc:StateDefinition"/>
-    	</xsd:sequence>
-    </xsd:complexType>
-    
-    <xsd:complexType name="StateDefinition">
-    	<xsd:sequence>
-    		<xsd:element name="description" type="xsd:string"></xsd:element>
-    	    <xsd:element name="capabilities" minOccurs="0" type="ptc:CapabilitiesDefinition"></xsd:element>
-    	</xsd:sequence>
-    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
-    	<xsd:attribute name="icon" type="xsd:string"></xsd:attribute>
-    </xsd:complexType>
+	<xsd:complexType name="GroupMember">
+		<xsd:attribute name="name" type="xsd:string"/>
+	</xsd:complexType>
 
-    <xsd:complexType name="FieldsDefinitions">
-    	<xsd:sequence>
-    		<xsd:element name="field" type="ptc:FieldDefinition" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-    	  <xsd:element name="edit-field" minOccurs="0" maxOccurs="unbounded" type="ptc:FieldDefinition"/>
-    	</xsd:sequence>
-    </xsd:complexType>
-    
-    <xsd:complexType name="FieldDefinition">
-    	<xsd:sequence>
-    		<xsd:element name="description" type="xsd:string"
+	<xsd:complexType name="StatesDefinition">
+		<xsd:sequence>
+			<xsd:element name="state" type="ptc:StateDefinition" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="edit-state" minOccurs="0" maxOccurs="unbounded" type="ptc:StateDefinition"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="StateDefinition">
+		<xsd:sequence>
+			<xsd:element name="description" type="xsd:string"/>
+			<xsd:element name="capabilities" minOccurs="0" type="ptc:CapabilitiesDefinition"/>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+		<xsd:attribute name="icon" type="xsd:string"/>
+	</xsd:complexType>
+
+	<xsd:complexType name="FieldsDefinitions">
+		<xsd:sequence>
+			<xsd:element name="field" type="ptc:FieldDefinition" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="edit-field" minOccurs="0" maxOccurs="unbounded" type="ptc:FieldDefinition"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="FieldDefinition">
+		<xsd:sequence>
+			<xsd:element name="description" type="xsd:string"
     			minOccurs="0">
-    		</xsd:element>
-    		<xsd:element name="values" type="ptc:ValuesDefinition"
+			</xsd:element>
+			<xsd:element name="values" type="ptc:ValuesDefinition"
     			minOccurs="0" maxOccurs="1">
-    		</xsd:element>
-    		<xsd:element name="editability" type="xsd:string"
+			</xsd:element>
+			<xsd:element name="editability" type="xsd:string"
     			minOccurs="0">
-    		</xsd:element>
-    		<xsd:element name="relevance" type="xsd:string"
+			</xsd:element>
+			<xsd:element name="relevance" type="xsd:string"
     			minOccurs="0">
-    		</xsd:element>
-    		<xsd:element name="relates" type="xsd:string"
+			</xsd:element>
+			<xsd:element name="relates" type="xsd:string"
     			minOccurs="0">
-    		</xsd:element>
-    		<xsd:element name="reverse" type="ptc:ReverseRelationship"
+			</xsd:element>
+			<xsd:element name="reverse" type="ptc:ReverseRelationship"
     			minOccurs="1">
-    		</xsd:element>
-    		<xsd:element name="computation"
+			</xsd:element>
+			<xsd:element name="computation"
     			type="ptc:ComputationDefinition" minOccurs="0">
-    		</xsd:element>
-    		<xsd:element name="default-columns" type="ptc:ColumnsDefinition"
+			</xsd:element>
+			<xsd:element name="default-columns" type="ptc:ColumnsDefinition"
     			minOccurs="0">
-    		</xsd:element>
-    		<xsd:element name="backing-issue"
+			</xsd:element>
+			<xsd:element name="backing-issue"
     			type="ptc:BackingIssueReference">
-    		</xsd:element>
-    	    <xsd:element name="query" type="xsd:string" minOccurs="0"/>
-    	    <xsd:element name="correlation" type="xsd:string" minOccurs="0"/>
-    	    <xsd:element name="default" minOccurs="0" type="xsd:string"/>
-    	  <xsd:element name="ranges" minOccurs="0">
-    	    <xsd:complexType>
-    	      <xsd:sequence>
-    	        <xsd:element name="range" type="ptc:RangeDefinition"/>
-    	      </xsd:sequence>
-    	      <xsd:attribute name="associated-field" type="xsd:string"/>
-    	    </xsd:complexType>
-    	  </xsd:element>
-    	  <xsd:element name="phases" minOccurs="0" type="ptc:PhasesDefinition"/>
-    	</xsd:sequence>
-    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
-    	<xsd:attribute name="type" type="ptc:FieldType"
+			</xsd:element>
+			<xsd:element name="query" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="correlation" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="default" minOccurs="0" type="xsd:string"/>
+			<xsd:element name="ranges" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="range" type="ptc:RangeDefinition"/>
+					</xsd:sequence>
+					<xsd:attribute name="associated-field" type="xsd:string"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="phases" minOccurs="0" type="ptc:PhasesDefinition"/>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+		<xsd:attribute name="type" type="ptc:FieldType"
     		use="required">
-    	</xsd:attribute>
-    	<xsd:attribute name="displayPattern" type="xsd:string"></xsd:attribute>
-    	<xsd:attribute name="multivalued" type="xsd:boolean"></xsd:attribute>
-        <xsd:attribute name="rich-content" type="xsd:boolean"/>
-        <xsd:attribute name="display-name" type="xsd:string"/>
-        <xsd:attribute name="max-length" type="xsd:int"/>
-        <xsd:attribute name="display-rows" type="xsd:int"/>
-        <xsd:attribute name="logging" type="ptc:LoggingType"/>
-        <xsd:attribute name="text-index" type="xsd:boolean"/>
-        <xsd:attribute name="displayType" type="ptc:DisplayType"/>
-        <xsd:attribute name="max" type="xsd:string"/>
-        <xsd:attribute name="min" type="xsd:string"/>
-        <xsd:attribute name="defaultAttachmentField" type="xsd:string"/>
-        <xsd:attribute name="trace" type="xsd:boolean"/>
-        <xsd:attribute name="substParams" type="xsd:boolean"/>
-        <xsd:attribute name="variableHeightRows" type="xsd:boolean"/>
-        <xsd:attribute name="includeTime" type="xsd:boolean"/>
-        <xsd:attribute name="displayTrueAs" type="xsd:string"/>
-        <xsd:attribute name="displayFalseAs" type="xsd:string"/>
-	<xsd:attribute name="displayAsLink" type="xsd:boolean"/>
-	<xsd:attribute name="displayAsProgress" type="xsd:boolean"/>
-    </xsd:complexType>
+		</xsd:attribute>
+		<xsd:attribute name="displayPattern" type="xsd:string"/>
+		<xsd:attribute name="multivalued" type="xsd:boolean"/>
+		<xsd:attribute name="rich-content" type="xsd:boolean"/>
+		<xsd:attribute name="display-name" type="xsd:string"/>
+		<xsd:attribute name="max-length" type="xsd:int"/>
+		<xsd:attribute name="display-rows" type="xsd:int"/>
+		<xsd:attribute name="logging" type="ptc:LoggingType"/>
+		<xsd:attribute name="text-index" type="xsd:boolean"/>
+		<xsd:attribute name="displayType" type="ptc:DisplayType"/>
+		<xsd:attribute name="max" type="xsd:string"/>
+		<xsd:attribute name="min" type="xsd:string"/>
+		<xsd:attribute name="defaultAttachmentField" type="xsd:string"/>
+		<xsd:attribute name="trace" type="xsd:boolean"/>
+		<xsd:attribute name="substParams" type="xsd:boolean"/>
+		<xsd:attribute name="variableHeightRows" type="xsd:boolean"/>
+		<xsd:attribute name="includeTime" type="xsd:boolean"/>
+		<xsd:attribute name="displayTrueAs" type="xsd:string"/>
+		<xsd:attribute name="displayFalseAs" type="xsd:string"/>
+		<xsd:attribute name="displayAsLink" type="xsd:boolean"/>
+		<xsd:attribute name="displayAsProgress" type="xsd:boolean"/>
+		<xsd:attribute name="displayAs" type="ptc:DisplayAsType"/>
+	</xsd:complexType>
 
 
-    <xsd:simpleType name="FieldType">
-    	<xsd:restriction base="xsd:string">
-    		<xsd:enumeration value="shorttext"></xsd:enumeration>
-    		<xsd:enumeration value="longtext"></xsd:enumeration>
-    		<xsd:enumeration value="siproject"></xsd:enumeration>
-    		<xsd:enumeration value="fva"></xsd:enumeration>
-    		<xsd:enumeration value="pick"></xsd:enumeration>
-    		<xsd:enumeration value="attachment"></xsd:enumeration>
-    		<xsd:enumeration value="logical"></xsd:enumeration>
-    		<xsd:enumeration value="relationship"></xsd:enumeration>
-    		<xsd:enumeration value="user"></xsd:enumeration>
-    		<xsd:enumeration value="group"></xsd:enumeration>
-    		<xsd:enumeration value="integer"></xsd:enumeration>
-    		<xsd:enumeration value="float"></xsd:enumeration>
-    		<xsd:enumeration value="date"></xsd:enumeration>
-    		<xsd:enumeration value="ibpl"></xsd:enumeration>
-    		<xsd:enumeration value="qbr"></xsd:enumeration>
-    		<xsd:enumeration value="phase"></xsd:enumeration>
-    		<xsd:enumeration value="range"></xsd:enumeration>
-    	</xsd:restriction>
-    </xsd:simpleType>
+	<xsd:simpleType name="FieldType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="shorttext"/>
+			<xsd:enumeration value="longtext"/>
+			<xsd:enumeration value="siproject"/>
+			<xsd:enumeration value="fva"/>
+			<xsd:enumeration value="pick"/>
+			<xsd:enumeration value="attachment"/>
+			<xsd:enumeration value="logical"/>
+			<xsd:enumeration value="relationship"/>
+			<xsd:enumeration value="user"/>
+			<xsd:enumeration value="group"/>
+			<xsd:enumeration value="integer"/>
+			<xsd:enumeration value="float"/>
+			<xsd:enumeration value="date"/>
+			<xsd:enumeration value="ibpl"/>
+			<xsd:enumeration value="qbr"/>
+			<xsd:enumeration value="phase"/>
+			<xsd:enumeration value="range"/>
+		</xsd:restriction>
+	</xsd:simpleType>
 
-    <xsd:simpleType name="DisplayType">
-    	<xsd:restriction base="xsd:string">
-    		<xsd:enumeration value="table"></xsd:enumeration>
-    		<xsd:enumeration value="csv"></xsd:enumeration>
-    	</xsd:restriction>
-    </xsd:simpleType>
+	<xsd:simpleType name="DisplayType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="table"/>
+			<xsd:enumeration value="csv"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="DisplayAsType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="dropdown"/>
+			<xsd:enumeration value="checkbox"/>
+		</xsd:restriction>
+	</xsd:simpleType>
 
-    <xsd:simpleType name="LoggingType">
-    	<xsd:restriction base="xsd:string">
-    		<xsd:enumeration value="none"></xsd:enumeration>
-    		<xsd:enumeration value="mostRecentFirst"></xsd:enumeration>
-    		<xsd:enumeration value="mostRecentLast"></xsd:enumeration>
-    	</xsd:restriction>
-    </xsd:simpleType>
+	<xsd:simpleType name="LoggingType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="none"/>
+			<xsd:enumeration value="mostRecentFirst"/>
+			<xsd:enumeration value="mostRecentLast"/>
+		</xsd:restriction>
+	</xsd:simpleType>
 
-    <xsd:simpleType name="CapabilityType">
-    	<xsd:restriction base="xsd:string">
-    		<xsd:enumeration value="timeTracking"></xsd:enumeration>
-    		<xsd:enumeration value="openChangePackages"></xsd:enumeration>
-    		<xsd:enumeration value="changePackagesUndeReview"></xsd:enumeration>
-    		<xsd:enumeration value="createTestResults"></xsd:enumeration>
-    	</xsd:restriction>
-    </xsd:simpleType>
+	<xsd:simpleType name="CapabilityType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="timeTracking"/>
+			<xsd:enumeration value="openChangePackages"/>
+			<xsd:enumeration value="changePackagesUndeReview"/>
+			<xsd:enumeration value="createTestResults"/>
+		</xsd:restriction>
+	</xsd:simpleType>
 
-    <xsd:simpleType name="ConstraintType">
-    	<xsd:restriction base="xsd:string">
-    		<xsd:enumeration value="basic"></xsd:enumeration>
-    		<xsd:enumeration value="fieldRelationship"></xsd:enumeration>
-    		<xsd:enumeration value="rule"></xsd:enumeration>
-    		<xsd:enumeration value="ibpl"></xsd:enumeration>
-    	</xsd:restriction>
-    </xsd:simpleType>
+	<xsd:simpleType name="ConstraintType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="basic"/>
+			<xsd:enumeration value="fieldRelationship"/>
+			<xsd:enumeration value="rule"/>
+			<xsd:enumeration value="ibpl"/>
+		</xsd:restriction>
+	</xsd:simpleType>
 
-    <xsd:simpleType name="TypeConstraintType">
-    	<xsd:restriction base="xsd:string">
-    		<xsd:enumeration value="rule"></xsd:enumeration>
-    		<xsd:enumeration value="ibpl"></xsd:enumeration>
-    	</xsd:restriction>
-    </xsd:simpleType>
+	<xsd:simpleType name="TypeConstraintType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="rule"/>
+			<xsd:enumeration value="ibpl"/>
+		</xsd:restriction>
+	</xsd:simpleType>
 
-    <xsd:simpleType name="TestManagementRoleType">
-    	<xsd:restriction base="xsd:string">
-    		<xsd:enumeration value="none"></xsd:enumeration>
-    		<xsd:enumeration value="testSuite"></xsd:enumeration>
-    		<xsd:enumeration value="testCase"></xsd:enumeration>
-    		<xsd:enumeration value="testStep"></xsd:enumeration>
-    		<xsd:enumeration value="testSession"></xsd:enumeration>
-    	</xsd:restriction>
-    </xsd:simpleType>
+	<xsd:simpleType name="TestManagementRoleType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="none"/>
+			<xsd:enumeration value="testSuite"/>
+			<xsd:enumeration value="testCase"/>
+			<xsd:enumeration value="testStep"/>
+			<xsd:enumeration value="testSession"/>
+		</xsd:restriction>
+	</xsd:simpleType>
 
-    <xsd:simpleType name="TestResultModificationType">
-    	<xsd:restriction base="xsd:string">
-    		<xsd:enumeration value="anyone"></xsd:enumeration>
-    		<xsd:enumeration value="userField"></xsd:enumeration>
-    		<xsd:enumeration value="groupField"></xsd:enumeration>
-    		<xsd:enumeration value="groups"></xsd:enumeration>
-    	</xsd:restriction>
-    </xsd:simpleType>
-    
-    <xsd:simpleType name="TriggerType">
-    	<xsd:restriction base="xsd:string">
-    		<xsd:enumeration value="rule"></xsd:enumeration>
-    		<xsd:enumeration value="scheduled"></xsd:enumeration>
-    		<xsd:enumeration value="other"></xsd:enumeration>
-    	</xsd:restriction>
-    </xsd:simpleType>
-    
-    <xsd:simpleType name="YesNo">
-    	<xsd:restriction base="xsd:string">
-    		<xsd:enumeration value="yes"></xsd:enumeration>
-    		<xsd:enumeration value="no"></xsd:enumeration>
-    	</xsd:restriction>
-    </xsd:simpleType>
-    
-    <xsd:simpleType name="DocumentRole">
-    	<xsd:restriction base="xsd:string">
-    		<xsd:enumeration value="none"></xsd:enumeration>
-    		<xsd:enumeration value="segment"></xsd:enumeration>
-    		<xsd:enumeration value="node"></xsd:enumeration>
-    		<xsd:enumeration value="shareditem"></xsd:enumeration>
-    	</xsd:restriction>
-    </xsd:simpleType>
+	<xsd:simpleType name="TestResultModificationType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="anyone"/>
+			<xsd:enumeration value="userField"/>
+			<xsd:enumeration value="groupField"/>
+			<xsd:enumeration value="groups"/>
+		</xsd:restriction>
+	</xsd:simpleType>
 
-    <xsd:complexType name="TypesDefinition">
-    	<xsd:sequence>
-    		<xsd:element name="type" type="ptc:TypeDefinition" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-    	  <xsd:element name="edit-type" minOccurs="0" maxOccurs="unbounded" type="ptc:TypeDefinition"/>
-    	</xsd:sequence>
-    </xsd:complexType>
-    
-    <xsd:complexType name="TypeDefinition">
-    	<xsd:sequence>
-    		<xsd:element name="fields" type="ptc:FieldsReference"
+	<xsd:simpleType name="TriggerType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="rule"/>
+			<xsd:enumeration value="scheduled"/>
+			<xsd:enumeration value="other"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="YesNo">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="yes"/>
+			<xsd:enumeration value="no"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="DocumentRole">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="none"/>
+			<xsd:enumeration value="segment"/>
+			<xsd:enumeration value="node"/>
+			<xsd:enumeration value="shareditem"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="TypesDefinition">
+		<xsd:sequence>
+			<xsd:element name="type" type="ptc:TypeDefinition" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="edit-type" minOccurs="0" maxOccurs="unbounded" type="ptc:TypeDefinition"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="TypeDefinition">
+		<xsd:sequence>
+			<xsd:element name="fields" type="ptc:FieldsReference"
     			minOccurs="1" maxOccurs="1">
-    		</xsd:element>
-    		<xsd:element name="states" type="ptc:StatesReference" minOccurs="1"></xsd:element>
-    		<xsd:element name="copyFields" type="xsd:string"></xsd:element>
-    		<xsd:element name="editability"
+			</xsd:element>
+			<xsd:element name="states" type="ptc:StatesReference" minOccurs="1"/>
+			<xsd:element name="copyFields" type="xsd:string"/>
+			<xsd:element name="editability"
     			type="ptc:EditabilityRule">
-    		</xsd:element>
-    	    <xsd:element name="properties" minOccurs="0" type="ptc:PropertiesDefinition"/>
-    	    <xsd:element name="document-model" minOccurs="0" type="ptc:DocumentModelDefinition"/>
-    	    <xsd:element name="test-management" minOccurs="0" type="ptc:TestManagementDefintion"/>
-    	    <xsd:element name="constraints" minOccurs="0" type="ptc:ConstraintsDefinition"/>
-    	  <xsd:element name="description" minOccurs="0" type="xsd:string"/>
-    	</xsd:sequence>
-    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
-    	<xsd:attribute name="attachments" type="xsd:string"></xsd:attribute>
-    	<xsd:attribute name="show-workflow" type="xsd:boolean"></xsd:attribute>
-        <xsd:attribute name="phase" type="xsd:string"/>
-        <xsd:attribute name="time-tracking" type="xsd:boolean"/>
-        <xsd:attribute name="cp-policy" type="xsd:string"/>
-      <xsd:attribute name="backsProject" type="xsd:boolean"/>
-      <xsd:attribute name="haveRevisions" type="xsd:boolean"/>
-      <xsd:attribute name="canDelete" type="xsd:boolean"/>
-      <xsd:attribute name="show-history" type="xsd:boolean"/>
-      <xsd:attribute name="allowCP" type="xsd:boolean"/>
-      <xsd:attribute name="canLabel" type="xsd:boolean"/>
-      <xsd:attribute name="presentation" type="xsd:string"/>
-    </xsd:complexType>
+			</xsd:element>
+			<xsd:element name="properties" minOccurs="0" type="ptc:PropertiesDefinition"/>
+			<xsd:element name="document-model" minOccurs="0" type="ptc:DocumentModelDefinition"/>
+			<xsd:element name="test-management" minOccurs="0" type="ptc:TestManagementDefintion"/>
+			<xsd:element name="constraints" minOccurs="0" type="ptc:ConstraintsDefinition"/>
+			<xsd:element name="description" minOccurs="0" type="xsd:string"/>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+		<xsd:attribute name="attachments" type="xsd:string"/>
+		<xsd:attribute name="show-workflow" type="xsd:boolean"/>
+		<xsd:attribute name="phase" type="xsd:string"/>
+		<xsd:attribute name="time-tracking" type="xsd:boolean"/>
+		<xsd:attribute name="cp-policy" type="xsd:string"/>
+		<xsd:attribute name="backsProject" type="xsd:boolean"/>
+		<xsd:attribute name="haveRevisions" type="xsd:boolean"/>
+		<xsd:attribute name="canDelete" type="xsd:boolean"/>
+		<xsd:attribute name="show-history" type="xsd:boolean"/>
+		<xsd:attribute name="allowCP" type="xsd:boolean"/>
+		<xsd:attribute name="canLabel" type="xsd:boolean"/>
+		<xsd:attribute name="presentation" type="xsd:string"/>
+	</xsd:complexType>
 
-    <xsd:complexType name="ValuesDefinition">
-    	<xsd:sequence>
-    		<xsd:element name="value" type="ptc:ValueDefinition" minOccurs="1" maxOccurs="unbounded"></xsd:element>
-    	</xsd:sequence>
-    </xsd:complexType>
-    
-    <xsd:complexType name="ValueDefinition">
-    	<xsd:simpleContent>
-    		<xsd:extension base="xsd:string">
-                    <xsd:attribute name="index" type="xsd:int"/>
-                    <xsd:attribute name="class" type="xsd:string"/>
-                    <xsd:attribute name="icon" type="xsd:string"/>
-    		</xsd:extension>
-    	</xsd:simpleContent>
-        
-    </xsd:complexType>
+	<xsd:complexType name="ValuesDefinition">
+		<xsd:sequence>
+			<xsd:element name="value" type="ptc:ValueDefinition" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
 
-    <xsd:complexType name="FieldsReference">
-    	<xsd:sequence>
-    		<xsd:element name="field" type="ptc:FieldReference" maxOccurs="unbounded"></xsd:element>
-    	</xsd:sequence>
-    </xsd:complexType>
-    
-    <xsd:complexType name="FieldReference">
-    	<xsd:sequence>
-    		<xsd:element name="editability" type="xsd:string"
+	<xsd:complexType name="ValueDefinition">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="index" type="xsd:int"/>
+				<xsd:attribute name="class" type="xsd:string"/>
+				<xsd:attribute name="icon" type="xsd:string"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+
+	</xsd:complexType>
+
+	<xsd:complexType name="FieldsReference">
+		<xsd:sequence>
+			<xsd:element name="field" type="ptc:FieldReference" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="FieldReference">
+		<xsd:sequence>
+			<xsd:element name="editability" type="xsd:string"
     			minOccurs="0">
-    		</xsd:element>
-    		<xsd:element name="relevance" type="xsd:string"
+			</xsd:element>
+			<xsd:element name="relevance" type="xsd:string"
     			minOccurs="0">
-    		</xsd:element>
-    	  <xsd:element name="traces">
-    	    <xsd:complexType>
-    	      <xsd:sequence>
-    	        <xsd:element name="trace" minOccurs="0" maxOccurs="unbounded">
-    	          <xsd:complexType>
-    	            <xsd:attribute name="target" type="xsd:string"/>
-    	          </xsd:complexType>
-    	        </xsd:element>
-    	      </xsd:sequence>
-    	      <xsd:attribute name="backward" type="xsd:string"/>
-    	      <xsd:attribute name="description" type="xsd:string"/>
-    	    </xsd:complexType>
-    	  </xsd:element>
-    	    <xsd:element name="description" type="xsd:string"/>
-    	    <xsd:element name="default" type="xsd:string"/>
-    	    <xsd:element name="constraint" type="ptc:ConstraintDefinition"/>
-    	</xsd:sequence>
-    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
-        <xsd:attribute name="display-name" type="xsd:string"/>
-    </xsd:complexType>
+			</xsd:element>
+			<xsd:element name="traces">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="trace" minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:attribute name="target" type="xsd:string"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="backward" type="xsd:string"/>
+					<xsd:attribute name="description" type="xsd:string"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="description" type="xsd:string"/>
+			<xsd:element name="default" type="xsd:string"/>
+			<xsd:element name="constraint" type="ptc:ConstraintDefinition"/>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="display-name" type="xsd:string"/>
+	</xsd:complexType>
 
-    <xsd:complexType name="StatesReference">
-    	<xsd:sequence>
-    		<xsd:element name="state" type="ptc:StateReference" maxOccurs="unbounded"></xsd:element>
-    	</xsd:sequence>
-    </xsd:complexType>
-    
-    <xsd:complexType name="StateReference">
-    	<xsd:sequence>
-    		<xsd:element name="next" type="ptc:NextState" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-    		<xsd:element name="mandatory" type="ptc:MandatoryFields" minOccurs="0"></xsd:element>
-    	  <xsd:element name="description" minOccurs="0" type="xsd:string"/>
-    	  <xsd:element name="capabilities" minOccurs="0">
-    	    <xsd:complexType>
-    	      <xsd:sequence>
-    	        <xsd:element name="capability" minOccurs="0" maxOccurs="unbounded" type="ptc:CapabilityType"/>
-    	      </xsd:sequence>
-    	    </xsd:complexType>
-    	  </xsd:element>
-    	</xsd:sequence>
-    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
-    </xsd:complexType>
+	<xsd:complexType name="StatesReference">
+		<xsd:sequence>
+			<xsd:element name="state" type="ptc:StateReference" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
 
-    <xsd:complexType name="NextState">
-    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
-    	<xsd:attribute name="group" type="xsd:string"></xsd:attribute>
-    </xsd:complexType>
+	<xsd:complexType name="StateReference">
+		<xsd:sequence>
+			<xsd:element name="next" type="ptc:NextState" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="mandatory" type="ptc:MandatoryFields" minOccurs="0"/>
+			<xsd:element name="description" minOccurs="0" type="xsd:string"/>
+			<xsd:element name="capabilities" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="capability" minOccurs="0" maxOccurs="unbounded" type="ptc:CapabilityType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+	</xsd:complexType>
 
-    <xsd:complexType name="MandatoryFields">
-    	<xsd:sequence>
-    		<xsd:element name="field" type="ptc:MandatoryFieldReference" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-    	</xsd:sequence>
-    </xsd:complexType>
-    
-    <xsd:complexType name="MandatoryFieldReference">
-    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
-    </xsd:complexType>
+	<xsd:complexType name="NextState">
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+		<xsd:attribute name="group" type="xsd:string"/>
+	</xsd:complexType>
 
-    <xsd:complexType name="EditabilityRule"></xsd:complexType>
+	<xsd:complexType name="MandatoryFields">
+		<xsd:sequence>
+			<xsd:element name="field" type="ptc:MandatoryFieldReference" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
 
-    <xsd:complexType name="RelevanceRule"></xsd:complexType>
+	<xsd:complexType name="MandatoryFieldReference">
+		<xsd:attribute name="name" type="xsd:string"/>
+	</xsd:complexType>
+
+	<xsd:complexType name="EditabilityRule"/>
+
+	<xsd:complexType name="RelevanceRule"/>
 
 
 
-    <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+	<xsd:attribute name="name" type="xsd:string"/>
 
-    <xsd:complexType name="Solution">
-    	<xsd:sequence>
-    		<xsd:element name="users" type="ptc:UsersDefinitions"
+	<xsd:complexType name="Solution">
+		<xsd:sequence>
+			<xsd:element name="users" type="ptc:UsersDefinitions"
     			minOccurs="1">
-    		</xsd:element>
-    		<xsd:element name="fields" type="ptc:FieldsDefinitions"
+			</xsd:element>
+			<xsd:element name="fields" type="ptc:FieldsDefinitions"
     			minOccurs="1">
-    		</xsd:element>
-    		<xsd:element name="types" type="ptc:TypesDefinition"
+			</xsd:element>
+			<xsd:element name="types" type="ptc:TypesDefinition"
     			minOccurs="1">
-    		</xsd:element>
-    		<xsd:element name="groups" type="ptc:GroupsDefinition"
+			</xsd:element>
+			<xsd:element name="groups" type="ptc:GroupsDefinition"
     			minOccurs="1">
-    		</xsd:element>
-    		<xsd:element name="projects" type="ptc:ProjectsDefinitions"
+			</xsd:element>
+			<xsd:element name="projects" type="ptc:ProjectsDefinitions"
     			minOccurs="1">
-    		</xsd:element>
-    		<xsd:element name="states" type="ptc:StatesDefinition" minOccurs="1"></xsd:element>
-    	</xsd:sequence>
-    	<xsd:attribute name="title" type="xsd:string" use="required"></xsd:attribute>
-    </xsd:complexType>
+			</xsd:element>
+			<xsd:element name="states" type="ptc:StatesDefinition" minOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="title" type="xsd:string" use="required"/>
+	</xsd:complexType>
 
-    <xsd:complexType name="GroupsDefinition">
-    	<xsd:sequence>
-    		<xsd:element name="group" type="ptc:GroupDefinition" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-    	</xsd:sequence>
-    </xsd:complexType>
+	<xsd:complexType name="GroupsDefinition">
+		<xsd:sequence>
+			<xsd:element name="group" type="ptc:GroupDefinition" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
 
-    <xsd:complexType name="FieldRelates"></xsd:complexType>
+	<xsd:complexType name="FieldRelates"/>
 
-    <xsd:complexType name="ReverseRelationship">
-    	<xsd:sequence>
-    		<xsd:element name="relates" type="xsd:string" minOccurs="1"></xsd:element>
-    	  <xsd:element name="default-columns" minOccurs="0" type="ptc:ColumnsDefinition"/>
-    	  <xsd:element name="query" minOccurs="0" type="xsd:string"/>
-    	</xsd:sequence>
-    	<xsd:attribute name="display" type="xsd:string"></xsd:attribute>
-    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
-      <xsd:attribute name="multivalued" type="xsd:boolean"/>
-      <xsd:attribute name="trace" type="xsd:boolean"/>
-    </xsd:complexType>
+	<xsd:complexType name="ReverseRelationship">
+		<xsd:sequence>
+			<xsd:element name="relates" type="xsd:string" minOccurs="1"/>
+			<xsd:element name="default-columns" minOccurs="0" type="ptc:ColumnsDefinition"/>
+			<xsd:element name="query" minOccurs="0" type="xsd:string"/>
+		</xsd:sequence>
+		<xsd:attribute name="display" type="xsd:string"/>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+		<xsd:attribute name="multivalued" type="xsd:boolean"/>
+		<xsd:attribute name="trace" type="xsd:boolean"/>
+	</xsd:complexType>
 
-    <xsd:complexType name="ComputationDefinition">
-    	<xsd:simpleContent>
-    		<xsd:extension base="xsd:string">
-    			<xsd:attribute name="store" type="xsd:string"></xsd:attribute>
-    		  <xsd:attribute name="mode" type="xsd:string"/>
-    		</xsd:extension>
-    	</xsd:simpleContent>
-    </xsd:complexType>
+	<xsd:complexType name="ComputationDefinition">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="store" type="xsd:string"/>
+				<xsd:attribute name="mode" type="xsd:string"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
 
-    <xsd:complexType name="BackingIssueReference">
-    	<xsd:attribute name="filter" type="xsd:string" use="required"></xsd:attribute>
-    	<xsd:attribute name="states" type="xsd:string" use="required"></xsd:attribute>
-    	<xsd:attribute name="type" type="xsd:string" use="required"></xsd:attribute>
-        <xsd:attribute name="field" type="xsd:string"/>
-        <xsd:attribute name="backingTextFormat" type="xsd:string"/>
-        <xsd:attribute name="relationship" type="xsd:string"/>
-    </xsd:complexType>
-    <xsd:complexType name="PropertyDefinition">
-        <xsd:sequence>
-            <xsd:element name="description" minOccurs="0" type="xsd:string"/>
-        </xsd:sequence>
-        <xsd:attribute name="name" type="xsd:string"/>
-        <xsd:attribute name="value" type="xsd:string"/>
-    </xsd:complexType>
-    <xsd:complexType name="PropertiesDefinition">
-        <xsd:sequence>
-            <xsd:element name="property" minOccurs="0" maxOccurs="unbounded" type="ptc:PropertyDefinition"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="TriggerDefinition">
-        <xsd:sequence>
-            <xsd:element name="description" type="xsd:string"/>
-            <xsd:element name="script" type="xsd:string"/>
-            <xsd:element name="rule" type="xsd:string"/>
-            <xsd:element name="query" type="xsd:string"/>
-            <xsd:element name="run-as" type="xsd:string"/>
-            <xsd:element name="frequency" type="xsd:string"/>
-            <xsd:element name="script-timing" type="xsd:string"/>
-            <xsd:element name="params" type="xsd:string"/>
-        </xsd:sequence>
-        <xsd:attribute name="name" type="xsd:string"/>
-        <xsd:attribute name="type" type="ptc:TriggerType"/>
-    </xsd:complexType>
-    <xsd:complexType name="QueryDefinition">
-        <xsd:sequence>
-            <xsd:element name="definition" type="xsd:string"/>
-            <xsd:element name="description" type="xsd:string"/>
-            <xsd:element name="default-columns" minOccurs="0" type="ptc:ColumnsDefinition"/>
-        </xsd:sequence>
-        <xsd:attribute name="admin" type="ptc:YesNo"/>
-        <xsd:attribute name="name" type="xsd:string"/>
-        <xsd:attribute name="share-groups" type="xsd:string"/>
-    </xsd:complexType>
-    <xsd:complexType name="TriggersDefinition">
-        <xsd:sequence>
-            <xsd:element name="trigger" minOccurs="0" maxOccurs="unbounded" type="ptc:TriggerDefinition"/>
-          <xsd:element name="edit-trigger" minOccurs="0" maxOccurs="unbounded" type="ptc:TriggerDefinition"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="QueriesDefinition">
-        <xsd:sequence>
-            <xsd:element name="query" type="ptc:QueryDefinition" minOccurs="0" maxOccurs="unbounded"/>
-          <xsd:element name="edit-query" minOccurs="0" maxOccurs="unbounded" type="ptc:QueryDefinition"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="DocumentModelDefinition">
-        <xsd:sequence>
-            <xsd:element name="significant-edits" minOccurs="0" type="ptc:SignificantEdits"></xsd:element>
-        </xsd:sequence>
-        <xsd:attribute name="role" type="ptc:DocumentRole"/>
-        <xsd:attribute name="associated-type" type="xsd:string"/>
-    </xsd:complexType>
-    <xsd:complexType name="DynamicGroupsDefinition">
-        <xsd:sequence>
-            <xsd:element name="dynamic-group" type="ptc:DynamicGroupDefinition" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="edit-dynamic-group" type="ptc:DynamicGroupDefinition"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="DynamicGroupDefinition">
-        <xsd:attribute name="name" type="xsd:string"/>
-        <xsd:attribute name="description" type="xsd:string"/>
-        <xsd:attribute name="icon" type="xsd:string"/>
-    </xsd:complexType>
-    <xsd:complexType name="ConstraintDefinition">
-        <xsd:sequence>
-            <xsd:element name="source" minOccurs="0">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element name="value" maxOccurs="unbounded" type="xsd:string"/>
-                    </xsd:sequence>
-                    <xsd:attribute name="name" type="xsd:string"/>
-                </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="target" type="ptc:ConstraintTargetDefinition"/>
-            <xsd:element name="rule" minOccurs="0" type="xsd:string"/>
-        </xsd:sequence>
-        <xsd:attribute name="type" type="ptc:ConstraintType"/>
-    </xsd:complexType>
-    <xsd:complexType name="ConstraintTargetDefinition">
-        <xsd:sequence>
-            <xsd:element name="value" maxOccurs="unbounded" type="xsd:string"/>
-        </xsd:sequence>
-        <xsd:attribute name="mandatory" type="xsd:boolean"/>
-        <xsd:attribute name="name" type="xsd:string"/>
-    </xsd:complexType>
-    <xsd:complexType name="TestManagementDefintion">
-        <xsd:sequence>
-            <xsd:element name="testcase" minOccurs="0">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element name="result-fields">
-                            <xsd:complexType>
-                                <xsd:sequence>
-                                    <xsd:element name="field" maxOccurs="unbounded" type="xsd:string"/>
-                                </xsd:sequence>
-                            </xsd:complexType>
-                        </xsd:element>
-                    </xsd:sequence>
-                    <xsd:attribute name="enableTestSteps" type="xsd:boolean"/>
-                </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="testsession" minOccurs="0">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element name="groups" minOccurs="0">
-                            <xsd:complexType>
-                                <xsd:sequence>
-                                    <xsd:element name="group" type="xsd:string" maxOccurs="unbounded"/>
-                                </xsd:sequence>
-                            </xsd:complexType>
-                        </xsd:element>
-                    </xsd:sequence>
-                    <xsd:attribute name="resultModBy" type="ptc:TestResultModificationType"/>
-                    <xsd:attribute name="fieldname" type="xsd:string"/>
-                </xsd:complexType>
-            </xsd:element>
-        </xsd:sequence>
-        <xsd:attribute name="role" type="ptc:TestManagementRoleType"/>
-        <xsd:attribute name="relateTestResults" type="xsd:boolean"/>
-    </xsd:complexType>
-    <xsd:complexType name="ColumnDefinition">
-        <xsd:sequence></xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="ConstraintsDefinition">
-        <xsd:sequence>
-            <xsd:element name="constraint" minOccurs="0" maxOccurs="unbounded" type="ptc:ConstraintDefinition"/>
-        </xsd:sequence>
-    </xsd:complexType>
-  <xsd:complexType name="RangeDefinition">
-    <xsd:sequence>
-      <xsd:element name="value" type="xsd:string"/>
-    </xsd:sequence>
-    <xsd:attribute name="upper" type="xsd:string"/>
-    <xsd:attribute name="lower" type="xsd:string"/>
-    <xsd:attribute name="icon" type="xsd:string"/>
-  </xsd:complexType>
-  <xsd:complexType name="ColumnsDefinition">
-    <xsd:sequence>
-      <xsd:element name="column" type="xsd:string" maxOccurs="unbounded"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="CapabilityDefinition">
-    <xsd:attribute name="capability" type="xsd:string"/>
-  </xsd:complexType>
-  <xsd:complexType name="CapabilitiesDefinition">
-    <xsd:sequence>
-      <xsd:element name="capability" type="ptc:CapabilityDefinition" maxOccurs="unbounded" minOccurs="0"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="PhasesDefinition">
-    <xsd:sequence>
-      <xsd:element name="phase" maxOccurs="unbounded" type="ptc:PhaseDefinition"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="PhaseDefinition">
-    <xsd:sequence></xsd:sequence>
-    <xsd:attribute name="name" type="xsd:string"/>
-    <xsd:attribute name="states" type="xsd:string"/>
-  </xsd:complexType>
-  <xsd:complexType name="SignificantEdits">
-    <xsd:sequence>
-      <xsd:element name="field" type="ptc:FieldReference" maxOccurs="unbounded" minOccurs="0"/>
-    </xsd:sequence>
-  </xsd:complexType>
+	<xsd:complexType name="BackingIssueReference">
+		<xsd:attribute name="filter" type="xsd:string" use="required"/>
+		<xsd:attribute name="states" type="xsd:string" use="required"/>
+		<xsd:attribute name="type" type="xsd:string" use="required"/>
+		<xsd:attribute name="field" type="xsd:string"/>
+		<xsd:attribute name="backingTextFormat" type="xsd:string"/>
+		<xsd:attribute name="relationship" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="PropertyDefinition">
+		<xsd:sequence>
+			<xsd:element name="description" minOccurs="0" type="xsd:string"/>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="value" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="PropertiesDefinition">
+		<xsd:sequence>
+			<xsd:element name="property" minOccurs="0" maxOccurs="unbounded" type="ptc:PropertyDefinition"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TriggerDefinition">
+		<xsd:sequence>
+			<xsd:element name="description" type="xsd:string"/>
+			<xsd:element name="script" type="xsd:string"/>
+			<xsd:element name="rule" type="xsd:string"/>
+			<xsd:element name="query" type="xsd:string"/>
+			<xsd:element name="run-as" type="xsd:string"/>
+			<xsd:element name="frequency" type="xsd:string"/>
+			<xsd:element name="script-timing" type="xsd:string"/>
+			<xsd:element name="params" type="xsd:string"/>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="type" type="ptc:TriggerType"/>
+	</xsd:complexType>
+	<xsd:complexType name="QueryDefinition">
+		<xsd:sequence>
+			<xsd:element name="definition" type="xsd:string"/>
+			<xsd:element name="description" type="xsd:string"/>
+			<xsd:element name="default-columns" minOccurs="0" type="ptc:ColumnsDefinition"/>
+		</xsd:sequence>
+		<xsd:attribute name="admin" type="ptc:YesNo"/>
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="share-groups" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="TriggersDefinition">
+		<xsd:sequence>
+			<xsd:element name="trigger" minOccurs="0" maxOccurs="unbounded" type="ptc:TriggerDefinition"/>
+			<xsd:element name="edit-trigger" minOccurs="0" maxOccurs="unbounded" type="ptc:TriggerDefinition"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="QueriesDefinition">
+		<xsd:sequence>
+			<xsd:element name="query" type="ptc:QueryDefinition" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="edit-query" minOccurs="0" maxOccurs="unbounded" type="ptc:QueryDefinition"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DocumentModelDefinition">
+		<xsd:sequence>
+			<xsd:element name="significant-edits" minOccurs="0" type="ptc:SignificantEdits"/>
+		</xsd:sequence>
+		<xsd:attribute name="role" type="ptc:DocumentRole"/>
+		<xsd:attribute name="associated-type" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="DynamicGroupsDefinition">
+		<xsd:sequence>
+			<xsd:element name="dynamic-group" type="ptc:DynamicGroupDefinition" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="edit-dynamic-group" type="ptc:DynamicGroupDefinition"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DynamicGroupDefinition">
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="description" type="xsd:string"/>
+		<xsd:attribute name="icon" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="ConstraintDefinition">
+		<xsd:sequence>
+			<xsd:element name="source" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="value" maxOccurs="unbounded" type="xsd:string"/>
+					</xsd:sequence>
+					<xsd:attribute name="name" type="xsd:string"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="target" type="ptc:ConstraintTargetDefinition"/>
+			<xsd:element name="rule" minOccurs="0" type="xsd:string"/>
+		</xsd:sequence>
+		<xsd:attribute name="type" type="ptc:ConstraintType"/>
+	</xsd:complexType>
+	<xsd:complexType name="ConstraintTargetDefinition">
+		<xsd:sequence>
+			<xsd:element name="value" maxOccurs="unbounded" type="xsd:string"/>
+		</xsd:sequence>
+		<xsd:attribute name="mandatory" type="xsd:boolean"/>
+		<xsd:attribute name="name" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="TestManagementDefintion">
+		<xsd:sequence>
+			<xsd:element name="testcase" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="result-fields">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="field" maxOccurs="unbounded" type="xsd:string"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="enableTestSteps" type="xsd:boolean"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="testsession" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="groups" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="group" type="xsd:string" maxOccurs="unbounded"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="resultModBy" type="ptc:TestResultModificationType"/>
+					<xsd:attribute name="fieldname" type="xsd:string"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="role" type="ptc:TestManagementRoleType"/>
+		<xsd:attribute name="relateTestResults" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="ColumnDefinition">
+		<xsd:sequence/>
+	</xsd:complexType>
+	<xsd:complexType name="ConstraintsDefinition">
+		<xsd:sequence>
+			<xsd:element name="constraint" minOccurs="0" maxOccurs="unbounded" type="ptc:ConstraintDefinition"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RangeDefinition">
+		<xsd:sequence>
+			<xsd:element name="value" type="xsd:string"/>
+		</xsd:sequence>
+		<xsd:attribute name="upper" type="xsd:string"/>
+		<xsd:attribute name="lower" type="xsd:string"/>
+		<xsd:attribute name="icon" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="ColumnsDefinition">
+		<xsd:sequence>
+			<xsd:element name="column" type="xsd:string" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CapabilityDefinition">
+		<xsd:attribute name="capability" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="CapabilitiesDefinition">
+		<xsd:sequence>
+			<xsd:element name="capability" type="ptc:CapabilityDefinition" maxOccurs="unbounded" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PhasesDefinition">
+		<xsd:sequence>
+			<xsd:element name="phase" maxOccurs="unbounded" type="ptc:PhaseDefinition"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PhaseDefinition">
+		<xsd:sequence/>
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="states" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="SignificantEdits">
+		<xsd:sequence>
+			<xsd:element name="field" type="ptc:FieldReference" maxOccurs="unbounded" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
 </xsd:schema>

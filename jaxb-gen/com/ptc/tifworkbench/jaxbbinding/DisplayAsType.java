@@ -14,40 +14,31 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TestManagementRoleType.
+ * <p>Java class for DisplayAsType.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="TestManagementRoleType">
+ * &lt;simpleType name="DisplayAsType">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="none"/>
- *     &lt;enumeration value="testSuite"/>
- *     &lt;enumeration value="testCase"/>
- *     &lt;enumeration value="testStep"/>
- *     &lt;enumeration value="testSession"/>
+ *     &lt;enumeration value="dropdown"/>
+ *     &lt;enumeration value="checkbox"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
  * 
  */
-@XmlType(name = "TestManagementRoleType")
+@XmlType(name = "DisplayAsType")
 @XmlEnum
-public enum TestManagementRoleType {
+public enum DisplayAsType {
 
-    @XmlEnumValue("none")
-    NONE("none"),
-    @XmlEnumValue("testSuite")
-    TEST_SUITE("testSuite"),
-    @XmlEnumValue("testCase")
-    TEST_CASE("testCase"),
-    @XmlEnumValue("testStep")
-    TEST_STEP("testStep"),
-    @XmlEnumValue("testSession")
-    TEST_SESSION("testSession");
+    @XmlEnumValue("dropdown")
+    DROPDOWN("dropdown"),
+    @XmlEnumValue("checkbox")
+    CHECKBOX("checkbox");
     private final String value;
 
-    TestManagementRoleType(String v) {
+    DisplayAsType(String v) {
         value = v;
     }
 
@@ -55,8 +46,8 @@ public enum TestManagementRoleType {
         return value;
     }
 
-    public static TestManagementRoleType fromValue(String v) {
-        for (TestManagementRoleType c: TestManagementRoleType.values()) {
+    public static DisplayAsType fromValue(String v) {
+        for (DisplayAsType c: DisplayAsType.values()) {
             if (c.value.equals(v)) {
                 return c;
             }

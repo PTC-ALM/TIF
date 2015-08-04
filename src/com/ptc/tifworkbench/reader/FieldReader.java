@@ -14,9 +14,9 @@ import com.mks.api.response.WorkItemIterator;
 import com.ptc.tifworkbench.integrity.IntegrityException;
 import com.ptc.tifworkbench.integrity.IntegrityExceptionEx;
 import com.ptc.tifworkbench.jaxbbinding.BackingIssueReference;
-import com.ptc.tifworkbench.jaxbbinding.ColumnDefinition;
 import com.ptc.tifworkbench.jaxbbinding.ColumnsDefinition;
 import com.ptc.tifworkbench.jaxbbinding.ComputationDefinition;
+import com.ptc.tifworkbench.jaxbbinding.DisplayAsType;
 import com.ptc.tifworkbench.jaxbbinding.FieldDefinition;
 import com.ptc.tifworkbench.jaxbbinding.FieldType;
 import com.ptc.tifworkbench.jaxbbinding.FieldsDefinitions;
@@ -29,7 +29,6 @@ import com.ptc.tifworkbench.model.StandardFields;
 import com.ptc.tifworkbench.model.StandardPhases;
 import com.ptc.tifworkbench.worker.StatusReporter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -175,6 +174,11 @@ class FieldReader extends AdminObjectReader
             	fdef.setDisplayAsProgress(getBooleanField("displayAsProgress", wk));
             if(specified("displayAsLink", wk))
                 fdef.setDisplayAsLink(getBooleanField("displayAsLink", wk));
+            if(specified("displayAs",wk)){
+                String val = getSafeField("displayAs",wk);
+                DisplayAsType displayAs = (val.equals("Checkbox")) ? DisplayAsType.CHECKBOX : DisplayAsType.DROPDOWN;
+                fdef.setDisplayAs(displayAs);
+            }
             
 
             readComputation(fdef, wk);
