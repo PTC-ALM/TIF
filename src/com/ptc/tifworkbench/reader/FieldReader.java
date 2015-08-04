@@ -17,6 +17,7 @@ import com.ptc.tifworkbench.jaxbbinding.BackingIssueReference;
 import com.ptc.tifworkbench.jaxbbinding.ColumnsDefinition;
 import com.ptc.tifworkbench.jaxbbinding.ComputationDefinition;
 import com.ptc.tifworkbench.jaxbbinding.DisplayAsType;
+import com.ptc.tifworkbench.jaxbbinding.DisplayType;
 import com.ptc.tifworkbench.jaxbbinding.FieldDefinition;
 import com.ptc.tifworkbench.jaxbbinding.FieldType;
 import com.ptc.tifworkbench.jaxbbinding.FieldsDefinitions;
@@ -174,13 +175,21 @@ class FieldReader extends AdminObjectReader
             	fdef.setDisplayAsProgress(getBooleanField("displayAsProgress", wk));
             if(specified("displayAsLink", wk))
                 fdef.setDisplayAsLink(getBooleanField("displayAsLink", wk));
+            if(specified("cycleDetection",wk))
+                fdef.setCycleDetection(getBooleanField("cycleDetection", wk));
+            if(specified("showTallRows",wk))
+                fdef.setShowVariableHeightRows(getBooleanField("showTallRows", wk));
             if(specified("displayAs",wk)){
                 String val = getSafeField("displayAs",wk);
                 DisplayAsType displayAs = (val.equals("Checkbox")) ? DisplayAsType.CHECKBOX : DisplayAsType.DROPDOWN;
                 fdef.setDisplayAs(displayAs);
             }
+            if(specified("displayStyle",wk)){
+                String val = getSafeField("displayStyle",wk);
+                DisplayType displayStyle = (val.equals("table")) ? DisplayType.TABLE : DisplayType.CSV;
+                fdef.setDisplayType(displayStyle);
+            }
             
-
             readComputation(fdef, wk);
             if (FieldType.PICK.equals(ftype)) 
             {

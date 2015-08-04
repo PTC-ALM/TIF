@@ -171,6 +171,9 @@
 		<xsd:attribute name="displayAsLink" type="xsd:boolean"/>
 		<xsd:attribute name="displayAsProgress" type="xsd:boolean"/>
 		<xsd:attribute name="displayAs" type="ptc:DisplayAsType"/>
+		<xsd:attribute name="cycleDetection" type="xsd:boolean"/>
+		<xsd:attribute name="showVariableHeightRows" type="xsd:boolean"/>
+
 	</xsd:complexType>
 
 
