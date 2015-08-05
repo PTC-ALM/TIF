@@ -343,12 +343,26 @@ classpath="externalScripts/mksapi.jar;externalScripts/commons-io-2.4.jar;externa
 
         <xsl:when test="@type='siproject'">
         </xsl:when>
+		
+		<xsl:when test="@type='group'">
+		    <xsl:if test="@multivalued='true'">
+                <xsl:text> --multiValued</xsl:text>
+            </xsl:if>
+        </xsl:when>
 
         <xsl:when test="@type='logical'">
             <xsl:if test="tif:computation">
                 <xsl:text> --storeToHistoryFrequency=</xsl:text><xsl:value-of select="tif:computation/@store"/>
+				<xsl:text> --displayTrueAs=</xsl:text><xsl:value-of select="@displayTrueAs"/>
+				<xsl:text> --displayFalseAs=</xsl:text><xsl:value-of select="@displayFalseAs"/>
                 <xsl:text> --computation=&quot;true&quot;</xsl:text>
-                <xsl:if test="tif:computation/@mode='static'">
+				<xsl:if test="@displayAs='dropdown'">
+					<xsl:text> --displayAs=default</xsl:text>
+				</xsl:if>    
+				<xsl:if test="@displayAs='checkbox'">
+					<xsl:text> --displayAs=checkbox</xsl:text>
+				</xsl:if>  
+				<xsl:if test="tif:computation/@mode='static'">
                     <xsl:text> --staticComputation </xsl:text>
                 </xsl:if>    
                 <xsl:if test="tif:computation/@mode='dynamic'">
@@ -492,10 +506,22 @@ classpath="externalScripts/mksapi.jar;externalScripts/commons-io-2.4.jar;externa
                 <xsl:text> --displayRows=</xsl:text><xsl:value-of select="@display-rows"/>
             </xsl:if>
             <xsl:if test="@rich-content='true'">
-                <xsl:text> --richContent </xsl:text>
+                <xsl:text> --richContent</xsl:text>
             </xsl:if>
             <xsl:if test="@rich-content='false'">
-                <xsl:text> --noRichContent </xsl:text>
+                <xsl:text> --noRichContent</xsl:text>
+            </xsl:if>
+			<xsl:if test="@substituteParameters='true'">
+                <xsl:text> --substituteParams</xsl:text>
+            </xsl:if>
+			<xsl:if test="@substituteParameters='false'">
+                <xsl:text> --nosubstituteParams</xsl:text>
+            </xsl:if>
+			<xsl:if test="@text-index='true'">
+                <xsl:text> --textIndex</xsl:text>
+            </xsl:if>
+			<xsl:if test="@text-index='false'">
+                <xsl:text> --notextIndex</xsl:text>
             </xsl:if>
             <xsl:if test="@defaultAttachmentField">
                 <xsl:text> --defaultAttachmentField=&quot;</xsl:text><xsl:value-of select="@defaultAttachmentField"/><xsl:text>&quot; </xsl:text>
@@ -503,7 +529,8 @@ classpath="externalScripts/mksapi.jar;externalScripts/commons-io-2.4.jar;externa
         </xsl:when>
 
         <xsl:when test="@type='relationship'">
-            <xsl:if test="@trace='true'">
+            <xsl:text> --displayStyle=</xsl:text><xsl:value-of select="@displayType"/>
+			<xsl:if test="@trace='true'">
                 <xsl:text> --trace</xsl:text>
             </xsl:if>
             <xsl:if test="@display-rows">
@@ -512,14 +539,31 @@ classpath="externalScripts/mksapi.jar;externalScripts/commons-io-2.4.jar;externa
             <xsl:if test="@multivalued='true'">
                 <xsl:text> --multiValued</xsl:text>
             </xsl:if>
-            <xsl:if test="@variableHeightRows='true'">
+            <xsl:if test="@showVariableHeightRows='true'">
                 <xsl:text> --showTallRows</xsl:text>
             </xsl:if>
+			<xsl:if test="@showVariableHeightRows='false'">
+				<xsl:text> --noshowTallRows</xsl:text>
+			</xsl:if>
+			<xsl:if test="@cycleDetection='true'">
+                <xsl:text> --cycleDetection</xsl:text>
+            </xsl:if>
+			<xsl:if test="@cycleDetection='false'">
+				<xsl:text> --nocycleDetection</xsl:text>
+			</xsl:if>
         </xsl:when>
 
         <xsl:when test="@type='qbr'">
             <xsl:text> --query=&quot;QbrDummy&quot;</xsl:text>
             <xsl:text> --correlation=&quot;&quot;</xsl:text>
+			<xsl:text> --displayStyle=</xsl:text><xsl:value-of select="@displayType"/>
+			<xsl:text> --displayRows=</xsl:text><xsl:value-of select="@display-rows"/>
+			<xsl:if test="@showVariableHeightRows='true'">
+				<xsl:text> --showTallRows</xsl:text>
+			</xsl:if>
+			<xsl:if test="@showVariableHeightRows='false'">
+				<xsl:text> --noshowTallRows</xsl:text>
+			</xsl:if>
         </xsl:when>
 
         <xsl:when test="@type='phase'">
@@ -534,6 +578,12 @@ classpath="externalScripts/mksapi.jar;externalScripts/commons-io-2.4.jar;externa
         <xsl:when test="@type='shorttext'">
             <xsl:if test="@max-length">
                 <xsl:text> --maxLength=</xsl:text><xsl:value-of select="@max-length"/>
+            </xsl:if>
+			<xsl:if test="@substituteParameters='true'">
+                <xsl:text> --substituteParams</xsl:text>
+            </xsl:if>
+			<xsl:if test="@substituteParameters='false'">
+                <xsl:text> --nosubstituteParams</xsl:text>
             </xsl:if>
             <xsl:if test="tif:suggestion">
                 <xsl:text> --suggestions=&quot;</xsl:text>
@@ -568,7 +618,12 @@ classpath="externalScripts/mksapi.jar;externalScripts/commons-io-2.4.jar;externa
     <xsl:if test="@multivalued='true'">
        <xsl:text> --multiValued</xsl:text>
     </xsl:if>
-
+    <xsl:if test="@displayAsLink='true'">
+       <xsl:text> --displayAsLink</xsl:text>
+    </xsl:if>
+	<xsl:if test="@displayAsLink='false'">
+       <xsl:text> --nodisplayAsLink</xsl:text>
+    </xsl:if>
     <xsl:text> --description=&quot;</xsl:text><xsl:value-of select="normalize-space(tif:description/text())"/><xsl:text>&quot;</xsl:text>
     <xsl:call-template name="cmd-end"/>
 </xsl:template>

@@ -287,7 +287,7 @@ class FieldReader extends AdminObjectReader
     protected void readBasicRelationshipFields(FieldDefinition fdef, WorkItem wk)
     {
             fdef.setMultivalued(getBooleanField("isMultiValued", wk));
-            fdef.setVariableHeightRows(false); // Not supported by the API yet.
+            fdef.setShowVariableHeightRows(false); // Not supported by the API yet.
             fdef.setDisplayRows(getIntegerField("displayRows", wk));
             if(getSafeField("defaultBrowseQuery", wk).length()>0)
                 fdef.setQuery(getSafeField("defaultBrowseQuery", wk));
