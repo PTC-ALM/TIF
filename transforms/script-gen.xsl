@@ -1298,7 +1298,11 @@ classpath="externalScripts/mksapi.jar;externalScripts/commons-io-2.4.jar;externa
     <xsl:if test="not(string-length(@icon)=0)">
         <xsl:text> --image=&quot;</xsl:text><xsl:value-of select="$env-root"/><xsl:text>/images/</xsl:text><xsl:value-of select="@icon"/><xsl:text>&quot;</xsl:text>
     </xsl:if>
-    <xsl:text> --queryDefinition=&quot;</xsl:text><xsl:value-of select="tif:definition/text()"/><xsl:text>&quot;</xsl:text>
+    <xsl:text> --queryDefinition=&quot;</xsl:text>       
+		<xsl:call-template name="escapeQuote">
+			<xsl:with-param name="qText" select="tif:definition/text()" />
+		</xsl:call-template>
+	<xsl:text>&quot;</xsl:text>
     <xsl:text> --sharedTo=&quot;</xsl:text><xsl:value-of select="@share-groups"/><xsl:text>&quot;</xsl:text>
     <xsl:if test="@admin='yes'">
         <xsl:text> --sharedAdmin</xsl:text>
