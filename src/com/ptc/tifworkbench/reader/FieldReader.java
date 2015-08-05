@@ -185,7 +185,7 @@ class FieldReader extends AdminObjectReader
             if(specified("suggestions",wk))
                 readSuggestions(fdef,wk);
             if(specified("paramSubstitution",wk))
-                fdef.setShowVariableHeightRows(getBooleanField("paramSubstitution", wk));
+                fdef.setSubstituteParameters(getBooleanField("paramSubstitution", wk));
             if(specified("displayAs",wk)){
                 String val = getSafeField("displayAs",wk);
                 DisplayAsType displayAs = (val.equals("Checkbox")) ? DisplayAsType.CHECKBOX : DisplayAsType.DROPDOWN;
