@@ -12,6 +12,7 @@ import com.ptc.tifworkbench.jaxbbinding.ImSolution;
 import com.ptc.tifworkbench.jaxbbinding.ObjectFactory;
 import com.ptc.tifworkbench.jaxbbinding.ProjectsDefinitions;
 import com.ptc.tifworkbench.jaxbbinding.QueriesDefinition;
+import com.ptc.tifworkbench.jaxbbinding.ReportsDefinition;
 import com.ptc.tifworkbench.jaxbbinding.StatesDefinition;
 import com.ptc.tifworkbench.jaxbbinding.TriggersDefinition;
 import com.ptc.tifworkbench.jaxbbinding.TypesDefinition;
@@ -101,6 +102,12 @@ public class SolutionReader
           imsolution.setQueries(queries);
 	  QueryReader queryReader = new QueryReader(queries, reporter); 
 	  queryReader.read();
+          
+          // REPORTS
+          ReportsDefinition reports = factory.createReportsDefinition();
+          imsolution.setReports(reports);
+          ReportReader reportReader = new ReportReader(reports, reporter);
+          reportReader.read();
           
           report(100, "Done reading from Integrity");
        }

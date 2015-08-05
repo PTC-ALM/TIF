@@ -11,6 +11,7 @@ package com.ptc.tifworkbench.jaxbbinding;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import org.jvnet.jaxb2_commons.lang.Equals;
 import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
@@ -26,19 +27,22 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
 
 /**
- * <p>Java class for PropertyDefinition complex type.
+ * <p>Java class for ReportDefinition complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="PropertyDefinition">
+ * &lt;complexType name="ReportDefinition">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="query" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="recipe-params" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
+ *       &lt;attribute name="admin" type="{http://www.ptc.com/integrity-solution}YesNo" />
  *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="value" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="share-groups" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -47,18 +51,27 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PropertyDefinition", propOrder = {
-    "description"
+@XmlType(name = "ReportDefinition", propOrder = {
+    "description",
+    "query",
+    "recipeParams"
 })
-public class PropertyDefinition
+public class ReportDefinition
     implements Equals, HashCode, ToString
 {
 
+    @XmlElement(required = true)
     protected String description;
+    @XmlElement(required = true)
+    protected String query;
+    @XmlElement(name = "recipe-params", required = true)
+    protected String recipeParams;
+    @XmlAttribute(name = "admin")
+    protected YesNo admin;
     @XmlAttribute(name = "name")
     protected String name;
-    @XmlAttribute(name = "value")
-    protected String value;
+    @XmlAttribute(name = "share-groups")
+    protected String shareGroups;
 
     /**
      * Gets the value of the description property.
@@ -82,6 +95,78 @@ public class PropertyDefinition
      */
     public void setDescription(String value) {
         this.description = value;
+    }
+
+    /**
+     * Gets the value of the query property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getQuery() {
+        return query;
+    }
+
+    /**
+     * Sets the value of the query property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setQuery(String value) {
+        this.query = value;
+    }
+
+    /**
+     * Gets the value of the recipeParams property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getRecipeParams() {
+        return recipeParams;
+    }
+
+    /**
+     * Sets the value of the recipeParams property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setRecipeParams(String value) {
+        this.recipeParams = value;
+    }
+
+    /**
+     * Gets the value of the admin property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link YesNo }
+     *     
+     */
+    public YesNo getAdmin() {
+        return admin;
+    }
+
+    /**
+     * Sets the value of the admin property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link YesNo }
+     *     
+     */
+    public void setAdmin(YesNo value) {
+        this.admin = value;
     }
 
     /**
@@ -109,43 +194,70 @@ public class PropertyDefinition
     }
 
     /**
-     * Gets the value of the value property.
+     * Gets the value of the shareGroups property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getValue() {
-        return value;
+    public String getShareGroups() {
+        return shareGroups;
     }
 
     /**
-     * Sets the value of the value property.
+     * Sets the value of the shareGroups property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setValue(String value) {
-        this.value = value;
+    public void setShareGroups(String value) {
+        this.shareGroups = value;
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof PropertyDefinition)) {
+        if (!(object instanceof ReportDefinition)) {
             return false;
         }
         if (this == object) {
             return true;
         }
-        final PropertyDefinition that = ((PropertyDefinition) object);
+        final ReportDefinition that = ((ReportDefinition) object);
         {
             String lhsDescription;
             lhsDescription = this.getDescription();
             String rhsDescription;
             rhsDescription = that.getDescription();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "description", lhsDescription), LocatorUtils.property(thatLocator, "description", rhsDescription), lhsDescription, rhsDescription)) {
+                return false;
+            }
+        }
+        {
+            String lhsQuery;
+            lhsQuery = this.getQuery();
+            String rhsQuery;
+            rhsQuery = that.getQuery();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "query", lhsQuery), LocatorUtils.property(thatLocator, "query", rhsQuery), lhsQuery, rhsQuery)) {
+                return false;
+            }
+        }
+        {
+            String lhsRecipeParams;
+            lhsRecipeParams = this.getRecipeParams();
+            String rhsRecipeParams;
+            rhsRecipeParams = that.getRecipeParams();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "recipeParams", lhsRecipeParams), LocatorUtils.property(thatLocator, "recipeParams", rhsRecipeParams), lhsRecipeParams, rhsRecipeParams)) {
+                return false;
+            }
+        }
+        {
+            YesNo lhsAdmin;
+            lhsAdmin = this.getAdmin();
+            YesNo rhsAdmin;
+            rhsAdmin = that.getAdmin();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "admin", lhsAdmin), LocatorUtils.property(thatLocator, "admin", rhsAdmin), lhsAdmin, rhsAdmin)) {
                 return false;
             }
         }
@@ -159,11 +271,11 @@ public class PropertyDefinition
             }
         }
         {
-            String lhsValue;
-            lhsValue = this.getValue();
-            String rhsValue;
-            rhsValue = that.getValue();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "value", lhsValue), LocatorUtils.property(thatLocator, "value", rhsValue), lhsValue, rhsValue)) {
+            String lhsShareGroups;
+            lhsShareGroups = this.getShareGroups();
+            String rhsShareGroups;
+            rhsShareGroups = that.getShareGroups();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "shareGroups", lhsShareGroups), LocatorUtils.property(thatLocator, "shareGroups", rhsShareGroups), lhsShareGroups, rhsShareGroups)) {
                 return false;
             }
         }
@@ -183,14 +295,29 @@ public class PropertyDefinition
             currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "description", theDescription), currentHashCode, theDescription);
         }
         {
+            String theQuery;
+            theQuery = this.getQuery();
+            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "query", theQuery), currentHashCode, theQuery);
+        }
+        {
+            String theRecipeParams;
+            theRecipeParams = this.getRecipeParams();
+            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "recipeParams", theRecipeParams), currentHashCode, theRecipeParams);
+        }
+        {
+            YesNo theAdmin;
+            theAdmin = this.getAdmin();
+            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "admin", theAdmin), currentHashCode, theAdmin);
+        }
+        {
             String theName;
             theName = this.getName();
             currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "name", theName), currentHashCode, theName);
         }
         {
-            String theValue;
-            theValue = this.getValue();
-            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "value", theValue), currentHashCode, theValue);
+            String theShareGroups;
+            theShareGroups = this.getShareGroups();
+            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "shareGroups", theShareGroups), currentHashCode, theShareGroups);
         }
         return currentHashCode;
     }
@@ -221,14 +348,29 @@ public class PropertyDefinition
             strategy.appendField(locator, this, "description", buffer, theDescription);
         }
         {
+            String theQuery;
+            theQuery = this.getQuery();
+            strategy.appendField(locator, this, "query", buffer, theQuery);
+        }
+        {
+            String theRecipeParams;
+            theRecipeParams = this.getRecipeParams();
+            strategy.appendField(locator, this, "recipeParams", buffer, theRecipeParams);
+        }
+        {
+            YesNo theAdmin;
+            theAdmin = this.getAdmin();
+            strategy.appendField(locator, this, "admin", buffer, theAdmin);
+        }
+        {
             String theName;
             theName = this.getName();
             strategy.appendField(locator, this, "name", buffer, theName);
         }
         {
-            String theValue;
-            theValue = this.getValue();
-            strategy.appendField(locator, this, "value", buffer, theValue);
+            String theShareGroups;
+            theShareGroups = this.getShareGroups();
+            strategy.appendField(locator, this, "shareGroups", buffer, theShareGroups);
         }
         return buffer;
     }

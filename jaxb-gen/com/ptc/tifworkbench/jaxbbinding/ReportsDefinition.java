@@ -28,16 +28,17 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
 
 /**
- * <p>Java class for ColumnsDefinition complex type.
+ * <p>Java class for ReportsDefinition complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="ColumnsDefinition">
+ * &lt;complexType name="ReportsDefinition">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="column" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/>
+ *         &lt;element name="report" type="{http://www.ptc.com/integrity-solution}ReportDefinition" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="edit-report" type="{http://www.ptc.com/integrity-solution}ReportDefinition" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -47,59 +48,99 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ColumnsDefinition", propOrder = {
-    "column"
+@XmlType(name = "ReportsDefinition", propOrder = {
+    "report",
+    "editReport"
 })
-public class ColumnsDefinition
+public class ReportsDefinition
     implements Equals, HashCode, ToString
 {
 
-    @XmlElement(required = true)
-    protected List<String> column;
+    protected List<ReportDefinition> report;
+    @XmlElement(name = "edit-report")
+    protected List<ReportDefinition> editReport;
 
     /**
-     * Gets the value of the column property.
+     * Gets the value of the report property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the column property.
+     * This is why there is not a <CODE>set</CODE> method for the report property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getColumn().add(newItem);
+     *    getReport().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link String }
+     * {@link ReportDefinition }
      * 
      * 
      */
-    public List<String> getColumn() {
-        if (column == null) {
-            column = new ArrayList<String>();
+    public List<ReportDefinition> getReport() {
+        if (report == null) {
+            report = new ArrayList<ReportDefinition>();
         }
-        return this.column;
+        return this.report;
+    }
+
+    /**
+     * Gets the value of the editReport property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the editReport property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getEditReport().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ReportDefinition }
+     * 
+     * 
+     */
+    public List<ReportDefinition> getEditReport() {
+        if (editReport == null) {
+            editReport = new ArrayList<ReportDefinition>();
+        }
+        return this.editReport;
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof ColumnsDefinition)) {
+        if (!(object instanceof ReportsDefinition)) {
             return false;
         }
         if (this == object) {
             return true;
         }
-        final ColumnsDefinition that = ((ColumnsDefinition) object);
+        final ReportsDefinition that = ((ReportsDefinition) object);
         {
-            List<String> lhsColumn;
-            lhsColumn = this.getColumn();
-            List<String> rhsColumn;
-            rhsColumn = that.getColumn();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "column", lhsColumn), LocatorUtils.property(thatLocator, "column", rhsColumn), lhsColumn, rhsColumn)) {
+            List<ReportDefinition> lhsReport;
+            lhsReport = this.getReport();
+            List<ReportDefinition> rhsReport;
+            rhsReport = that.getReport();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "report", lhsReport), LocatorUtils.property(thatLocator, "report", rhsReport), lhsReport, rhsReport)) {
+                return false;
+            }
+        }
+        {
+            List<ReportDefinition> lhsEditReport;
+            lhsEditReport = this.getEditReport();
+            List<ReportDefinition> rhsEditReport;
+            rhsEditReport = that.getEditReport();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "editReport", lhsEditReport), LocatorUtils.property(thatLocator, "editReport", rhsEditReport), lhsEditReport, rhsEditReport)) {
                 return false;
             }
         }
@@ -114,9 +155,14 @@ public class ColumnsDefinition
     public int hashCode(ObjectLocator locator, HashCodeStrategy strategy) {
         int currentHashCode = 1;
         {
-            List<String> theColumn;
-            theColumn = this.getColumn();
-            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "column", theColumn), currentHashCode, theColumn);
+            List<ReportDefinition> theReport;
+            theReport = this.getReport();
+            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "report", theReport), currentHashCode, theReport);
+        }
+        {
+            List<ReportDefinition> theEditReport;
+            theEditReport = this.getEditReport();
+            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "editReport", theEditReport), currentHashCode, theEditReport);
         }
         return currentHashCode;
     }
@@ -142,9 +188,14 @@ public class ColumnsDefinition
 
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
         {
-            List<String> theColumn;
-            theColumn = this.getColumn();
-            strategy.appendField(locator, this, "column", buffer, theColumn);
+            List<ReportDefinition> theReport;
+            theReport = this.getReport();
+            strategy.appendField(locator, this, "report", buffer, theReport);
+        }
+        {
+            List<ReportDefinition> theEditReport;
+            theEditReport = this.getEditReport();
+            strategy.appendField(locator, this, "editReport", buffer, theEditReport);
         }
         return buffer;
     }

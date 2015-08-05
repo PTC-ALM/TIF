@@ -102,28 +102,7 @@ public class QueryReader extends AdminObjectReader
         qdef.setShareGroups(getShareGroups(wk)); 
         qdef.setDefaultColumns(getDefaultColumns(wk));
     }
-    
-    protected String getShareGroups(WorkItem wk)
-    {
-        ItemList shares = (ItemList)wk.getField("sharedGroups").getList();
-        if(shares != null)
-        {
-            Iterator shareIterator = shares.getItems();
-            StringBuilder buff = new StringBuilder();
-            while(shareIterator.hasNext())
-            {
-                Item item = (Item)shareIterator.next();
-                String groupName = item.getId();
-                buff.append(groupName);
-                if(shareIterator.hasNext())
-                    buff.append(",");
-                log("    Read share group: " + groupName);
-            }
-            return buff.toString();
-        }
-        return "";
-    }
-    
+        
     protected ColumnsDefinition getDefaultColumns(WorkItem wk)
     {
         ColumnsDefinition colsdef = getFactory().createColumnsDefinition();
