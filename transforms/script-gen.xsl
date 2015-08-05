@@ -1278,10 +1278,10 @@ classpath="externalScripts/mksapi.jar;externalScripts/commons-io-2.4.jar;externa
     <xsl:text>im createreport</xsl:text>
     <xsl:call-template name="common-opts"/>
     <xsl:text> --name=&quot;</xsl:text><xsl:value-of select="@name"/><xsl:text>&quot;</xsl:text>
-    <xsl:text> --query=&quot;</xsl:text><xsl:value-of select="@query"/><xsl:text>&quot;</xsl:text>
     <xsl:text> --description=&quot;</xsl:text><xsl:value-of select="normalize-space(tif:description/text())"/><xsl:text>&quot;</xsl:text>
-    <xsl:text> --reportTemplatefile=&quot;</xsl:text><xsl:value-of select="$is-root"/><xsl:value-of select="@template"/><xsl:text>&quot;</xsl:text>
-    <xsl:text> --sharedTo=&quot;</xsl:text><xsl:value-of select="@share-groups"/><xsl:text>&quot;</xsl:text>
+	<xsl:text> --sharedTo=&quot;</xsl:text><xsl:value-of select="@share-groups"/><xsl:text>&quot;</xsl:text>
+	<xsl:text> --query=&quot;</xsl:text><xsl:value-of select="tif:query/text()"/><xsl:text>&quot;</xsl:text>
+    <xsl:text> --recipeParams=&quot;</xsl:text><xsl:value-of select="tif:recipe-params/text()"/><xsl:text>&quot;</xsl:text>
     <xsl:if test="@admin='yes'">
         <xsl:text> --sharedAdmin</xsl:text>
     </xsl:if>

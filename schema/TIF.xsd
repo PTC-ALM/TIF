@@ -27,6 +27,7 @@
 				<xsd:element name="states" type="ptc:StatesDefinition" minOccurs="1"/>
 				<xsd:element name="triggers" minOccurs="1" maxOccurs="1" type="ptc:TriggersDefinition"/>
 				<xsd:element name="queries" type="ptc:QueriesDefinition"/>
+				<xsd:element name="reports" type="ptc:ReportsDefinition"/>
 				<xsd:element name="dynamic-groups" type="ptc:DynamicGroupsDefinition"/>
 			</xsd:sequence>
 			<xsd:attribute name="title" type="xsd:string" use="required"/>
@@ -530,6 +531,16 @@
 		<xsd:attribute name="name" type="xsd:string"/>
 		<xsd:attribute name="type" type="ptc:TriggerType"/>
 	</xsd:complexType>
+	<xsd:complexType name="ReportDefinition">
+		<xsd:sequence>
+			<xsd:element name="description" type="xsd:string"/>
+			<xsd:element name="query" type="xsd:string"/>
+			<xsd:element name="recipe-params" type="xsd:string"/>
+		</xsd:sequence>
+		<xsd:attribute name="admin" type="ptc:YesNo"/>
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="share-groups" type="xsd:string"/>
+	</xsd:complexType>
 	<xsd:complexType name="QueryDefinition">
 		<xsd:sequence>
 			<xsd:element name="definition" type="xsd:string"/>
@@ -544,6 +555,12 @@
 		<xsd:sequence>
 			<xsd:element name="trigger" minOccurs="0" maxOccurs="unbounded" type="ptc:TriggerDefinition"/>
 			<xsd:element name="edit-trigger" minOccurs="0" maxOccurs="unbounded" type="ptc:TriggerDefinition"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ReportsDefinition">
+		<xsd:sequence>
+			<xsd:element name="report" minOccurs="0" maxOccurs="unbounded" type="ptc:ReportDefinition"/>
+			<xsd:element name="edit-report" minOccurs="0" maxOccurs="unbounded" type="ptc:ReportDefinition"/>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="QueriesDefinition">
